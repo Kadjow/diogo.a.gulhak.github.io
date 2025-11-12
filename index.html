@@ -1,90 +1,206 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio Diogo Arthur Gulhak</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Diogo Gulhak — Portfólio</title>
+  <meta name="description" content="Portfólio de Diogo Arthur Gulhak — Desenvolvedor Mobile (Flutter/React Native). Projetos, skills e contato." />
+  <meta property="og:title" content="Diogo Gulhak — Portfólio" />
+  <meta property="og:description" content="Flutter • React Native • Angular • NestJS" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/ft_perfil.jpg" />
+  <meta name="theme-color" content="#0b1222" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
-  
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <main id="container">
-    <aside id="bio-container">
-      <h2>Diogo Arthur Gulhak</h2>
-      <img id="bio-image" src="img/ft_perfil.jpg" alt="Diogo Arthur Gulhak">
-      <p>Olá, meu nome é Diogo Arthur Gulhak e sou <span class="highlight">Desenvolvedor Mobile</span>.</p>
-      <p id="welcome-text">Seja bem-vindo!</p>
-      <ul id="social-container">
-        <li><a href="https://github.com/Kadjow" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
-        <li><a href="https://www.linkedin.com/in/diogo-arthur-gulhak-0bbaa0273/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-        <li><a href="https://www.instagram.com/diogo_gulhak/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
+<header class="site-header" role="banner">
+  <nav class="nav container" aria-label="navegação principal">
+    <a class="brand" href="#top" aria-label="Topo">DG</a>
+    <div class="controls">
+      <button id="themeToggle" class="icon-btn" aria-label="Alternar tema" aria-pressed="false" title="Alternar tema">
+        <svg class="icon sun" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 4.5v-2M12 21.5v-2M4.5 12h-2M21.5 12h-2M5.8 5.8l-1.4-1.4M19.6 19.6l-1.4-1.4M5.8 18.2l-1.4 1.4M19.6 4.4l-1.4 1.4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        </svg>
+        <svg class="icon moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.6A8.5 8.5 0 0 1 11.4 3 8.6 8.6 0 1 0 21 12.6Z" fill="currentColor"/>
+        </svg>
+      </button>
+      <a class="btn small ghost" href="mailto:dgulhak@gmail.com">Contato</a>
+    </div>
+  </nav>
+
+  <section id="top" class="hero hero--compact container">
+    <div class="photo-wrap" aria-hidden="true">
+      <div class="avatar-frame">
+        <img class="hero-photo" src="img/ft_perfil.jpg" alt="Foto de perfil de Diogo Arthur Gulhak" width="512" height="512" loading="eager" />
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <h1 class="headline">Diogo <span class="accent">Gulhak</span></h1>
+      <p class="subtitle">
+        <span id="rolePrefix">Sou</span> <span id="roleRotator" class="typing" aria-live="polite"></span>
+      </p>
+      <p class="bio-short">
+        Desenvolvedor mobile com foco em <strong>Flutter</strong> e <strong>React Native</strong>. Gosto de transformar requisitos em produtos reais, com
+        arquitetura limpa, pipelines de CI/CD bem cuidados e experiência de usuário rápida e acessível.
+      </p>
+
+      <div class="cta">
+        <a class="btn" href="https://github.com/Kadjow?tab=repositories" target="_blank" rel="noopener">Ver repositórios</a>
+        <a class="btn ghost" href="#projetos">Ver projetos</a>
+      </div>
+
+      <ul class="social">
+        <li><a rel="me" href="mailto:dgulhak@gmail.com" aria-label="Email">Email</a></li>
+        <li><a rel="me" href="https://github.com/Kadjow" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a></li>
+        <li><a rel="me" href="https://www.linkedin.com/in/diogo-arthur-gulhak-0bbaa0273/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a></li>
       </ul>
-      <div id="email-container">
-        <ion-icon name="mail-outline"></ion-icon>
-        <a href="mailto:dgulhak@gmail.com">dgulhak@gmail.com</a>
+    </div>
+  </section>
+</header>
+
+<main id="conteudo" tabindex="-1">
+  <section id="sobre" class="section container">
+    <h2>Sobre</h2>
+    <p>
+      Sou o Diogo, desenvolvedor com atuação principal em <strong>aplicações móveis</strong>. Já participei de produtos do zero ao deploy:
+      definição de escopo, desenho de arquitetura, implementação, publicação e monitoramento. Tenho foco em <strong>DX</strong>,
+      documentação clara e automações que evitam retrabalho. Curto trabalhar próximo ao negócio, traduzindo dor do usuário em backlog executável.
+    </p>
+    <p>
+      No mobile, meu dia a dia é <strong>Flutter (Dart)</strong> e <strong>React Native</strong>, com integrações nativas e atenção a acessibilidade,
+      performance e testes. No web/back-end, trabalho com <strong>Angular</strong>, <strong>React</strong>, <strong>TypeScript</strong>, <strong>NestJS</strong>,
+      e bancos como <strong>PostgreSQL</strong>. Em DevOps, uso <strong>GitHub Actions</strong> e <strong>Codemagic</strong>, com Docker quando necessário.
+    </p>
+  </section>
+
+  <section id="skills" class="section container">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <div class="tabs" role="tablist" aria-label="Grupos de skills">
+        <button class="tab is-active" id="tab-mobile"   role="tab" aria-selected="true"  aria-controls="panel-mobile"  tabindex="0">Mobile</button>
+        <button class="tab"           id="tab-web"      role="tab" aria-selected="false" aria-controls="panel-web"     tabindex="-1">Web</button>
+        <button class="tab"           id="tab-backend"  role="tab" aria-selected="false" aria-controls="panel-backend" tabindex="-1">Back-end & DB</button>
+        <button class="tab"           id="tab-devops"   role="tab" aria-selected="false" aria-controls="panel-devops"  tabindex="-1">DevOps</button>
       </div>
-    </aside>
-    <section id="about-container">
-      <h1 id="name">Diogo Arthur Gulhak</h1>
-      <p id="title"><span class="highlight">Desenvolvedor Mobile | Flutter</span></p>
-      <p class="description">
-        Sou apaixonado pelo desenvolvimento de aplicações móveis escaláveis e de alta performance. Com foco em Flutter, participo ativamente de todas as etapas dos projetos – desde a definição de requisitos até o deploy final – garantindo soluções robustas e inovadoras.
-      </p>
-      <p class="description">
-        Combinando o aprendizado acadêmico com a prática na Atlas, auxilio empresas e startups na tomada de decisões estratégicas envolvendo infraestrutura, backend, frontend e design. Estou sempre em busca de aprimoramento e atualizado com as tendências do setor.
-      </p>
-      <a href="https://github.com/Kadjow?tab=repositories" target="_blank" id="btn-projects">
-        <ion-icon name="share-social-outline"></ion-icon>
-        <span>Ver Projetos</span>
-      </a>
-      <h2 id="skills-section-title">Minhas Skills</h2>
-      <p class="description">Confira as tecnologias que domino:</p>
-      <div id="skills-container">
-        <!-- Mobile -->
-        <div class="skills-box">
-          <p class="skills-title">Mobile</p>
-          <i class="devicon-flutter-plain colored"></i>
-          <i class="devicon-dart-plain colored"></i>
-          <i class="devicon-kotlin-plain colored"></i>
-          <i class="devicon-react-plain colored"></i>
-        </div>
-        <!-- Web & Front-end -->
-        <div class="skills-box">
-          <p class="skills-title">Web & Front-end</p>
-          <i class="devicon-html5-plain colored"></i>
-          <i class="devicon-css3-plain colored"></i>
-          <i class="devicon-javascript-plain colored"></i>
-          <i class="devicon-nextjs-plain colored"></i>
-        </div>
-        <!-- Back-end -->
-        <div class="skills-box">
-          <p class="skills-title">Back-end</p>
-          <i class="devicon-java-plain colored"></i>
-          <i class="devicon-python-plain colored"></i>
-        </div>
-        <!-- Databases -->
-        <div class="skills-box">
-          <p class="skills-title">Databases</p>
-          <i class="devicon-mysql-plain colored"></i>
-          <i class="devicon-sqlite-plain colored"></i>
-          <i class="devicon-postgresql-plain colored"></i>
-        </div>
-        <!-- Tools & Infra -->
-        <div class="skills-box">
-          <p class="skills-title">Tools & Infra</p>
-          <i class="devicon-linux-plain colored"></i>
-          <i class="devicon-docker-plain colored"></i>
-          <i class="devicon-git-plain colored"></i>
-          <i class="devicon-github-original colored"></i>
-          <i class="devicon-webpack-plain colored"></i>
+    </div>
+
+    <div class="tab-panels">
+      <div class="panel is-active" id="panel-mobile"  role="tabpanel" aria-labelledby="tab-mobile">
+        <div class="icons">
+          <i class="devicon-flutter-plain colored" title="Flutter"></i>
+          <i class="devicon-dart-plain colored" title="Dart"></i>
+          <i class="devicon-react-plain colored" title="React Native"></i>
+          <i class="devicon-kotlin-plain colored" title="Kotlin"></i>
+          <i class="devicon-swift-plain colored" title="Swift"></i>
         </div>
       </div>
-    </section>
-  </main>
-  <!-- Ion Icons -->
-  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+      <div class="panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web">
+        <div class="icons">
+          <i class="devicon-angular-plain colored" title="Angular"></i>
+          <i class="devicon-react-plain colored" title="React"></i>
+          <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+          <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+          <i class="devicon-html5-plain colored" title="HTML5"></i>
+          <i class="devicon-css3-plain colored" title="CSS3"></i>
+        </div>
+      </div>
+      <div class="panel" id="panel-backend" role="tabpanel" aria-labelledby="tab-backend">
+        <div class="icons">
+          <i class="devicon-nestjs-plain colored" title="NestJS"></i>
+          <i class="devicon-nodejs-plain colored" title="Node.js"></i>
+          <i class="devicon-python-plain colored" title="Python"></i>
+          <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+          <i class="devicon-mysql-plain colored" title="MySQL"></i>
+          <i class="devicon-sqlite-plain colored" title="SQLite"></i>
+        </div>
+      </div>
+      <div class="panel" id="panel-devops" role="tabpanel" aria-labelledby="tab-devops">
+        <div class="icons">
+          <i class="devicon-docker-plain colored" title="Docker"></i>
+          <i class="devicon-github-original colored" title="GitHub"></i>
+          <i class="devicon-git-plain colored" title="Git"></i>
+          <i class="devicon-linux-plain colored" title="Linux"></i>
+          <i class="devicon-nginx-original colored" title="Nginx"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos" class="section container">
+    <div class="section-head">
+      <h2>Projetos</h2>
+      <div class="filters" role="tablist" aria-label="Filtros">
+        <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Tudo</button>
+        <button class="filter" data-filter="flutter" role="tab" aria-selected="false">Flutter</button>
+        <button class="filter" data-filter="react-native" role="tab" aria-selected="false">React Native</button>
+        <button class="filter" data-filter="web" role="tab" aria-selected="false">Web</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card grad-blue reveal" data-tags="flutter web api">
+        <div class="card-head">
+          <h3>Rick and Morty — API</h3>
+          <span class="badge">Flutter</span>
+        </div>
+        <p>Domain/Data/UI, consumo HTTP, paginação, busca e UI responsiva. Foco em legibilidade e desacoplamento.</p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Kadjow/Rick-and-Morty-Project-with-API-" target="_blank" rel="noopener">Repositório</a>
+          <a class="btn ghost" href="https://github.com/Kadjow/Rick-and-Morty-Project-with-API-#readme" target="_blank" rel="noopener">README</a>
+        </div>
+      </article>
+
+      <article class="card grad-blue-2 reveal" data-tags="react-native mobile auth">
+        <div class="card-head">
+          <h3>SobControle — App</h3>
+          <span class="badge">React Native</span>
+        </div>
+        <p>Auth JWT/refresh, listagem paginada, estados com Context/Reducer e integrações REST. Camadas bem definidas.</p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Kadjow/sobcontrole-app" target="_blank" rel="noopener">Repositório</a>
+          <a class="btn ghost" href="https://github.com/Kadjow/sobcontrole-app#readme" target="_blank" rel="noopener">README</a>
+        </div>
+      </article>
+
+      <article class="card grad-blue-3 reveal" data-tags="web flutter">
+        <div class="card-head">
+          <h3>Seu Clima Hoje</h3>
+          <span class="badge">Web</span>
+        </div>
+        <p>Lat/Long do navegador, fallback por cidade, tratamento de erros e consumo de API de clima. UX simples e rápida.</p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Kadjow/Seu-Clima-Hoje" target="_blank" rel="noopener">Repositório</a>
+          <a class="btn ghost" href="https://github.com/Kadjow/Seu-Clima-Hoje#readme" target="_blank" rel="noopener">README</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section container cta-hire">
+    <h2>Vamos construir algo juntos?</h2>
+    <p class="muted">Disponível para projetos Mobile (Flutter/React Native) e integrações Web/Back-end.</p>
+    <div class="contact">
+      <a class="btn" href="mailto:dgulhak@gmail.com?subject=Projeto%20Mobile%20—%20Portf%C3%B3lio">Fale comigo</a>
+      <a class="btn ghost" href="https://github.com/Kadjow?tab=repositories" target="_blank" rel="noopener">Ver repositórios</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer container">
+  <small>© <span id="year">2025</span> Diogo Arthur Gulhak</small>
+  <a href="#top">Voltar ao topo</a>
+</footer>
+
+<script src="js/main.js" defer></script>
 </body>
 </html>
