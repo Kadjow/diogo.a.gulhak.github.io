@@ -84,11 +84,9 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .subtitle{
   color:var(--muted);
   margin:.2rem 0 1rem;
-  min-height:1.8em;           
-  display:flex;
-  align-items:baseline;
-  gap:.35ch;
-  white-space:nowrap;         
+  min-height:1.8em;
+  display:flex; align-items:baseline; gap:.35ch;
+  white-space:nowrap;
 }
 #rolePrefix{flex:0 0 auto}
 #roleRotator{
@@ -110,6 +108,46 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .section h2{font-size:clamp(1.3rem,2.4vw,1.8rem);margin:0 0 12px}
 .section p{color:var(--muted)}
 .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+#experiencia{margin-top:0}
+.xp-card{
+  background:var(--bg-elev);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  padding:16px;
+  margin-bottom:12px;
+}
+.xp-card h3{margin:.1rem 0 .5rem;font-size:1.05rem}
+.xp-card h3 small{color:var(--muted);font-weight:400}
+.xp-card ul{margin:0 0 0 1rem;color:var(--muted)}
+.xp-card li{margin:.25rem 0}
+
+.adv-grid{
+  display:grid;gap:clamp(12px,2.4vw,16px);
+  grid-template-columns: repeat(12, minmax(0,1fr));
+  margin-top:10px;
+}
+.adv-card{
+  grid-column:span 6;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--card), #ffffff 4%), var(--card));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px;
+  box-shadow:var(--shadow-sm);
+}
+.adv-card h3{margin:.1rem 0 .4rem;font-size:1.05rem}
+.adv-card .tight{margin:.2rem 0 0 1rem;color:var(--muted)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{
+  font-size:.78rem;padding:.2rem .55rem;border-radius:999px;
+  background:color-mix(in srgb, var(--accent), #000 75%);color:#fff;border:1px solid color-mix(in srgb, var(--border), #fff 10%);
+}
+.adv-cta{margin-top:14px}
+
+@media (max-width:1023px){
+  .adv-card{grid-column:span 12}
+}
 
 .tabs{display:flex;gap:8px;flex-wrap:wrap}
 .tab{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);transition:transform .15s ease}

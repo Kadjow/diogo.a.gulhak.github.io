@@ -95,7 +95,13 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 (function dynamicTitle(){
-  const map = {'#projetos':'Projetos — Diogo Gulhak','#skills':'Skills — Diogo Gulhak','#sobre':'Sobre — Diogo Gulhak'};
+  const map = {
+    '#projetos':'Projetos — Diogo Gulhak',
+    '#skills':'Skills — Diogo Gulhak',
+    '#sobre':'Sobre — Diogo Gulhak',
+    '#experiencia':'Experiência — Diogo Gulhak',
+    '#comunidade':'Comunidade — Diogo Gulhak'
+  };
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', ()=>{
       const t = map[a.getAttribute('href')];
