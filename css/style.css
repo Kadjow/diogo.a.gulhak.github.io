@@ -67,16 +67,35 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .hero--compact{padding-block:clamp(16px,3.5vw,36px)}
 .photo-wrap{display:grid;place-items:center}
 .avatar-frame{
-  --ring: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent), var(--accent-3));
-  position:relative; padding:10px; border-radius:28px;
-  background:var(--ring); filter:drop-shadow(0 10px 30px rgba(0,0,0,.35));
+  position: relative;
+  display: inline-block;
+  border-radius: 28px;
+  padding: 10px;
+  background: transparent;
+  box-shadow: var(--shadow-md);
+}
+.avatar-frame::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:28px; padding:10px;
+  background:conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent), var(--accent-3));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  z-index:0; transform-origin:50% 50%;
+  animation: ringSpin 14s linear infinite;
 }
 .hero-photo{
-  display:block; width:clamp(150px, 28vw, 260px); height:clamp(150px, 28vw, 260px); object-fit:cover;
-  -webkit-mask-image: radial-gradient(110% 100% at 50% 50%, #000 70%, rgba(0,0,0,.6) 85%, transparent 100%);
-          mask-image: radial-gradient(110% 100% at 50% 50%, #000 70%, rgba(0,0,0,.6) 85%, transparent 100%);
+  position:relative; z-index:1;
+  display:block;
+  width:clamp(150px,28vw,260px); height:clamp(150px,28vw,260px);
+  object-fit:cover; border-radius:18px;
   border:1px solid color-mix(in srgb, var(--border), #fff 8%);
   background:var(--card); box-shadow:var(--shadow-md);
+  -webkit-mask-image:none; mask-image:none;
+}
+@keyframes ringSpin{ to{ transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){
+  .avatar-frame::before{ animation:none; }
 }
 .hero-text{min-width:0}
 .headline{font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.1;margin:.2rem 0;word-break:keep-all}
