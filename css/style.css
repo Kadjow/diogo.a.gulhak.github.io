@@ -171,8 +171,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   border:1px solid var(--border);border-radius:var(--radius);padding:14px;
   box-shadow:var(--shadow-sm);
   display:flex;flex-direction:column;gap:10px;
-  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .4s ease, filter .25s ease;
-  opacity:0; transform:translateY(8px);
+  transition:opacity .5s ease, transform .5s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
+  opacity:0; transform:translateY(10px);
 }
 .card.visible{opacity:1; transform:none}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);filter:saturate(1.04);border-color:color-mix(in srgb, var(--accent), var(--border) 60%)}
@@ -202,8 +202,15 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 @media (max-width:767px){
   .grid{gap:14px}
   .grid .card{grid-column: span 6}
+  .avatar-frame{animation: ringPulse 6s ease-in-out infinite}
+  @keyframes ringPulse{
+    0%,100%{filter: drop-shadow(0 10px 30px rgba(0,0,0,.28))}
+    50%{filter: drop-shadow(0 16px 46px rgba(0,0,0,.40))}
+  }
 }
 @media (max-width:479px){
   .hero-photo{width:min(78vw, 260px); height:min(78vw, 260px)}
   .grid .card{grid-column: span 12}
 }
+
+@media (prefers-reduced-motion: reduce){ .avatar-frame{animation:none} }
