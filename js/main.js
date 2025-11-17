@@ -109,3 +109,27 @@ document.getElementById('year').textContent = new Date().getFullYear();
     });
   });
 })();
+
+function buildMailto({ to, subject, body }) {
+  const encodedSubject = encodeURIComponent(subject ?? '');
+  const encodedBody = encodeURIComponent(body ?? '');
+  return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+}
+
+document.querySelectorAll('a.btn[data-mailto]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = buildMailto({
+      to: 'dgulhak@gmail.com',
+      subject: 'Projeto Mobile — Portfólio',
+      body: 'Olá Diogo, vi seu portfólio e gostaria de conversar sobre...'
+    });
+  });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
