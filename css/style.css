@@ -149,18 +149,41 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   .adv-card{grid-column:span 12}
 }
 
-.tabs{display:flex;gap:8px;flex-wrap:wrap}
-.tab{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);transition:transform .15s ease}
-.tab:hover{transform:translateY(-1px)}
-.tab.is-active{outline:2px solid var(--accent);outline-offset:2px}
+.tabs, .filters{
+  display:flex; gap:10px; flex-wrap:nowrap;
+  overflow-x:auto; overflow-y:visible;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x proximity;
+  padding-inline:12px;              /* gutter para não cortar nas pontas */
+  margin-inline:-12px;              /* compensa o padding no layout */
+  scroll-padding-inline:12px;       /* âncoras/snap respeitam o gutter */
+  overscroll-behavior-inline:contain;
+}
+.tab, .filter{ scroll-snap-align:start }
+.tab, .filter{
+  padding:8px 12px; border-radius:999px; border:1px solid var(--border);
+  background:var(--card); cursor:pointer; color:var(--text);
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.tab.is-active, .filter.is-active{
+  border-color:transparent;                   /* libera o gradiente */
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(90deg, var(--accent), var(--accent-2)) border-box;
+  box-shadow: var(--shadow-sm);
+}
+.tab:hover, .filter:hover{ transform:translateY(-1px) }
+.tab:focus-visible, .filter:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--accent), #000 55%);
+}
+.tabs::before, .tabs::after, .filters::before, .filters::after{
+  content:""; flex:0 0 12px;
+}
 .tab-panels{margin-top:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm)}
 .panel{display:none}
 .panel.is-active{display:block}
 .icons{display:flex;flex-wrap:wrap;gap:12px;font-size:48px}
-
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text)}
-.filter.is-active{outline:2px solid var(--accent);outline-offset:2px}
 .grid{
   display:grid;gap:clamp(12px,2.4vw,16px);margin-top:18px;
   grid-template-columns: repeat(12, minmax(0,1fr));
