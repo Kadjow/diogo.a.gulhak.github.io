@@ -57,6 +57,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   padding:12px 18px;border-radius:14px;border:1px solid var(--border);
   background:var(--accent);color:#0b0b0b;font-weight:800;box-shadow:var(--shadow-sm);
   transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  min-height:44px;
 }
 .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);filter:saturate(1.05)}
 .btn.ghost{background:var(--card);color:var(--text)}
@@ -70,6 +71,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   --ring: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent), var(--accent-3));
   position:relative; padding:10px; border-radius:28px;
   background:var(--ring); filter:drop-shadow(0 10px 30px rgba(0,0,0,.35));
+  animation:ringSpin 14s linear infinite;
 }
 .hero-photo{
   display:block; width:clamp(150px, 28vw, 260px); height:clamp(150px, 28vw, 260px); object-fit:cover;
@@ -77,6 +79,11 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
           mask-image: radial-gradient(110% 100% at 50% 50%, #000 70%, rgba(0,0,0,.6) 85%, transparent 100%);
   border:1px solid color-mix(in srgb, var(--border), #fff 8%);
   background:var(--card); box-shadow:var(--shadow-md);
+}
+
+@keyframes ringSpin {
+  from{filter:hue-rotate(0)}
+  to{filter:hue-rotate(360deg)}
 }
 .hero-text{min-width:0}
 .headline{font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.1;margin:.2rem 0;word-break:keep-all}
@@ -149,8 +156,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   .adv-card{grid-column:span 12}
 }
 
-.tabs{display:flex;gap:8px;flex-wrap:wrap}
-.tab{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);transition:transform .15s ease}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;overflow:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.tab{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);transition:transform .15s ease;scroll-snap-align:start}
 .tab:hover{transform:translateY(-1px)}
 .tab.is-active{outline:2px solid var(--accent);outline-offset:2px}
 .tab-panels{margin-top:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm)}
@@ -158,8 +165,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .panel.is-active{display:block}
 .icons{display:flex;flex-wrap:wrap;gap:12px;font-size:48px}
 
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;overflow:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.filter{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);scroll-snap-align:start}
 .filter.is-active{outline:2px solid var(--accent);outline-offset:2px}
 .grid{
   display:grid;gap:clamp(12px,2.4vw,16px);margin-top:18px;
@@ -176,6 +183,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 }
 .card.visible{opacity:1; transform:none}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);filter:saturate(1.04);border-color:color-mix(in srgb, var(--accent), var(--border) 60%)}
+.card:active{transform:translateY(-2px)}
 .card-head{display:flex;align-items:center;justify-content:space-between}
 .badge{font-size:.8rem;padding:.25rem .6rem;border-radius:999px;background:color-mix(in srgb, var(--accent), #000 70%);color:#fff}
 .actions{display:flex;gap:8px;margin-top:auto}
@@ -193,8 +201,9 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   .hero{grid-template-columns:1fr 1.2fr}
 }
 @media (max-width:1023px){
-  .hero{grid-template-columns:1fr;text-align:center}
+  .hero{grid-template-columns:1fr;gap:clamp(16px,3.2vw,24px);text-align:center}
   .avatar-frame{margin-bottom:10px}
+  .hero-photo{width:min(68vw, 260px); height:min(68vw, 260px)}
   .bio-short{margin:0 auto}
   .cta{justify-content:center}
   .grid .card{grid-column: span 6}
@@ -204,6 +213,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   .grid .card{grid-column: span 6}
 }
 @media (max-width:479px){
-  .hero-photo{width:min(78vw, 260px); height:min(78vw, 260px)}
+  .hero-photo{width:min(68vw, 260px); height:min(68vw, 260px)}
+  .btn{padding:12px 16px}
   .grid .card{grid-column: span 12}
 }
