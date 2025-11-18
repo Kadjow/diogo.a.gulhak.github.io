@@ -15,6 +15,7 @@
 
 (function rotatingTyping(){
   const el = document.getElementById('roleRotator');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const phrases = [
     'um desenvolvedor mobile.',
     'um desenvolvedor full-stack.',
@@ -24,6 +25,11 @@
   let p = 0, i = 0, deleting = false;
 
   function tick(){
+    if (reduced){
+      el.textContent = phrases[p];
+      p = (p + 1) % phrases.length;
+      return setTimeout(tick, 2500);
+    }
     const full = phrases[p];
     if (!deleting){
       i++; el.textContent = full.slice(0, i);
@@ -116,16 +122,18 @@ function buildMailto({ to, subject, body }) {
   const encodedBody = encodeURIComponent(body ?? '');
   return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
 }
+
 document.querySelectorAll('a.btn[data-mailto]').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     window.location.href = buildMailto({
       to: 'dgulhak@gmail.com',
       subject: 'Projeto Mobile — Portfólio',
-      body: 'Olá Diogo, vi seu portfólio e gostaria de conversar sobre...'
+      body: 'Olá Diogo! Vi seu portfólio e gostaria de conversar sobre um projeto. Podemos marcar um papo rápido?\n\nAssunto:\nContexto:\nPrazo:\nOrçamento:'
     });
   });
 });
+
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const id=a.getAttribute('href');

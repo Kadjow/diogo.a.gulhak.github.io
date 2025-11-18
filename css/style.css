@@ -17,7 +17,9 @@ html,body{height:100%}
   --shadow-md:0 10px 22px rgba(2,6,23,.12);
   --shadow-lg:0 18px 44px rgba(2,6,23,.14);
 }
-@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 
 body{
   margin:0;
@@ -28,10 +30,18 @@ body{
     linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.15));
 }
 
-.container{width:100%;max-width:min(1200px, 92vw);margin:0 auto;padding-inline:clamp(16px,3vw,24px)}
+.container{width:100%;max-width:min(1200px,92vw);margin:0 auto;padding-inline:clamp(16px,3vw,24px)}
 
 a{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:10px}
+
+.visually-hidden-focusable{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.visually-hidden-focusable:focus{
+  position:static; width:auto; height:auto; padding:8px 12px; border-radius:8px;
+  background:var(--accent); color:#0b0b0b;
+}
 
 .site-header{position:static;top:auto;z-index:auto;backdrop-filter:none;background:transparent;border-bottom:1px solid var(--border)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding-block:10px;flex-wrap:nowrap}
@@ -61,10 +71,6 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .hero--compact{padding-block:clamp(16px,3.5vw,36px)}
 .photo-wrap{display:grid;place-items:center}
 
-/* === AVATAR CORRIGIDO ===
-   - Sem filter no contêiner
-   - Anel no ::before com máscara e rotação por transform
-*/
 .avatar-frame{
   position:relative; display:inline-block;
   border-radius:28px; padding:10px;
@@ -77,7 +83,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite:xor; mask-composite:exclude;
   transform-origin:50% 50%;
-  animation:avatarRingSpin 14s linear infinite;
+  animation:avatarRingSpin 16s linear infinite;
 }
 .hero-photo{
   position:relative; z-index:1;
@@ -85,9 +91,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   object-fit:cover; border-radius:18px;
   border:1px solid color-mix(in srgb, var(--border), #fff 8%);
   background:var(--card); box-shadow:var(--shadow-md);
-  /* blindagens extras */
-  mix-blend-mode:normal !important;
-  filter:none !important;
+  mix-blend-mode:normal !important; filter:none !important;
 }
 @keyframes avatarRingSpin { to { transform: rotate(360deg); } }
 
@@ -127,19 +131,19 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .adv-cta{margin-top:14px}
 @media (max-width:1023px){ .adv-card{grid-column:span 12} }
 
-/* tabs/filters com scroll suave e sem cortar */
 .tabs,.filters{
-  display:flex;gap:10px;flex-wrap:nowrap;overflow:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  display:flex;gap:10px;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
+  padding-inline:12px;margin-inline:-12px;
 }
 .tab{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);transition:transform .15s ease;scroll-snap-align:start}
 .tab:hover{transform:translateY(-1px)}
 .tab.is-active{outline:2px solid var(--accent);outline-offset:2px}
+.tab:focus-visible,.filter:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in srgb, var(--accent), #000 55%)}
 .tab-panels{margin-top:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm)}
 .panel{display:none}
 .panel.is-active{display:block}
 .icons{display:flex;flex-wrap:wrap;gap:12px;font-size:48px}
 
-.filters{display:flex;gap:10px;flex-wrap:nowrap;overflow:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .filter{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);scroll-snap-align:start}
 .filter.is-active{outline:2px solid var(--accent);outline-offset:2px}
 
@@ -150,8 +154,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   border:1px solid var(--border);border-radius:var(--radius);padding:14px;
   box-shadow:var(--shadow-sm);
   display:flex;flex-direction:column;gap:10px;
-  transition:opacity .5s ease, transform .5s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
-  opacity:0; transform:translateY(10px);
+  transition:opacity .35s ease, transform .35s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
+  opacity:0; transform:translateY(8px);
 }
 .card.visible{opacity:1; transform:none}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);filter:saturate(1.04);border-color:color-mix(in srgb,var(--accent),var(--border) 60%)}
@@ -181,7 +185,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 @media (max-width:767px){
   .grid{gap:14px}
   .grid .card{grid-column:span 6}
-  /* Anima só a sombra, sem filter */
+
   .avatar-frame{animation:avatarShadowPulse 6s ease-in-out infinite}
   @keyframes avatarShadowPulse{
     0%,100%{ box-shadow:0 10px 30px rgba(0,0,0,.28) }
