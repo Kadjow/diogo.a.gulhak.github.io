@@ -110,12 +110,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
   });
 })();
 
+/* mailto helper + smooth scroll */
 function buildMailto({ to, subject, body }) {
   const encodedSubject = encodeURIComponent(subject ?? '');
   const encodedBody = encodeURIComponent(body ?? '');
   return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
 }
-
 document.querySelectorAll('a.btn[data-mailto]').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -126,7 +126,6 @@ document.querySelectorAll('a.btn[data-mailto]').forEach((link) => {
     });
   });
 });
-
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const id=a.getAttribute('href');
