@@ -20,12 +20,11 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Skip link (acessibilidade) -->
   <a href="#conteudo" class="visually-hidden-focusable">Pular para o conteúdo</a>
 
   <header class="site-header" role="banner">
     <nav class="nav container" aria-label="navegação principal">
-      <a class="brand" href="#top" aria-label="Topo">DG</a>
+      <a class="brand" href="#top" aria-label="Topo">DAG</a>
       <div class="controls">
         <button id="themeToggle" class="icon-btn" aria-label="Alternar tema" aria-pressed="false" title="Alternar tema">
           <svg class="icon sun" viewBox="0 0 24 24" aria-hidden="true">
@@ -36,17 +35,17 @@
             <path d="M21 12.6A8.5 8.5 0 0 1 11.4 3 8.6 8.6 0 1 0 21 12.6Z" fill="currentColor"/>
           </svg>
         </button>
-        <a class="btn small ghost" href="mailto:dgulhak@gmail.com">Contato</a>
+        <button id="openContact" class="btn small ghost" type="button">Contato</button>
       </div>
     </nav>
 
     <section id="top" class="hero hero--compact container">
       <div class="photo-wrap" aria-hidden="true">
-        <div class="avatar-frame">
-          <img class="hero-photo" src="img/ft_perfil.jpg"
-               alt="Diogo Arthur Gulhak sorrindo; foto usada como avatar do portfólio"
-               width="512" height="512" loading="eager" />
-        </div>
+        <img
+          class="hero-photo"
+          src="img/ft_perfil.jpg"
+          alt="Diogo Arthur Gulhak sorrindo; foto usada como avatar do portfólio"
+          width="260" height="260" loading="eager" decoding="sync" />
       </div>
 
       <div class="hero-text">
@@ -55,13 +54,12 @@
           <span id="rolePrefix">Sou</span> <span id="roleRotator" class="typing" aria-live="polite"></span>
         </p>
         <p class="bio-short">
-          Desenvolvedor mobile com foco em <strong>Flutter</strong> e <strong>React Native</strong>. Gosto de transformar requisitos em produtos reais, com
-          arquitetura limpa, pipelines de CI/CD bem cuidados e experiência de usuário rápida e acessível.
+          Construo apps em <strong>Flutter</strong> e <strong>React Native</strong> com <strong>arquitetura limpa</strong>, <strong>testes</strong> e <strong>CI/CD</strong> estáveis para garantir <strong>performance</strong>, <strong>acessibilidade</strong> e uma <strong>experiência consistente</strong> para o usuario.
         </p>
 
         <div class="cta">
           <a class="btn" href="https://github.com/Kadjow?tab=repositories" target="_blank" rel="noopener">Ver meus repositórios no GitHub</a>
-          <a class="btn ghost" href="#projetos">Explorar projetos selecionados</a>
+          <a class="btn ghost" href="#projetos">Explorar projetos</a>
         </div>
 
         <ul class="social">
@@ -291,6 +289,45 @@
     <small>© <span id="year">2025</span> Diogo Arthur Gulhak</small>
     <a href="#top">Voltar ao topo</a>
   </footer>
+
+  <section id="contactModal" class="modal-overlay" aria-hidden="true" aria-labelledby="contactTitle" role="dialog">
+    <div class="modal-card" role="document">
+      <button class="modal-close" id="closeContact" aria-label="Fechar">✕</button>
+      <h2 id="contactTitle">Vamos conversar?</h2>
+      <p class="muted">Escolha o melhor canal para falar comigo.</p>
+
+      <div class="contact-grid">
+        <a class="contact-item" href="mailto:dgulhak@gmail.com?subject=Contato%20via%20Portf%C3%B3lio">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+          <div>
+            <strong>Email</strong>
+            <span>dgulhak@gmail.com</span>
+          </div>
+        </a>
+
+        <a class="contact-item" href="https://wa.me/5545998549198?text=Ol%C3%A1%20Diogo!%20Vim%20do%20seu%20portf%C3%B3lio." target="_blank" rel="noopener">
+          <span class="icon-circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <path fill="currentColor"
+                d="M12 2a10 10 0 0 0-8.9 14.6L2 22l5.6-1.5A10 10 0 1 0 12 2zm5.2 14.4c-.2.6-1.2 1.1-1.8 1.1-.47 0-1.06-.07-2.27-.61-2.02-.87-3.54-2.47-4.08-3.24-.55-.77-1.3-2.06-1.3-3.17 0-1.1.6-1.63.82-1.86.22-.23.49-.28.65-.28h.46c.15 0 .35.01.53.41.2.44.68 1.64.74 1.76.06.12.1.26.02.41-.08.15-.12.24-.25.37-.13.13-.26.29-.37.39-.12.1-.24.22-.1.47.13.26.57 1.06 1.31 1.72.9.8 1.66 1.05 1.93 1.17.27.12.43.1.59-.06.16-.17.68-.79.86-1.06.18-.27.36-.23.59-.14.23.08 1.47.69 1.72.81.25.12.42.19.48.3.06.11.06.64-.14 1.25z"/>
+            </svg>
+          </span>
+          <div>
+            <strong>WhatsApp</strong>
+            <span>Mensagem rápida</span>
+          </div>
+        </a>
+
+        <a class="contact-item" href="https://www.linkedin.com/in/diogo-arthur-gulhak-0bbaa0273/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.9 7.5H3.7V20h3.2V7.5ZM5.3 3.5a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8ZM20.3 20h-3.2v-6.7c0-1.6-.6-2.5-1.9-2.5-1.4 0-2.1 1-2.1 2.5V20H9.9V7.5h3.1v1.7c.5-.9 1.5-2 3.5-2 2.4 0 3.8 1.6 3.8 4.6V20Z"/></svg>
+          <div>
+            <strong>LinkedIn</strong>
+            <span>Conectar ou enviar mensagem</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <script src="js/main.js" defer></script>
 </body>

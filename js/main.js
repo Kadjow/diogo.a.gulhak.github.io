@@ -85,21 +85,19 @@
   buttons.forEach(btn => {
     btn.addEventListener('click', () => { setActive(btn); apply(btn.dataset.filter); });
   });
-})();
 
-(function revealOnScroll(){
   const items = document.querySelectorAll('.card.reveal');
   if (!('IntersectionObserver' in window)){
-    items.forEach(i => i.classList.add('visible')); return;
+    items.forEach(i => i.classList.add('visible')); 
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+    }, {threshold: 0.12});
+    items.forEach(i => io.observe(i));
   }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
-  }, {threshold: 0.12});
-  items.forEach(i => io.observe(i));
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
-
 (function dynamicTitle(){
   const map = {
     '#projetos':'Projetos — Diogo Gulhak',
@@ -115,14 +113,18 @@ document.getElementById('year').textContent = new Date().getFullYear();
     });
   });
 })();
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
 
-/* mailto helper + smooth scroll */
 function buildMailto({ to, subject, body }) {
   const encodedSubject = encodeURIComponent(subject ?? '');
   const encodedBody = encodeURIComponent(body ?? '');
   return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
 }
-
 document.querySelectorAll('a.btn[data-mailto]').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -134,9 +136,21 @@ document.querySelectorAll('a.btn[data-mailto]').forEach((link) => {
   });
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', e=>{
-    const id=a.getAttribute('href');
-    if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+(function contactModal(){
+  const modal = document.getElementById('contactModal');
+  const openBtn = document.getElementById('openContact');
+  const closeBtn = document.getElementById('closeContact');
+
+  const open = () => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); };
+  const close = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); };
+
+  openBtn?.addEventListener('click', open);
+  closeBtn?.addEventListener('click', close);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) close();
   });
-});
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();
