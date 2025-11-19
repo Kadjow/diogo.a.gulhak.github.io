@@ -1,11 +1,14 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches: [ main ]
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -16,14 +19,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  
 
-      # Se fosse um build (React/Vite/etc), rodaria aqui.
-      # Para site estático, só empacotamos a pasta.
+      - name: Inject version into asset URLs
+        run: |
+          SHORT_SHA="$(git rev-parse --short HEAD)"
+
+          # Se seu HTML principal for outro arquivo/pasta, ajuste o caminho abaixo.
+          TARGET_HTML="index.html"
+
+          # CSS principal
+          if grep -qE 'css/style\.css' "$TARGET_HTML"; then
+            sed -E -i "s|(css/style\.css)(\?v=[^\"']*)?|\1?v=${SHORT_SHA}|g" "$TARGET_HTML"
+          fi
+
+          # (Opcional) JS
+          if grep -qE 'js/main\.js' "$TARGET_HTML"; then
+            sed -E -i "s|(js/main\.js)(\?v=[^\"']*)?|\1?v=${SHORT_SHA}|g" "$TARGET_HTML"
+          fi
+
+          echo "Versão injetada: $SHORT_SHA"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .   # raiz do repo (ajuste se seus arquivos estão em outra pasta)
+          path: .  
 
   deploy:
     needs: build
