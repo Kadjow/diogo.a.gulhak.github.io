@@ -15,6 +15,7 @@
 
 (function rotatingTyping(){
   const el = document.getElementById('roleRotator');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const phrases = [
     'um desenvolvedor mobile.',
     'um desenvolvedor full-stack.',
@@ -24,6 +25,11 @@
   let p = 0, i = 0, deleting = false;
 
   function tick(){
+    if (reduced){
+      el.textContent = phrases[p];
+      p = (p + 1) % phrases.length;
+      return setTimeout(tick, 2500);
+    }
     const full = phrases[p];
     if (!deleting){
       i++; el.textContent = full.slice(0, i);
@@ -79,21 +85,19 @@
   buttons.forEach(btn => {
     btn.addEventListener('click', () => { setActive(btn); apply(btn.dataset.filter); });
   });
-})();
 
-(function revealOnScroll(){
   const items = document.querySelectorAll('.card.reveal');
   if (!('IntersectionObserver' in window)){
-    items.forEach(i => i.classList.add('visible')); return;
+    items.forEach(i => i.classList.add('visible')); 
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+    }, {threshold: 0.12});
+    items.forEach(i => io.observe(i));
   }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
-  }, {threshold: 0.12});
-  items.forEach(i => io.observe(i));
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
-
 (function dynamicTitle(){
   const map = {
     '#projetos':'Projetos — Diogo Gulhak',
@@ -109,8 +113,13 @@ document.getElementById('year').textContent = new Date().getFullYear();
     });
   });
 })();
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
 
-/* mailto helper + smooth scroll */
 function buildMailto({ to, subject, body }) {
   const encodedSubject = encodeURIComponent(subject ?? '');
   const encodedBody = encodeURIComponent(body ?? '');
@@ -122,13 +131,26 @@ document.querySelectorAll('a.btn[data-mailto]').forEach((link) => {
     window.location.href = buildMailto({
       to: 'dgulhak@gmail.com',
       subject: 'Projeto Mobile — Portfólio',
-      body: 'Olá Diogo, vi seu portfólio e gostaria de conversar sobre...'
+      body: 'Olá Diogo! Vi seu portfólio e gostaria de conversar sobre um projeto. Podemos marcar um papo rápido?\n\nAssunto:\nContexto:\nPrazo:\nOrçamento:'
     });
   });
 });
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', e=>{
-    const id=a.getAttribute('href');
-    if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+(function contactModal(){
+  const modal = document.getElementById('contactModal');
+  const openBtn = document.getElementById('openContact');
+  const closeBtn = document.getElementById('closeContact');
+
+  const open = () => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); };
+  const close = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); };
+
+  openBtn?.addEventListener('click', open);
+  closeBtn?.addEventListener('click', close);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) close();
   });
-});
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();
