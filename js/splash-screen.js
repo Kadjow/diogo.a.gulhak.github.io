@@ -12,9 +12,9 @@
   ];
   const finalLine = 'Initialising Diogo Gulhak portfolio UI...';
 
-  /**
-   * Creates the splash DOM nodes and kicks off the typing + log flow.
-   */
+  // tempo extra, em ms, que a splash fica parada mostrando a última linha
+  const FINAL_LINE_HOLD_TIME = 2000;
+
   function initSplash() {
     const splash = document.createElement('div');
     splash.className = 'load';
@@ -39,14 +39,15 @@
     typeCommand(term, commandSpan, cursor, commandText, () => {
       printLogs(term, cursor, bootLogs, () => {
         appendLine(term, cursor, finalLine);
-        fadeOutSplash(splash);
+
+        // 👉 segura a tela parada por alguns segundos
+        setTimeout(() => {
+          fadeOutSplash(splash);
+        }, FINAL_LINE_HOLD_TIME);
       });
     });
   }
 
-  /**
-   * Types the command text character by character.
-   */
   function typeCommand(term, commandSpan, cursor, command, onDone) {
     let index = 0;
 
@@ -59,7 +60,6 @@
         return;
       }
 
-      // After finishing the command, add a new line and move on.
       setTimeout(() => {
         appendLine(term, cursor, '');
         onDone();
@@ -69,9 +69,6 @@
     setTimeout(tick, 300);
   }
 
-  /**
-   * Prints each boot log line with slight random delays.
-   */
   function printLogs(term, cursor, lines, onDone, index = 0) {
     if (index >= lines.length) {
       onDone();
@@ -85,25 +82,19 @@
     }, delay);
   }
 
-  /**
-   * Adds a text line above the cursor and keeps the terminal scrolled.
-   */
   function appendLine(term, cursor, text) {
     const line = document.createTextNode('\n' + text);
     term.insertBefore(line, cursor);
     scrollTerm(term);
   }
 
-  /**
-   * Smoothly fades out the splash and removes it from the DOM.
-   */
   function fadeOutSplash(splash) {
     splash.classList.add('is-fading');
 
     const removeSplash = () => splash.remove();
     splash.addEventListener('transitionend', removeSplash, { once: true });
 
-    // Fallback removal in case transitionend doesn't fire.
+    // Fallback caso o transitionend não dispare
     setTimeout(removeSplash, 1200);
   }
 
