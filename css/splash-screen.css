@@ -17,7 +17,7 @@ body {
   display: grid;
   place-items: center;
   z-index: 9999;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .splash--hidden {
@@ -31,18 +31,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: #e5e7eb;
   font-weight: 800;
   font-size: clamp(32px, 6vw, 64px);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   opacity: 0;
-  animation: logo-in 0.9s ease-out 0.4s forwards, logo-out 0.6s ease-in 2.6s forwards;
+  animation: logo-in 0.9s ease-out 0.35s forwards, logo-out 0.6s ease-in 2.35s forwards;
 }
 
-.splash_logo img {
-  max-height: 72px;
-  width: auto;
+.splash_logo span {
+  display: inline-block;
 }
 
 .splash_svg,
@@ -62,14 +61,14 @@ body {
 .splash_svg rect {
   transform-origin: center;
   transform: scaleX(0.05);
-  animation: splash-expand 1.4s ease-out 0.4s forwards;
+  animation: splash-expand 1.4s ease-out 0.35s forwards;
 }
 
 .splash_minimize rect {
   transform-origin: center;
   transform: scaleY(1);
   opacity: 0;
-  animation: splash-collapse 0.9s ease-in 2.2s forwards;
+  animation: splash-collapse 0.9s ease-in 2s forwards;
 }
 
 .welcome-text {
@@ -78,11 +77,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #e2e8f0;
+  color: #e5e7eb;
   pointer-events: none;
   z-index: 10;
   opacity: 0;
-  animation: text-fade 0.6s ease 3.2s forwards;
+  animation: text-fade 0.6s ease 2.9s forwards;
   max-width: min(780px, 90vw);
 }
 
@@ -90,6 +89,9 @@ body {
 .welcome-text span {
   margin: 0;
   display: block;
+}
+
+.welcome-text p {
   overflow: hidden;
   white-space: nowrap;
   width: 0;
@@ -101,25 +103,25 @@ body {
   --end-width: 12ch;
   font-size: clamp(22px, 4vw, 34px);
   font-weight: 700;
-  animation: type-line 1s steps(14) 3.2s forwards;
+  animation: type-line 1.05s steps(14) 2.9s forwards;
 }
 
 .welcome-text p:nth-child(2) {
   --end-width: 18ch;
   font-size: clamp(20px, 3.6vw, 30px);
   font-weight: 700;
-  color: #cbd5e1;
+  color: #e2e8f0;
   margin-top: 6px;
-  animation: type-line 1.05s steps(22) 4.3s forwards;
+  animation: type-line 1.05s steps(22) 4.05s forwards;
 }
 
 .welcome-text span {
-  --end-width: 44ch;
   font-size: clamp(14px, 2.4vw, 18px);
   color: #94a3b8;
-  margin-top: 10px;
+  margin-top: 12px;
   letter-spacing: 0.01em;
-  animation: type-line 1.2s steps(40) 5.5s forwards;
+  opacity: 0;
+  animation: subtitle-in 0.8s ease 5.2s forwards;
 }
 
 @keyframes splash-expand {
@@ -175,4 +177,9 @@ body {
     width: var(--end-width);
     border-right-color: transparent;
   }
+}
+
+@keyframes subtitle-in {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
