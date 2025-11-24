@@ -1,5 +1,5 @@
 (function () {
-  const SPLASH_DURATION = 4600;
+  const SPLASH_DURATION = 5800;
   const REMOVE_FALLBACK = 1200;
   const SPLASH_TEMPLATE = 'splash.html';
 
