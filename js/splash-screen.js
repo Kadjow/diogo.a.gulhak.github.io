@@ -1,110 +1,45 @@
 (function () {
-  const promptText = 'diogo@portfolio:~$ ';
-  const commandText = 'sh start_portfolio.sh';
-  const bootLogs = [
-    '[    0.000] Loading Flutter environment...',
-    '[    0.003] Initializing React Native modules...',
-    '[    0.006] Connecting to Firebase services...',
-    '[    0.010] Fetching portfolio projects...',
-    '[    0.015] Applying dark theme...',
-    '[    0.017] Preparing Angular dashboards...',
-    '[    0.020] Starting Diogo Gulhak portfolio UI...'
-  ];
-  const finalLine = 'Initialising Diogo Gulhak portfolio UI...';
+  const SPLASH_DURATION = 4600;
+  const REMOVE_FALLBACK = 1200;
+  const SPLASH_TEMPLATE = 'splash.html';
 
-  // tempo extra, em ms, que a splash fica parada mostrando a última linha
-  const FINAL_LINE_HOLD_TIME = 2000;
+  function hideSplash(splash) {
+    if (!splash) return;
 
-  function initSplash() {
-    const splash = document.createElement('div');
-    splash.className = 'load';
-    splash.id = 'portfolio-splash';
-
-    const term = document.createElement('pre');
-    term.className = 'term';
-    term.setAttribute('aria-label', 'Terminal de inicialização do portfólio');
-    term.textContent = promptText;
-
-    const commandSpan = document.createElement('span');
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    cursor.textContent = '_';
-
-    term.appendChild(commandSpan);
-    term.appendChild(cursor);
-
-    splash.appendChild(term);
-    document.body.appendChild(splash);
-
-    typeCommand(term, commandSpan, cursor, commandText, () => {
-      printLogs(term, cursor, bootLogs, () => {
-        appendLine(term, cursor, finalLine);
-
-        // 👉 segura a tela parada por alguns segundos
-        setTimeout(() => {
-          fadeOutSplash(splash);
-        }, FINAL_LINE_HOLD_TIME);
-      });
-    });
+    splash.classList.add('splash--hidden');
+    splash.addEventListener('transitionend', () => splash.remove(), { once: true });
+    setTimeout(() => splash.remove(), REMOVE_FALLBACK);
   }
 
-  function typeCommand(term, commandSpan, cursor, command, onDone) {
-    let index = 0;
+  async function injectSplash() {
+    try {
+      const response = await fetch(SPLASH_TEMPLATE, { cache: 'no-cache' });
+      if (!response.ok) return null;
 
-    const tick = () => {
-      if (index < command.length) {
-        commandSpan.textContent += command[index];
-        scrollTerm(term);
-        index += 1;
-        setTimeout(tick, randomDelay(60, 120));
-        return;
-      }
+      const markup = await response.text();
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = markup.trim();
 
-      setTimeout(() => {
-        appendLine(term, cursor, '');
-        onDone();
-      }, 200);
-    };
+      const nodes = Array.from(wrapper.children);
+      if (!nodes.length) return null;
 
-    setTimeout(tick, 300);
-  }
+      const fragment = document.createDocumentFragment();
+      nodes.forEach((node) => fragment.appendChild(node));
+      document.body.prepend(fragment);
 
-  function printLogs(term, cursor, lines, onDone, index = 0) {
-    if (index >= lines.length) {
-      onDone();
-      return;
+      return nodes.find((node) => node.classList.contains('splash')) || null;
+    } catch (error) {
+      console.error('Splash screen load error:', error);
+      return null;
     }
-
-    const delay = randomDelay(140, 260);
-    setTimeout(() => {
-      appendLine(term, cursor, lines[index]);
-      printLogs(term, cursor, lines, onDone, index + 1);
-    }, delay);
   }
 
-  function appendLine(term, cursor, text) {
-    const line = document.createTextNode('\n' + text);
-    term.insertBefore(line, cursor);
-    scrollTerm(term);
-  }
+  window.addEventListener('load', async () => {
+    const existingSplash = document.querySelector('.splash');
+    const splash = existingSplash || (await injectSplash());
 
-  function fadeOutSplash(splash) {
-    splash.classList.add('is-fading');
+    if (!splash) return;
 
-    const removeSplash = () => splash.remove();
-    splash.addEventListener('transitionend', removeSplash, { once: true });
-
-    // Fallback caso o transitionend não dispare
-    setTimeout(removeSplash, 1200);
-  }
-
-  function scrollTerm(term) {
-    term.scrollTop = term.scrollHeight;
-  }
-
-  function randomDelay(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  window.addEventListener('load', initSplash);
+    setTimeout(() => hideSplash(splash), SPLASH_DURATION);
+  });
 })();

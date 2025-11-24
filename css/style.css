@@ -2,7 +2,7 @@
 html,body{height:100%}
 
 :root{
-  --bg:#0b1222; --bg-elev:#0f172a;
+  --bg:#020617; --bg-elev:#0f172a;
   --text:#e5e7eb; --muted:#b6c0d4;
   --accent:#3b82f6; --accent-2:#60a5fa; --accent-3:#1e3a8a;
   --card:#0f1730; --border:#21304a;
@@ -38,9 +38,8 @@ body{
   margin:0;
   font:clamp(15px,1.2vw,16px)/1.6 'Inter',system-ui,Segoe UI,Roboto,Arial;
   color:var(--text);
-  background:
-    radial-gradient(60% 60% at 12% 8%, #0f1a39 0, var(--bg) 55%),
-    linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.15));
+  background-color:#020617;
+  background:#020617;
 }
 
 :root.light body{
