@@ -12,7 +12,6 @@
   ];
   const finalLine = 'Initialising Diogo Gulhak portfolio UI...';
 
-  // tempo extra, em ms, que a splash fica parada mostrando a última linha
   const FINAL_LINE_HOLD_TIME = 2000;
 
   function initSplash() {
@@ -40,7 +39,6 @@
       printLogs(term, cursor, bootLogs, () => {
         appendLine(term, cursor, finalLine);
 
-        // 👉 segura a tela parada por alguns segundos
         setTimeout(() => {
           fadeOutSplash(splash);
         }, FINAL_LINE_HOLD_TIME);
@@ -94,7 +92,6 @@
     const removeSplash = () => splash.remove();
     splash.addEventListener('transitionend', removeSplash, { once: true });
 
-    // Fallback caso o transitionend não dispare
     setTimeout(removeSplash, 1200);
   }
 
