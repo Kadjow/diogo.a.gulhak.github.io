@@ -6,10 +6,10 @@
 
   if (stored === "light" || (!stored && prefersLight)) {
     root.classList.add("light");
-    btn && btn.setAttribute("aria-pressed", "true");
+    btn?.setAttribute("aria-pressed", "true");
   }
 
-  btn && btn.addEventListener("click", () => {
+  btn?.addEventListener("click", () => {
     const isLight = root.classList.toggle("light");
     localStorage.setItem("theme", isLight ? "light" : "dark");
     btn.setAttribute("aria-pressed", String(isLight));
@@ -66,8 +66,8 @@
 })();
 
 (function tabs() {
-  const tabs = Array.from(document.querySelectorAll(".tab"));
-  const panels = Array.from(document.querySelectorAll(".panel"));
+  const tabs = [...document.querySelectorAll(".tab")];
+  const panels = [...document.querySelectorAll(".panel")];
   if (!tabs.length) return;
 
   function activate(tab) {
@@ -83,7 +83,7 @@
     tab.tabIndex = 0;
 
     const panelId = tab.getAttribute("aria-controls");
-    const panel = panelId ? document.getElementById(panelId) : null;
+    const panel = document.getElementById(panelId);
     if (panel) panel.classList.add("is-active");
 
     tab.focus();
@@ -211,7 +211,7 @@
       btn.classList.add("is-active");
       btn.setAttribute("aria-selected", "true");
 
-      applyFilter(tech || "all");
+      applyFilter(tech);
     });
   });
 
@@ -232,7 +232,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear().toString();
   };
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", () => {
-      const t = map[a.getAttribute("href") || ""];
+      const t = map[a.getAttribute("href")];
       if (t) document.title = t;
     });
   });
@@ -240,8 +240,8 @@ if (yearEl) yearEl.textContent = new Date().getFullYear().toString();
 
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
   a.addEventListener("click", (e) => {
-    const id = a.getAttribute("href") || "";
-    if (id.length > 1) {
+    const id = a.getAttribute("href");
+    if (id && id.length > 1) {
       e.preventDefault();
       const target = document.querySelector(id);
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -250,8 +250,8 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
 });
 
 function buildMailto({ to, subject, body }) {
-  const encodedSubject = encodeURIComponent(subject || "");
-  const encodedBody = encodeURIComponent(body || "");
+  const encodedSubject = encodeURIComponent(subject ?? "");
+  const encodedBody = encodeURIComponent(body ?? "");
   return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
 }
 
@@ -282,8 +282,8 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
     modal.setAttribute("aria-hidden", "true");
   };
 
-  openBtn && openBtn.addEventListener("click", open);
-  closeBtn && closeBtn.addEventListener("click", close);
+  openBtn?.addEventListener("click", open);
+  closeBtn?.addEventListener("click", close);
 
   modal.addEventListener("click", (e) => {
     if (e.target === modal) close();
@@ -303,7 +303,7 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
   try {
     const saved = localStorage.getItem(key);
     if (saved === "true") details.setAttribute("open", "");
-  } catch (e) {}
+  } catch (_) {}
 
   const update = () => {
     if (!label) return;
@@ -314,7 +314,7 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
     update();
     try {
       localStorage.setItem(key, details.open ? "true" : "false");
-    } catch (e) {}
+    } catch (_) {}
   });
 })();
 
@@ -332,18 +332,46 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
   });
 })();
 
+(function humanGate() {
+  const overlay = document.getElementById("humanOverlay");
+  const grid = document.getElementById("mediaGrid");
+  const checkbox = document.getElementById("humanCheck");
+  const verifying = document.getElementById("humanVerifying");
+  const subtitle = document.getElementById("humanSubtitle");
+  const joke = document.getElementById("humanJoke");
+  if (!overlay || !grid || !checkbox) return;
+
+  let done = false;
+
+  checkbox.addEventListener("change", () => {
+    if (!checkbox.checked || done) return;
+    done = true;
+    checkbox.disabled = true;
+    if (verifying) verifying.classList.remove("hidden");
+    if (subtitle) subtitle.textContent = "Verificando se você é humano. Isso pode levar alguns segundos...";
+
+    setTimeout(() => {
+      if (verifying) verifying.classList.add("hidden");
+      if (subtitle) subtitle.textContent = "Pronto! Verificação concluída.";
+      if (joke) joke.textContent = "Era só uma brincadeira 😄 Agora pode ver as fotos tranquilo.";
+      overlay.classList.add("hidden");
+      grid.classList.remove("media-grid--blur");
+    }, 1400);
+  });
+})();
+
 (function photoGallery() {
   const triggers = document.querySelectorAll(".js-gallery");
-  const overlay = document.getElementById("galleryOverlay");
-  if (!triggers.length || !overlay) return;
+  const modal = document.getElementById("galleryOverlay");
+  if (!triggers.length || !modal) return;
 
   const titleEl = document.getElementById("galleryTitle");
   const imgEl = document.getElementById("galleryImage");
   const captionEl = document.getElementById("galleryCaption");
   const counterEl = document.getElementById("galleryCounter");
-  const closeBtn = document.getElementById("closeGallery");
   const prevBtn = document.getElementById("galleryPrev");
   const nextBtn = document.getElementById("galleryNext");
+  const closeBtn = document.getElementById("closeGallery");
 
   const galleries = {
     scout: {
@@ -351,10 +379,11 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
       images: [
         { src: "img/scout/cover.jpeg", alt: "Atividade escoteira em grupo" },
         { src: "img/scout/acamp_senior.jpeg", alt: "Acampamento sênior do grupo escoteiro" },
-        { src: "img/scout/congresso.jpeg", alt: "Congresso escoteiro — momento em grupo" },
+        { src: "img/scout/congresso.jpeg", alt: "Congresso escoteiro — registro 1" },
         { src: "img/scout/congresso2.jpeg", alt: "Congresso escoteiro — registro 2" },
         { src: "img/scout/congresso3.jpeg", alt: "Congresso escoteiro — registro 3" },
         { src: "img/scout/congresso4.jpeg", alt: "Congresso escoteiro — registro 4" },
+        { src: "img/scout/pico_caratuva.jpeg", alt: "Trilha até o Pico Caratuva" },
         { src: "img/scout/pico_caratuva2.jpeg", alt: "Vista do Pico Caratuva" },
         { src: "img/scout/vj_cm.jpeg", alt: "Atividade escoteira em Cascavel" }
       ]
@@ -362,17 +391,17 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
     tech: {
       title: "Tecnologia & Comunidade",
       images: [
-        { src: "img/tech/cover.jpeg", alt: "Foto geral em evento de tecnologia" },
-        { src: "img/tech/arthur_igreja.jpeg", alt: "Palestra do Arthur Igreja" },
-        { src: "img/tech/conf1.jpeg", alt: "Foto em conferência de tecnologia 1" },
-        { src: "img/tech/conf3.jpeg", alt: "Foto em conferência de tecnologia 2" },
-        { src: "img/tech/elemar.jpeg", alt: "Palestra do Elemar Júnior" },
-        { src: "img/tech/guilherme_cavalcanti.jpeg", alt: "Foto com Guilherme Cavalcanti" },
-        { src: "img/tech/juliano.jpeg", alt: "Foto com Juliano em evento tech" },
-        { src: "img/tech/loovi.jpeg", alt: "Registro em evento Loovi" },
-        { src: "img/tech/meetup.jpeg", alt: "Meetup de comunidade de tecnologia" },
-        { src: "img/tech/tdw_palestrantes.jpeg", alt: "Palestrantes no TDW" },
-        { src: "img/tech/tdw.jpeg", alt: "Foto geral do TDW" }
+        { src: "img/tech/cover.jpeg", alt: "Evento de tecnologia" },
+        { src: "img/tech/arthur_igreja.jpeg", alt: "Palestra com Arthur Igreja" },
+        { src: "img/tech/conf1.jpeg", alt: "Conferência de tecnologia 1" },
+        { src: "img/tech/conf3.jpeg", alt: "Conferência de tecnologia 3" },
+        { src: "img/tech/elemar.jpeg", alt: "Palestra com Elemar" },
+        { src: "img/tech/guilherme_cavalcanti.jpeg", alt: "Palestra com Guilherme Cavalcanti" },
+        { src: "img/tech/juliano.jpeg", alt: "Palestra com Juliano" },
+        { src: "img/tech/loovi.jpeg", alt: "Evento Loovi" },
+        { src: "img/tech/meetup.jpeg", alt: "Meetup de tecnologia" },
+        { src: "img/tech/tdw_palestrantes.jpeg", alt: "Palestrantes do TDW" },
+        { src: "img/tech/tdw.jpeg", alt: "Painel no TDW" }
       ]
     }
   };
@@ -386,10 +415,8 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
     const item = gallery.images[currentIndex];
     if (!item) return;
 
-    if (imgEl) {
-      imgEl.src = item.src;
-      imgEl.alt = item.alt || gallery.title;
-    }
+    imgEl.src = item.src;
+    imgEl.alt = item.alt || gallery.title;
     if (titleEl) titleEl.textContent = gallery.title;
     if (captionEl) captionEl.textContent = item.alt || "";
     if (counterEl) counterEl.textContent = `Foto ${currentIndex + 1} de ${gallery.images.length}`;
@@ -398,17 +425,16 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
   function openModal(galleryKey, startIndex) {
     if (!galleries[galleryKey]) return;
     currentGallery = galleryKey;
-    currentIndex = startIndex || 0;
-
+    currentIndex = startIndex ?? 0;
     updateView();
-    overlay.classList.add("is-open");
-    overlay.setAttribute("aria-hidden", "false");
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
-    overlay.classList.remove("is-open");
-    overlay.setAttribute("aria-hidden", "true");
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   }
 
@@ -428,21 +454,27 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
 
   triggers.forEach((figure) => {
     figure.addEventListener("click", () => {
-      const galleryKey = figure.getAttribute("data-gallery");
-      if (!galleryKey) return;
+      const galleryKey = figure.dataset.gallery;
       openModal(galleryKey, 0);
+    });
+    figure.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        const galleryKey = figure.dataset.gallery;
+        openModal(galleryKey, 0);
+      }
     });
   });
 
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) closeModal();
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
   });
-  closeBtn && closeBtn.addEventListener("click", closeModal);
-  nextBtn && nextBtn.addEventListener("click", next);
-  prevBtn && prevBtn.addEventListener("click", prev);
+  closeBtn?.addEventListener("click", closeModal);
+  nextBtn?.addEventListener("click", next);
+  prevBtn?.addEventListener("click", prev);
 
   document.addEventListener("keydown", (e) => {
-    if (!overlay.classList.contains("is-open")) return;
+    if (!modal.classList.contains("is-open")) return;
     if (e.key === "Escape") closeModal();
     if (e.key === "ArrowRight") next();
     if (e.key === "ArrowLeft") prev();

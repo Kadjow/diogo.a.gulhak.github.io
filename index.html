@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
+  <link rel="stylesheet" href="css/splash-screen.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -147,8 +148,7 @@
         </div>
       </div>
 
-      <div class="grid" id="projectsGrid">
-      </div>
+      <div class="grid" id="projectsGrid"></div>
     </section>
 
     <section id="experiencia" class="section container">
@@ -215,8 +215,30 @@
           </div>
 
           <div class="media-wrap">
+            <div id="humanOverlay" class="human-overlay">
+              <div class="human-gate" aria-labelledby="humanTitle">
+                <p class="human-title" id="humanTitle">Verificando se você é humano, nao podemos confiar em todo mundo hoje</p>
+                <p class="human-subtitle" id="humanSubtitle">So marcar a caixinha abaixo pra liberar as fotos. </p>
+                <div class="human-box">
+                  <div class="human-left">
+                    <input type="checkbox" id="humanCheck" />
+                    <label for="humanCheck">Sou humano e quero ver os registros</label>
+                  </div>
+                  <div class="human-right">
+                    <span class="human-brand">DAG-SHIELD</span>
+                    <span class="human-links">Privacidade • Termos</span>
+                  </div>
+                </div>
+                <div class="human-verifying hidden" id="humanVerifying">
+                  <div class="human-spinner"></div>
+                  <span class="human-verifying-text">Verificando...</span>
+                </div>
+                <p class="human-joke" id="humanJoke">Depois disso as fotos sao liberadas, relaxa. </p>
+              </div>
+            </div>
+
             <h3 class="media-title">Alguns registros</h3>
-            <div class="media-grid">
+            <div class="media-grid media-grid--blur" id="mediaGrid">
               <figure class="media-item js-gallery" data-gallery="scout" tabindex="0" role="button">
                 <img loading="lazy" src="img/scout/cover.jpeg" alt="Foto de atividades do grupo escoteiro" />
                 <figcaption>Escotismo & atividades</figcaption>
@@ -289,7 +311,7 @@
         <div class="gallery-frame">
           <img id="galleryImage" src="" alt="" loading="lazy" decoding="async" />
           <div id="galleryCaption" class="gallery-caption"></div>
-          <div id="galleryCounter" class="gallery-counter muted"></div>
+          <div id="galleryCounter" class="gallery-counter"></div>
         </div>
 
         <button id="galleryNext" class="gallery-arrow" aria-label="Próxima foto">›</button>
@@ -299,6 +321,7 @@
     </div>
   </section>
 
+  <script src="js/splash-screen.js" defer></script>
   <script src="js/projects/projects.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
