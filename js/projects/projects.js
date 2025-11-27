@@ -28,8 +28,7 @@ window.PROJECTS = [
     githubUrl: 'https://github.com/Kadjow/Seu-Clima-Hoje',
     readmeUrl: 'https://github.com/Kadjow/Seu-Clima-Hoje#readme',
     accentClass: 'grad-blue-3'
-  }
-  /*
+  },
   {
     slug: 'sistema-vendas',
     name: 'Sistema Vendas — CRM',
@@ -70,5 +69,4 @@ window.PROJECTS = [
     readmeUrl: 'https://github.com/Kadjow/curse_css#readme',
     accentClass: 'grad-blue'
   }
-    */
 ];

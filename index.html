@@ -148,7 +148,25 @@
         </div>
       </div>
 
-      <div class="grid" id="projectsGrid"></div>
+      <div class="projects-carousel">
+        <button
+          class="projects-arrow"
+          id="projectsPrev"
+          aria-label="Projetos anteriores"
+        >
+          ‹
+        </button>
+
+        <div class="grid" id="projectsGrid"></div>
+
+        <button
+          class="projects-arrow"
+          id="projectsNext"
+          aria-label="Próximos projetos"
+        >
+          ›
+        </button>
+      </div>
     </section>
 
     <section id="experiencia" class="section container">
@@ -317,12 +335,14 @@
         <button id="galleryNext" class="gallery-arrow" aria-label="Próxima foto">›</button>
       </div>
 
-      <p class="muted gallery-hint">Use as setas ou as setas do teclado para navegar pelas fotos.</p>
+      <p class="muted gallery-hint">Use as as setas ou as setas do teclado para navegar pelas fotos.</p>
     </div>
   </section>
 
   <script src="js/splash-screen.js" defer></script>
+
   <script src="js/projects/projects.js" defer></script>
+  <script src="js/projects/organization.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
