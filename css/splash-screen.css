@@ -20,6 +20,18 @@ html, body {
   pointer-events: none;
 }
 
+body.is-loading .load,
+body.is-loading #portfolio-splash {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.is-loaded .load,
+body.is-loaded #portfolio-splash {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .term {
   margin: 0;
   padding: 2.5rem 2rem;

@@ -1,4 +1,9 @@
 (function () {
+  const body = document.body;
+  if (!body.classList.contains('is-loading')) {
+    body.classList.add('is-loading');
+  }
+
   const promptText = 'diogo@portfolio:~$ ';
   const commandText = 'sh start_portfolio.sh';
   const bootLogs = [
@@ -15,9 +20,11 @@
   const FINAL_LINE_HOLD_TIME = 2000;
 
   function initSplash() {
-    const splash = document.createElement('div');
+    const existing = document.getElementById('portfolio-splash');
+    const splash = existing || document.createElement('div');
     splash.className = 'load';
     splash.id = 'portfolio-splash';
+    splash.innerHTML = '';
 
     const term = document.createElement('pre');
     term.className = 'term';
@@ -33,7 +40,9 @@
     term.appendChild(cursor);
 
     splash.appendChild(term);
-    document.body.appendChild(splash);
+    if (!existing) {
+      document.body.appendChild(splash);
+    }
 
     typeCommand(term, commandSpan, cursor, commandText, () => {
       printLogs(term, cursor, bootLogs, () => {
@@ -87,6 +96,9 @@
   }
 
   function fadeOutSplash(splash) {
+    body.classList.remove('is-loading');
+    body.classList.add('is-loaded');
+
     splash.classList.add('is-fading');
 
     const removeSplash = () => splash.remove();
@@ -103,5 +115,5 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  window.addEventListener('load', initSplash);
+  document.addEventListener('DOMContentLoaded', initSplash);
 })();
