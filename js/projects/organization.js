@@ -15,6 +15,7 @@
   function createProjectCard(project) {
     const article = document.createElement('article');
     article.className = `card ${project.accentClass || ''}`;
+    article.dataset.tech = (project.techs || []).join(',');
 
     article.innerHTML = `
       <div class="card-head">
