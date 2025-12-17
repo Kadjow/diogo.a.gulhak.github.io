@@ -383,7 +383,6 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
         { src: "img/scout/congresso2.jpeg", alt: "Congresso escoteiro — registro 2" },
         { src: "img/scout/congresso3.jpeg", alt: "Congresso escoteiro — registro 3" },
         { src: "img/scout/congresso4.jpeg", alt: "Congresso escoteiro — registro 4" },
-        { src: "img/scout/pico_caratuva.jpeg", alt: "Trilha até o Pico Caratuva" },
         { src: "img/scout/pico_caratuva2.jpeg", alt: "Vista do Pico Caratuva" },
         { src: "img/scout/vj_cm.jpeg", alt: "Atividade escoteira em Cascavel" }
       ]

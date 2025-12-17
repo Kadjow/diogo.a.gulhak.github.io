@@ -29,7 +29,6 @@
         { src: "img/scout/congresso2.jpeg", alt: "Congresso escoteiro — registro 2" },
         { src: "img/scout/congresso3.jpeg", alt: "Congresso escoteiro — registro 3" },
         { src: "img/scout/congresso4.jpeg", alt: "Congresso escoteiro — registro 4" },
-        { src: "img/scout/pico_caratuva.jpeg", alt: "Trilha até o Pico Caratuva" },
         { src: "img/scout/pico_caratuva2.jpeg", alt: "Vista do Pico Caratuva" },
         { src: "img/scout/vj_cm.jpeg", alt: "Atividade escoteira em Cascavel" }
       ]
@@ -45,7 +44,7 @@
         { src: "img/tech/elemar.jpeg", alt: "Foto com Elemar" },
         { src: "img/tech/guilherme_cavalcanti.jpeg", alt: "Foto com Guilherme Cavalcanti" },
         { src: "img/tech/juliano.jpeg", alt: "Registro com Juliano" },
-        { src: "img/tech/loovj.jpeg", alt: "Foto em evento Loovj" },
+        { src: "img/tech/loovi.jpeg", alt: "Foto em evento Loovi" },
         { src: "img/tech/meetup.jpeg", alt: "Meetup de tecnologia" },
         { src: "img/tech/tdw_palestrantes.jpeg", alt: "Time de palestrantes no TDW" },
         { src: "img/tech/tdw.jpeg", alt: "Foto geral do TDW" }

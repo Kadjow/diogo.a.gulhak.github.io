@@ -295,7 +295,14 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   cursor:pointer;
   transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
 }
-.media-item img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.media-item img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  object-position:center;
+}
 .media-item figcaption{padding:8px 10px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--border)}
 .media-item:hover{
   transform:translateY(-2px);
@@ -361,9 +368,11 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   display:flex;
   align-items:center;
   gap:12px;
+  justify-content:center;
 }
 .gallery-frame{
   flex:1 1 auto;
+  min-width:0;
   position:relative;
   display:flex;
   flex-direction:column;
@@ -374,7 +383,11 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
   width:100%;
   max-width:640px;
   max-height:60vh;
-  object-fit:cover;
+  height:auto;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+  margin-inline:auto;
   border-radius:18px;
   box-shadow:var(--shadow-lg);
   border:1px solid var(--border);
