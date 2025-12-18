@@ -1,18 +1,48 @@
 (function themeSetup() {
   const root = document.documentElement;
-  const btn = document.getElementById("themeToggle");
+  const body = document.body;
+  const btn = document.getElementById("themeSwitch") || document.getElementById("themeToggle");
   const stored = localStorage.getItem("theme");
   const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
 
-  if (stored === "light" || (!stored && prefersLight)) {
-    root.classList.add("light");
-    btn?.setAttribute("aria-pressed", "true");
+  function withThemeTransition(run) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      run();
+      return;
+    }
+    body.classList.add("is-theme-switching");
+    requestAnimationFrame(() => {
+      run();
+      window.setTimeout(() => body.classList.remove("is-theme-switching"), 280);
+    });
   }
 
-  btn?.addEventListener("click", () => {
+  const syncSwitch = () => {
+    if (!btn) return;
+    const isDark = !root.classList.contains("light");
+    btn.setAttribute("aria-checked", String(isDark));
+  };
+
+  if (stored === "light" || (!stored && prefersLight)) {
+    root.classList.add("light");
+  }
+
+  syncSwitch();
+
+  const toggle = () => {
     const isLight = root.classList.toggle("light");
     localStorage.setItem("theme", isLight ? "light" : "dark");
-    btn.setAttribute("aria-pressed", String(isLight));
+    syncSwitch();
+  };
+
+  const onToggle = () => withThemeTransition(() => toggle());
+
+  btn?.addEventListener("click", onToggle);
+  btn?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onToggle();
+    }
   });
 })();
 

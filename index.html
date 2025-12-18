@@ -26,14 +26,37 @@
     <nav class="nav container" aria-label="navegação principal">
       <a class="brand" href="#top" aria-label="Topo">DAG</a>
       <div class="controls">
-        <button id="themeToggle" class="icon-btn" aria-label="Alternar tema" aria-pressed="false" title="Alternar tema">
-          <svg class="icon sun" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 4.5v-2M12 21.5v-2M4.5 12h-2M21.5 12h-2M5.8 5.8l-1.4-1.4M19.6 19.6l-1.4-1.4M5.8 18.2l-1.4 1.4M19.6 4.4l-1.4 1.4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          </svg>
-          <svg class="icon moon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 12.6A8.5 8.5 0 0 1 11.4 3 8.6 8.6 0 1 0 21 12.6Z" fill="currentColor"/>
-          </svg>
+        <button
+          type="button"
+          id="themeSwitch"
+          class="theme-switch"
+          role="switch"
+          aria-checked="false"
+          aria-label="Toggle dark mode"
+        >
+          <span class="theme-switch__track" aria-hidden="true">
+            <span class="theme-switch__icon theme-switch__icon--sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="M4.93 4.93l1.41 1.41"></path>
+                <path d="M17.66 17.66l1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="M4.93 19.07l1.41-1.41"></path>
+                <path d="M17.66 6.34l1.41-1.41"></path>
+              </svg>
+            </span>
+
+            <span class="theme-switch__icon theme-switch__icon--moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+              </svg>
+            </span>
+
+            <span class="theme-switch__thumb" aria-hidden="true"></span>
+          </span>
         </button>
         <button id="openContact" class="btn small ghost" type="button">Contato</button>
       </div>
