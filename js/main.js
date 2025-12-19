@@ -362,32 +362,19 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
   });
 })();
 
-(function humanGate() {
-  const overlay = document.getElementById("humanOverlay");
-  const grid = document.getElementById("mediaGrid");
-  const checkbox = document.getElementById("humanCheck");
-  const verifying = document.getElementById("humanVerifying");
-  const subtitle = document.getElementById("humanSubtitle");
-  const joke = document.getElementById("humanJoke");
-  if (!overlay || !grid || !checkbox) return;
+(function photosGateInit() {
+  let ran = false;
+  const run = () => {
+    if (ran || typeof initPhotosCaptchaGate !== "function") return;
+    ran = true;
+    initPhotosCaptchaGate();
+  };
 
-  let done = false;
+  document.addEventListener("DOMContentLoaded", run, { once: true });
 
-  checkbox.addEventListener("change", () => {
-    if (!checkbox.checked || done) return;
-    done = true;
-    checkbox.disabled = true;
-    if (verifying) verifying.classList.remove("hidden");
-    if (subtitle) subtitle.textContent = "Verificando se você é humano. Isso pode levar alguns segundos...";
-
-    setTimeout(() => {
-      if (verifying) verifying.classList.add("hidden");
-      if (subtitle) subtitle.textContent = "Pronto! Verificação concluída.";
-      if (joke) joke.textContent = "Era só uma brincadeira 😄 Agora pode ver as fotos tranquilo.";
-      overlay.classList.add("hidden");
-      grid.classList.remove("media-grid--blur");
-    }, 1400);
-  });
+  if (document.readyState !== "loading") {
+    setTimeout(run, 0);
+  }
 })();
 
 (function photoGallery() {

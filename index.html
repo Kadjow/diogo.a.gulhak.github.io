@@ -257,24 +257,22 @@
 
           <div class="media-wrap">
             <div id="humanOverlay" class="human-overlay">
-              <div class="human-gate" aria-labelledby="humanTitle">
-                <p class="human-title" id="humanTitle">Verificando se você é humano, nao podemos confiar em todo mundo hoje</p>
-                <p class="human-subtitle" id="humanSubtitle">So marcar a caixinha abaixo pra liberar as fotos. </p>
+              <div class="human-gate" id="humanGate">
+                <h3 class="human-title">Verificação necessária</h3>
+                <p class="human-desc">Complete a verificação abaixo para liberar a galeria.</p>
                 <div class="human-box">
-                  <div class="human-left">
-                    <input type="checkbox" id="humanCheck" />
-                    <label for="humanCheck">Sou humano e quero ver os registros</label>
-                  </div>
-                  <div class="human-right">
-                    <span class="human-brand">DAG-SHIELD</span>
-                    <span class="human-links">Privacidade • Termos</span>
+                  <div id="photosCaptcha" class="photos-captcha">
+                    <div
+                      id="turnstileWidget"
+                      class="cf-turnstile photos-captcha"
+                      data-sitekey="0x4AAAAAACHdeAIicSRhmt96"
+                      data-theme="auto"
+                      data-callback="onTurnstileSuccess"
+                      data-error-callback="onTurnstileError"
+                      data-expired-callback="onTurnstileExpired"></div>
+                    <p id="humanError" class="photos-captcha__error human-error" aria-live="polite"></p>
                   </div>
                 </div>
-                <div class="human-verifying hidden" id="humanVerifying">
-                  <div class="human-spinner"></div>
-                  <span class="human-verifying-text">Verificando...</span>
-                </div>
-                <p class="human-joke" id="humanJoke">Depois disso as fotos sao liberadas, relaxa. </p>
               </div>
             </div>
 
@@ -366,6 +364,8 @@
 
   <script src="js/projects/projects.js" defer></script>
   <script src="js/projects/organization.js" defer></script>
+  <script src="js/photos-captcha.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
