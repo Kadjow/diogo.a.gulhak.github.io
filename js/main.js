@@ -95,9 +95,63 @@
   tick();
 })();
 
+const SKILLS_ANIMATION_DURATION = 260;
+const skillsAnimationTimers = new WeakMap();
+
+function animateSkillsSwap(container, mutateFn) {
+  if (!container) {
+    mutateFn();
+    return;
+  }
+
+  const timers = skillsAnimationTimers.get(container) ?? { exitTimer: null, enterTimer: null };
+  const cleanupTimers = () => {
+    if (timers.exitTimer) {
+      clearTimeout(timers.exitTimer);
+      timers.exitTimer = null;
+    }
+    if (timers.enterTimer) {
+      clearTimeout(timers.enterTimer);
+      timers.enterTimer = null;
+    }
+    container.classList.remove("is-exiting", "is-entering");
+    if (!timers.exitTimer && !timers.enterTimer) {
+      skillsAnimationTimers.delete(container);
+    }
+  };
+
+  const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduce) {
+    cleanupTimers();
+    mutateFn();
+    return;
+  }
+
+  cleanupTimers();
+  container.classList.add("is-exiting");
+
+  timers.exitTimer = window.setTimeout(() => {
+    timers.exitTimer = null;
+    mutateFn();
+    container.classList.remove("is-exiting");
+    container.classList.add("is-entering");
+
+    timers.enterTimer = window.setTimeout(() => {
+      timers.enterTimer = null;
+      container.classList.remove("is-entering");
+      if (!timers.exitTimer) {
+        skillsAnimationTimers.delete(container);
+      }
+    }, SKILLS_ANIMATION_DURATION);
+  }, SKILLS_ANIMATION_DURATION);
+
+  skillsAnimationTimers.set(container, timers);
+}
+
 (function tabs() {
   const tabs = [...document.querySelectorAll(".tab")];
   const panels = [...document.querySelectorAll(".panel")];
+  const skillsPanelContainer = document.querySelector(".skills-anim");
   if (!tabs.length) return;
 
   function activate(tab) {
@@ -106,7 +160,6 @@
       t.setAttribute("aria-selected", "false");
       t.tabIndex = -1;
     });
-    panels.forEach((p) => p.classList.remove("is-active"));
 
     tab.classList.add("is-active");
     tab.setAttribute("aria-selected", "true");
@@ -114,7 +167,11 @@
 
     const panelId = tab.getAttribute("aria-controls");
     const panel = document.getElementById(panelId);
-    if (panel) panel.classList.add("is-active");
+
+    animateSkillsSwap(skillsPanelContainer, () => {
+      panels.forEach((p) => p.classList.remove("is-active"));
+      if (panel) panel.classList.add("is-active");
+    });
 
     tab.focus();
   }
