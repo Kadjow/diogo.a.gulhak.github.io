@@ -1,4 +1,4 @@
-window.PROJECTS = [
+export const PROJECTS = [
   {
     slug: 'rick-and-morty-api',
     name: 'Rick and Morty — API',
