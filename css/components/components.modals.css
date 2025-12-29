@@ -1,0 +1,91 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(2, 6, 23, .55);
+  backdrop-filter: saturate(120%) blur(var(--blur-md));
+  z-index: var(--z-modal);
+  padding: var(--space-xl);
+}
+.modal-overlay.is-open {
+  display: grid;
+}
+.modal-card {
+  width: min(720px, 94vw);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 22px 18px;
+  position: relative;
+}
+.modal-card h2 {
+  margin: 4px 0 6px;
+  font-size: 1.4rem;
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  color: var(--color-text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.contact-grid {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: 14px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.contact-item {
+  grid-column: span 4;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-card), var(--color-white) 3%), var(--color-card));
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-fast) ease, box-shadow var(--duration-surface) ease, border-color var(--duration-surface) ease;
+}
+.contact-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--color-accent), var(--color-border) 60%);
+}
+.contact-item svg {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+}
+.contact-item strong {
+  display: block;
+}
+.contact-item span {
+  color: var(--color-muted);
+  font-size: .9rem;
+}
+.icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: #25D366;
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+.icon-circle svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}

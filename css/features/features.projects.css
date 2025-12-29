@@ -1,0 +1,69 @@
+.grid {
+  display: grid;
+  gap: clamp(12px, 2.4vw, 16px);
+  margin-top: 18px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  transition: opacity var(--duration-carousel) ease, transform var(--duration-carousel) ease;
+}
+.grid.is-sliding-next {
+  animation: slide-next var(--duration-carousel) ease both;
+}
+.grid.is-sliding-prev {
+  animation: slide-prev var(--duration-carousel) ease both;
+}
+.projects-carousel {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-md);
+  margin-top: 18px;
+}
+.projects-carousel .grid {
+  flex: 1 1 auto;
+}
+.projects-arrow {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  font-size: 22px;
+  user-select: none;
+  transition:
+    transform var(--duration-fast) ease,
+    box-shadow var(--duration-surface) ease,
+    opacity var(--duration-fast) ease,
+    background-color var(--t-fast) var(--e-standard),
+    border-color var(--t-fast) var(--e-standard);
+}
+.projects-arrow:hover:not([disabled]) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  background: var(--surface-2);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+.projects-arrow[disabled] {
+  opacity: .3;
+  pointer-events: none;
+}
+
+#projetos .filter {
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  border-color: var(--border);
+}
+
+#projetos .filter:hover:not(.is-active) {
+  box-shadow: var(--shadow-sm);
+}
+
+#projetos .filter.is-active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}

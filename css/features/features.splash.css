@@ -1,0 +1,4 @@
+/* Splash */
+body.is-loading {
+  overflow: hidden;
+}

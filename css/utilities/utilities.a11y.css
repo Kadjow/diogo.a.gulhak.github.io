@@ -1,0 +1,64 @@
+/* =========================
+   7) ACESSIBILIDADE
+   ========================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .theme-switch__track,
+  .theme-switch__icon,
+  .theme-switch__thumb {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  }
+  .skills-anim {
+  transition: none;
+  }
+}
+.theme-switch:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.tab:focus-visible, .filter:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent), #000 55%);
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+@keyframes theme-fade {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes slide-next {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

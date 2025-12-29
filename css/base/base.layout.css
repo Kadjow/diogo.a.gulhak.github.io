@@ -1,0 +1,31 @@
+/* =========================
+   3) LAYOUT GLOBAL
+   ========================= */
+.container {
+  width: 100%;
+  max-width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding-inline: clamp(16px, 3vw, 24px);
+}
+.section {
+  padding-block: clamp(32px, 5vw, 56px);
+}
+.section h2 {
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  margin: 0 0 12px;
+}
+.section p {
+  color: var(--color-muted);
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.site-footer {
+  padding-block: 28px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
