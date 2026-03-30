@@ -98,8 +98,6 @@ window.__I18N_LOCALES.en = {
     coffeeItem1: "Coffee became much more than a drink for me: it is a way to connect. I enjoy making coffee for friends, talking around a cup, and seeing how it brings people together. There is love, unity, and even networking in it: some of my best conversations and opportunities started with \"want to grab a coffee?\"."
   },
   media: {
-    verificationTitle: "Verification required",
-    verificationDesc: "Complete the verification below to unlock the gallery.",
     title: "Some moments",
     scoutCaption: "Scouting & activities",
     scoutAlt: "Photo of scouting group activities",
@@ -202,10 +200,5 @@ window.__I18N_LOCALES.en = {
       "[    0.020] Starting Diogo Gulhak portfolio UI..."
     ],
     finalLine: "Initialising Diogo Gulhak portfolio UI..."
-  },
-  captcha: {
-    placeholderSuccess: "Captcha configured successfully!",
-    verifyFailed: "Could not verify. Please try again.",
-    loadFailed: "Could not load verification. Disable blockers and reload."
   }
 };

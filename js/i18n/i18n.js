@@ -90,14 +90,22 @@
     const ptLink = document.getElementById("langPtLink");
     const enLink = document.getElementById("langEnLink");
     const container = document.getElementById("localeSwitch");
+    const isPtActive = currentLocale === FALLBACK_LOCALE;
+    const isEnActive = currentLocale === ENGLISH_LOCALE;
 
     if (ptLink) {
       ptLink.setAttribute("href", localePath(FALLBACK_LOCALE));
       ptLink.textContent = t("locale.pt");
+      ptLink.classList.toggle("is-active", isPtActive);
+      if (isPtActive) ptLink.setAttribute("aria-current", "true");
+      else ptLink.removeAttribute("aria-current");
     }
     if (enLink) {
       enLink.setAttribute("href", localePath(ENGLISH_LOCALE));
       enLink.textContent = t("locale.en");
+      enLink.classList.toggle("is-active", isEnActive);
+      if (isEnActive) enLink.setAttribute("aria-current", "true");
+      else enLink.removeAttribute("aria-current");
     }
 
     if (container) container.setAttribute("aria-label", t("locale.switcherAria"));

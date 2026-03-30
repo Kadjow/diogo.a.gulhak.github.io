@@ -98,8 +98,6 @@ window.__I18N_LOCALES["pt-BR"] = {
     coffeeItem1: "O café acabou virando bem mais do que uma bebida pra mim: é uma forma de conexão. Gosto de preparar café pra galera, trocar ideia em volta da xícara e ver como isso aproxima as pessoas. Tem muito de amor, união e até de networking aí no meio: algumas das melhores conversas e oportunidades que tive começaram com um \"bora tomar um café?\"."
   },
   media: {
-    verificationTitle: "Verificação necessária",
-    verificationDesc: "Complete a verificação abaixo para liberar a galeria.",
     title: "Alguns registros",
     scoutCaption: "Escotismo & atividades",
     scoutAlt: "Foto de atividades do grupo escoteiro",
@@ -202,10 +200,5 @@ window.__I18N_LOCALES["pt-BR"] = {
       "[    0.020] Starting Diogo Gulhak portfolio UI..."
     ],
     finalLine: "Initialising Diogo Gulhak portfolio UI..."
-  },
-  captcha: {
-    placeholderSuccess: "Captcha configurado com sucesso!",
-    verifyFailed: "Não foi possível verificar. Tente novamente.",
-    loadFailed: "Não foi possível carregar a verificação. Desative o bloqueador e recarregue."
   }
 };

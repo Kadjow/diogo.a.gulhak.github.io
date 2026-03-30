@@ -122,8 +122,6 @@ function setAttr(selector, attr, value) {
       if (items[0]) items[0].textContent = i18nT("aboutCards.coffeeItem1");
     }
 
-    setText(".human-title", i18nT("media.verificationTitle"));
-    setText(".human-desc", i18nT("media.verificationDesc"));
     setText(".media-title", i18nT("media.title"));
 
     const mediaItems = document.querySelectorAll("#mediaGrid .media-item");
@@ -481,21 +479,6 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
   btn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
-})();
-
-(function photosGateInit() {
-  let ran = false;
-  const run = () => {
-    if (ran || typeof initPhotosCaptchaGate !== "function") return;
-    ran = true;
-    initPhotosCaptchaGate();
-  };
-
-  document.addEventListener("DOMContentLoaded", run, { once: true });
-
-  if (document.readyState !== "loading") {
-    setTimeout(run, 0);
-  }
 })();
 
 (function photoGallery() {

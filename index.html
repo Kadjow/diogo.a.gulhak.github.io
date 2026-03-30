@@ -65,9 +65,9 @@
           </span>
         </button>
         <button id="openContact" class="btn small ghost" type="button">Contato</button>
-        <div id="localeSwitch" class="lang-switch" aria-label="Selecionar idioma">
-          <a id="langPtLink" class="btn small ghost" href="/">PT</a>
-          <a id="langEnLink" class="btn small ghost" href="/en/">EN</a>
+        <div id="localeSwitch" class="lang-switch" role="group" aria-label="Selecionar idioma">
+          <a id="langPtLink" class="lang-switch__option" href="/" lang="pt-BR">PT</a>
+          <a id="langEnLink" class="lang-switch__option" href="/en/" lang="en">EN</a>
         </div>
       </div>
     </nav>
@@ -266,28 +266,8 @@
           </div>
 
           <div class="media-wrap">
-            <div id="humanOverlay" class="human-overlay">
-              <div class="human-gate" id="humanGate">
-                <h3 class="human-title">Verificação necessária</h3>
-                <p class="human-desc">Complete a verificação abaixo para liberar a galeria.</p>
-                <div class="human-box">
-                  <div id="photosCaptcha" class="photos-captcha">
-                    <div
-                      id="turnstileWidget"
-                      class="cf-turnstile photos-captcha"
-                      data-sitekey="0x4AAAAAACHdeJbQtbh6GPM935HT-LDNwBk"
-                      data-theme="auto"
-                      data-callback="onTurnstileSuccess"
-                      data-error-callback="onTurnstileError"
-                      data-expired-callback="onTurnstileExpired" data-action="photos_gallery" data-cdata="photos_gallery" data-appearance="interaction-only"></div>
-                    <p id="humanError" class="photos-captcha__error human-error" aria-live="polite"></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <h3 class="media-title">Alguns registros</h3>
-            <div class="media-grid media-grid--blur" id="mediaGrid">
+            <div class="media-grid" id="mediaGrid">
               <figure class="media-item js-gallery" data-gallery="scout" tabindex="0" role="button">
                 <img loading="lazy" src="img/scout/cover.jpeg" alt="Foto de atividades do grupo escoteiro" />
                 <figcaption>Escotismo & atividades</figcaption>
@@ -377,9 +357,6 @@
 
   <script src="js/projects/projects.js" defer></script>
   <script src="js/projects/organization.js" defer></script>
-  <script src="js/photos-captcha.js" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=photosTurnstileOnload&render=explicit" defer></script>
-  <script>window.PHOTOS_VERIFY_URL = window.PHOTOS_VERIFY_URL || '';</script>
 </body>
 </html>
