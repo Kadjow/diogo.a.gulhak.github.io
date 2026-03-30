@@ -1,3 +1,185 @@
+function i18nT(key, vars) {
+  if (window.I18N && typeof window.I18N.t === "function") return window.I18N.t(key, vars);
+  return key;
+}
+
+function i18nAsset(path) {
+  if (window.I18N && typeof window.I18N.assetPath === "function") return window.I18N.assetPath(path);
+  return path;
+}
+
+function setText(selector, value) {
+  const node = document.querySelector(selector);
+  if (node) node.textContent = value;
+}
+
+function setHtml(selector, value) {
+  const node = document.querySelector(selector);
+  if (node) node.innerHTML = value;
+}
+
+function setAttr(selector, attr, value) {
+  const node = document.querySelector(selector);
+  if (node) node.setAttribute(attr, value);
+}
+
+(function localizeStaticContent() {
+  function apply() {
+    document.title = i18nT("seo.title");
+
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.setAttribute("content", i18nT("seo.description"));
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", i18nT("seo.ogTitle"));
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute("content", i18nT("seo.ogDescription"));
+
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) ogLocale.setAttribute("content", i18nT("seo.ogLocale"));
+
+    setAttr(".nav", "aria-label", i18nT("a11y.navMain"));
+    setAttr(".brand", "aria-label", i18nT("a11y.top"));
+    setAttr("#themeSwitch", "aria-label", i18nT("a11y.themeToggle"));
+    setText("#openContact", i18nT("hero.contactButton"));
+    setAttr(".hero-photo", "alt", i18nT("hero.photoAlt"));
+    setText("#rolePrefix", i18nT("hero.rolePrefix"));
+    setHtml(".bio-short", i18nT("hero.bioHtml"));
+
+    const heroCtas = document.querySelectorAll(".hero .cta a");
+    if (heroCtas[0]) heroCtas[0].textContent = i18nT("hero.ctaGithub");
+    if (heroCtas[1]) heroCtas[1].textContent = i18nT("hero.ctaProjects");
+
+    const socialLinks = document.querySelectorAll(".social a");
+    if (socialLinks[0]) socialLinks[0].setAttribute("aria-label", i18nT("a11y.socialEmail"));
+    if (socialLinks[1]) socialLinks[1].setAttribute("aria-label", i18nT("a11y.socialGithub"));
+    if (socialLinks[2]) socialLinks[2].setAttribute("aria-label", i18nT("a11y.socialLinkedin"));
+
+    setText("#sobre h2", i18nT("sections.aboutTitle"));
+    const aboutParagraphs = document.querySelectorAll("#sobre p");
+    if (aboutParagraphs[0]) aboutParagraphs[0].textContent = i18nT("sections.aboutP1");
+    if (aboutParagraphs[1]) aboutParagraphs[1].textContent = i18nT("sections.aboutP2");
+
+    setText("#skills h2", i18nT("sections.skillsTitle"));
+    setAttr("#skills .tabs", "aria-label", i18nT("a11y.skillsGroups"));
+    setText("#tab-mobile", i18nT("sections.skillsTabs.mobile"));
+    setText("#tab-web", i18nT("sections.skillsTabs.web"));
+    setText("#tab-backend", i18nT("sections.skillsTabs.backend"));
+    setText("#tab-devops", i18nT("sections.skillsTabs.devops"));
+
+    setText("#projetos h2", i18nT("sections.projectsTitle"));
+    setAttr("#projectFilters", "aria-label", i18nT("a11y.projectFilters"));
+    setText('#projectFilters .filter[data-tech="all"]', i18nT("sections.projectFilters.all"));
+    setText('#projectFilters .filter[data-tech="flutter"]', i18nT("sections.projectFilters.flutter"));
+    setText('#projectFilters .filter[data-tech="react-native"]', i18nT("sections.projectFilters.reactNative"));
+    setText('#projectFilters .filter[data-tech="web"]', i18nT("sections.projectFilters.web"));
+    setAttr("#projectsPrev", "aria-label", i18nT("a11y.prevProjects"));
+    setAttr("#projectsNext", "aria-label", i18nT("a11y.nextProjects"));
+
+    setText("#experiencia h2", i18nT("sections.experienceTitle"));
+    const xpCards = document.querySelectorAll("#experiencia .xp-card");
+    if (xpCards[0]) {
+      const title = xpCards[0].querySelector("h3");
+      const items = xpCards[0].querySelectorAll("li");
+      if (title) title.innerHTML = `${i18nT("sections.experience.atlasTitle")} <small>${i18nT("sections.experience.atlasPeriod")}</small>`;
+      if (items[0]) items[0].textContent = i18nT("sections.experience.atlasItem1");
+      if (items[1]) items[1].textContent = i18nT("sections.experience.atlasItem2");
+    }
+    if (xpCards[1]) {
+      const title = xpCards[1].querySelector("h3");
+      const items = xpCards[1].querySelectorAll("li");
+      if (title) title.innerHTML = `${i18nT("sections.experience.adsTitle")} <small>${i18nT("sections.experience.adsPeriod")}</small>`;
+      if (items[0]) items[0].textContent = i18nT("sections.experience.adsItem1");
+      if (items[1]) items[1].textContent = i18nT("sections.experience.adsItem2");
+    }
+    if (xpCards[2]) {
+      const title = xpCards[2].querySelector("h3");
+      const items = xpCards[2].querySelectorAll("li");
+      if (title) title.textContent = i18nT("sections.experience.academicTitle");
+      if (items[0]) items[0].textContent = i18nT("sections.experience.academicItem1");
+      if (items[1]) items[1].textContent = i18nT("sections.experience.academicItem2");
+    }
+
+    setText("#sobre-mim h2", i18nT("sections.aboutMeTitle"));
+
+    const aboutCards = document.querySelectorAll("#sobre-mim .about-card");
+    if (aboutCards[0]) {
+      setText("#sobre-mim .about-card:nth-of-type(1) h3", i18nT("aboutCards.scoutingTitle"));
+      const items = aboutCards[0].querySelectorAll("li");
+      if (items[0]) items[0].innerHTML = i18nT("aboutCards.scoutingItem1");
+      if (items[1]) items[1].innerHTML = i18nT("aboutCards.scoutingItem2");
+    }
+    if (aboutCards[1]) {
+      setText("#sobre-mim .about-card:nth-of-type(2) h3", i18nT("aboutCards.natureTitle"));
+      const items = aboutCards[1].querySelectorAll("li");
+      if (items[0]) items[0].textContent = i18nT("aboutCards.natureItem1");
+      if (items[1]) items[1].textContent = i18nT("aboutCards.natureItem2");
+    }
+    if (aboutCards[2]) {
+      setText("#sobre-mim .about-card:nth-of-type(3) h3", i18nT("aboutCards.coffeeTitle"));
+      const items = aboutCards[2].querySelectorAll("li");
+      if (items[0]) items[0].textContent = i18nT("aboutCards.coffeeItem1");
+    }
+
+    setText(".media-title", i18nT("media.title"));
+
+    const mediaItems = document.querySelectorAll("#mediaGrid .media-item");
+    if (mediaItems[0]) {
+      const img = mediaItems[0].querySelector("img");
+      const cap = mediaItems[0].querySelector("figcaption");
+      if (img) img.setAttribute("alt", i18nT("media.scoutAlt"));
+      if (cap) cap.textContent = i18nT("media.scoutCaption");
+    }
+    if (mediaItems[1]) {
+      const img = mediaItems[1].querySelector("img");
+      const cap = mediaItems[1].querySelector("figcaption");
+      if (img) img.setAttribute("alt", i18nT("media.techAlt"));
+      if (cap) cap.textContent = i18nT("media.techCaption");
+    }
+    setText(".media-note", i18nT("media.note"));
+
+    setAttr("#backToTop", "aria-label", i18nT("a11y.backToTop"));
+    setAttr("#closeContact", "aria-label", i18nT("a11y.close"));
+    setText("#contactTitle", i18nT("contact.title"));
+    setText("#contactModal .muted", i18nT("contact.subtitle"));
+
+    const contactItems = document.querySelectorAll("#contactModal .contact-item");
+    if (contactItems[1]) {
+      const strong = contactItems[1].querySelector("strong");
+      const span = contactItems[1].querySelector("span");
+      if (strong) strong.textContent = i18nT("contact.whatsappLabel");
+      if (span) span.textContent = i18nT("contact.whatsappSubtitle");
+    }
+    if (contactItems[2]) {
+      const strong = contactItems[2].querySelector("strong");
+      const span = contactItems[2].querySelector("span");
+      if (strong) strong.textContent = i18nT("contact.linkedinLabel");
+      if (span) span.textContent = i18nT("contact.linkedinSubtitle");
+    }
+
+    const emailLink = document.querySelector('#contactModal a[href^="mailto:"]');
+    if (emailLink) {
+      const subject = encodeURIComponent(i18nT("contact.emailSubject"));
+      emailLink.setAttribute("href", `mailto:dgulhak@gmail.com?subject=${subject}`);
+    }
+
+    const whatsappLink = document.querySelector('#contactModal a[href*="wa.me"]');
+    if (whatsappLink) {
+      const text = encodeURIComponent(i18nT("contact.whatsappText"));
+      whatsappLink.setAttribute("href", `https://wa.me/5545998549198?text=${text}`);
+    }
+
+    setAttr("#closeGallery", "aria-label", i18nT("a11y.closeGallery"));
+    setText("#galleryTitle", i18nT("gallery.title"));
+    setAttr("#galleryPrev", "aria-label", i18nT("a11y.previousPhoto"));
+    setAttr("#galleryNext", "aria-label", i18nT("a11y.nextPhoto"));
+    setText(".gallery-hint", i18nT("gallery.hint"));
+  }
+
+  document.addEventListener("DOMContentLoaded", apply, { once: true });
+})();
+
 (function themeSetup() {
   const root = document.documentElement;
   const body = document.body;
@@ -51,41 +233,38 @@
   if (!el) return;
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const phrases = i18nT("hero.rotatingPhrases");
+  const phraseList = Array.isArray(phrases) ? phrases : [];
+  if (!phraseList.length) return;
 
-  const phrases = [
-    "um desenvolvedor mobile.",
-    "um desenvolvedor full-stack.",
-    "um desenvolvedor front-end.",
-    "um developer advocate."
-  ];
-  let p = 0;
-  let i = 0;
+  let phraseIndex = 0;
+  let charIndex = 0;
   let deleting = false;
 
   function tick() {
     if (reduced) {
-      el.textContent = phrases[p];
-      p = (p + 1) % phrases.length;
+      el.textContent = phraseList[phraseIndex];
+      phraseIndex = (phraseIndex + 1) % phraseList.length;
       setTimeout(tick, 2500);
       return;
     }
 
-    const full = phrases[p];
+    const full = phraseList[phraseIndex];
 
     if (!deleting) {
-      i++;
-      el.textContent = full.slice(0, i);
-      if (i === full.length) {
+      charIndex += 1;
+      el.textContent = full.slice(0, charIndex);
+      if (charIndex === full.length) {
         deleting = true;
         setTimeout(tick, 1400);
         return;
       }
     } else {
-      i--;
-      el.textContent = full.slice(0, i);
-      if (i === 0) {
+      charIndex -= 1;
+      el.textContent = full.slice(0, charIndex);
+      if (charIndex === 0) {
         deleting = false;
-        p = (p + 1) % phrases.length;
+        phraseIndex = (phraseIndex + 1) % phraseList.length;
       }
     }
 
@@ -155,10 +334,10 @@ function animateSkillsSwap(container, mutateFn) {
   if (!tabs.length) return;
 
   function activate(tab) {
-    tabs.forEach((t) => {
-      t.classList.remove("is-active");
-      t.setAttribute("aria-selected", "false");
-      t.tabIndex = -1;
+    tabs.forEach((currentTab) => {
+      currentTab.classList.remove("is-active");
+      currentTab.setAttribute("aria-selected", "false");
+      currentTab.tabIndex = -1;
     });
 
     tab.classList.add("is-active");
@@ -169,17 +348,17 @@ function animateSkillsSwap(container, mutateFn) {
     const panel = document.getElementById(panelId);
 
     animateSkillsSwap(skillsPanelContainer, () => {
-      panels.forEach((p) => p.classList.remove("is-active"));
+      panels.forEach((currentPanel) => currentPanel.classList.remove("is-active"));
       if (panel) panel.classList.add("is-active");
     });
 
     tab.focus();
   }
 
-  tabs.forEach((t) => {
-    t.addEventListener("click", () => activate(t));
-    t.addEventListener("keydown", (e) => {
-      const idx = tabs.indexOf(t);
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => activate(tab));
+    tab.addEventListener("keydown", (e) => {
+      const idx = tabs.indexOf(tab);
       if (e.key === "ArrowRight") activate(tabs[(idx + 1) % tabs.length]);
       if (e.key === "ArrowLeft") activate(tabs[(idx - 1 + tabs.length) % tabs.length]);
       if (e.key === "Home") activate(tabs[0]);
@@ -188,148 +367,31 @@ function animateSkillsSwap(container, mutateFn) {
   });
 })();
 
-(function projectsModule() {
-  const grid = document.getElementById("projectsGrid");
-  const filterButtons = document.querySelectorAll("#projectFilters .filter");
-
-  if (!grid || !window.PROJECTS) return;
-
-  function createCard(project) {
-    const article = document.createElement("article");
-    article.className = `card ${project.accentClass || ""} reveal`;
-    article.dataset.tech = project.techs.join(",");
-
-    const head = document.createElement("div");
-    head.className = "card-head";
-
-    const title = document.createElement("h3");
-    title.textContent = project.name;
-
-    const badge = document.createElement("span");
-    badge.className = "badge";
-    badge.textContent = project.badge || project.techs[0];
-
-    head.appendChild(title);
-    head.appendChild(badge);
-
-    const p = document.createElement("p");
-    p.textContent = project.description;
-
-    const actions = document.createElement("div");
-    actions.className = "actions";
-
-    const repoLink = document.createElement("a");
-    repoLink.className = "btn";
-    repoLink.href = project.githubUrl;
-    repoLink.target = "_blank";
-    repoLink.rel = "noopener";
-    repoLink.textContent = "Repositório";
-    actions.appendChild(repoLink);
-
-    if (project.readmeUrl) {
-      const readmeLink = document.createElement("a");
-      readmeLink.className = "btn ghost";
-      readmeLink.href = project.readmeUrl;
-      readmeLink.target = "_blank";
-      readmeLink.rel = "noopener";
-      readmeLink.textContent = "README";
-      actions.appendChild(readmeLink);
-    }
-
-    article.appendChild(head);
-    article.appendChild(p);
-    article.appendChild(actions);
-
-    return article;
-  }
-
-  function setupRevealAnimation() {
-    const items = document.querySelectorAll(".card.reveal");
-    if (!("IntersectionObserver" in window)) {
-      items.forEach((i) => i.classList.add("visible"));
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    items.forEach((i) => io.observe(i));
-  }
-
-  function renderProjects() {
-    grid.innerHTML = "";
-    const frag = document.createDocumentFragment();
-    window.PROJECTS.forEach((project) => {
-      const card = createCard(project);
-      frag.appendChild(card);
-    });
-    grid.appendChild(frag);
-    setupRevealAnimation();
-  }
-
-  function applyFilter(tech) {
-    const cards = grid.querySelectorAll(".card");
-    cards.forEach((card) => {
-      const techs = (card.dataset.tech || "").toLowerCase().split(",");
-      const normalized = techs.map((t) => t.trim());
-      const show = tech === "all" || normalized.includes(tech.toLowerCase());
-      card.style.display = show ? "flex" : "none";
-    });
-  }
-
-  filterButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const tech = btn.dataset.tech;
-
-      filterButtons.forEach((b) => {
-        b.classList.remove("is-active");
-        b.setAttribute("aria-selected", "false");
-      });
-
-      btn.classList.add("is-active");
-      btn.setAttribute("aria-selected", "true");
-
-      applyFilter(tech);
-    });
-  });
-
-  renderProjects();
-  applyFilter("all");
-})();
-
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear().toString();
 
 (function dynamicTitle() {
   const map = {
-    "#sobre": "Sobre — Diogo Gulhak",
-    "#skills": "Skills — Diogo Gulhak",
-    "#projetos": "Projetos — Diogo Gulhak",
-    "#experiencia": "Experiência — Diogo Gulhak",
-    "#sobre-mim": "Quem sou eu — Diogo Gulhak"
+    "#sobre": "seo.navTitle.about",
+    "#skills": "seo.navTitle.skills",
+    "#projetos": "seo.navTitle.projects",
+    "#experiencia": "seo.navTitle.experience",
+    "#sobre-mim": "seo.navTitle.aboutMe"
   };
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener("click", () => {
-      const t = map[a.getAttribute("href")];
-      if (t) document.title = t;
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const titleKey = map[link.getAttribute("href")];
+      if (titleKey) document.title = i18nT(titleKey);
     });
   });
 })();
 
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener("click", (e) => {
-    const id = a.getAttribute("href");
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const id = link.getAttribute("href");
     if (id && id.length > 1) {
-      e.preventDefault();
+      event.preventDefault();
       const target = document.querySelector(id);
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -347,8 +409,8 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
     e.preventDefault();
     window.location.href = buildMailto({
       to: "dgulhak@gmail.com",
-      subject: "Projeto Mobile — Portfólio",
-      body: "Olá Diogo! Vi seu portfólio e gostaria de conversar sobre um projeto. Podemos marcar um papo rápido?\n\nAssunto:\nContexto:\nPrazo:\nOrçamento:"
+      subject: i18nT("contact.mailto.subject"),
+      body: i18nT("contact.mailto.body")
     });
   });
 });
@@ -394,7 +456,7 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
 
   const update = () => {
     if (!label) return;
-    label.textContent = details.open ? "Esconder sobre mim" : "Mostrar sobre mim";
+    label.textContent = details.open ? i18nT("sections.aboutToggleHide") : i18nT("sections.aboutToggleShow");
   };
   update();
   details.addEventListener("toggle", () => {
@@ -419,21 +481,6 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
   });
 })();
 
-(function photosGateInit() {
-  let ran = false;
-  const run = () => {
-    if (ran || typeof initPhotosCaptchaGate !== "function") return;
-    ran = true;
-    initPhotosCaptchaGate();
-  };
-
-  document.addEventListener("DOMContentLoaded", run, { once: true });
-
-  if (document.readyState !== "loading") {
-    setTimeout(run, 0);
-  }
-})();
-
 (function photoGallery() {
   const triggers = document.querySelectorAll(".js-gallery");
   const modal = document.getElementById("galleryOverlay");
@@ -449,32 +496,32 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
 
   const galleries = {
     scout: {
-      title: "Escotismo — GEAV",
+      titleKey: "gallery.groups.scout",
       images: [
-        { src: "img/scout/cover.jpeg", alt: "Atividade escoteira em grupo" },
-        { src: "img/scout/acamp_senior.jpeg", alt: "Acampamento sênior do grupo escoteiro" },
-        { src: "img/scout/congresso.jpeg", alt: "Congresso escoteiro — registro 1" },
-        { src: "img/scout/congresso2.jpeg", alt: "Congresso escoteiro — registro 2" },
-        { src: "img/scout/congresso3.jpeg", alt: "Congresso escoteiro — registro 3" },
-        { src: "img/scout/congresso4.jpeg", alt: "Congresso escoteiro — registro 4" },
-        { src: "img/scout/pico_caratuva2.jpeg", alt: "Vista do Pico Caratuva" },
-        { src: "img/scout/vj_cm.jpeg", alt: "Atividade escoteira em Cascavel" }
+        { src: i18nAsset("img/scout/cover.jpeg"), altKey: "gallery.scout.cover" },
+        { src: i18nAsset("img/scout/acamp_senior.jpeg"), altKey: "gallery.scout.camp" },
+        { src: i18nAsset("img/scout/congresso.jpeg"), altKey: "gallery.scout.congresso1" },
+        { src: i18nAsset("img/scout/congresso2.jpeg"), altKey: "gallery.scout.congresso2" },
+        { src: i18nAsset("img/scout/congresso3.jpeg"), altKey: "gallery.scout.congresso3" },
+        { src: i18nAsset("img/scout/congresso4.jpeg"), altKey: "gallery.scout.congresso4" },
+        { src: i18nAsset("img/scout/pico_caratuva2.jpeg"), altKey: "gallery.scout.pico" },
+        { src: i18nAsset("img/scout/vj_cm.jpeg"), altKey: "gallery.scout.cascavel" }
       ]
     },
     tech: {
-      title: "Tecnologia & Comunidade",
+      titleKey: "gallery.groups.tech",
       images: [
-        { src: "img/tech/cover.jpeg", alt: "Evento de tecnologia" },
-        { src: "img/tech/arthur_igreja.jpeg", alt: "Palestra com Arthur Igreja" },
-        { src: "img/tech/conf1.jpeg", alt: "Conferência de tecnologia 1" },
-        { src: "img/tech/conf3.jpeg", alt: "Conferência de tecnologia 3" },
-        { src: "img/tech/elemar.jpeg", alt: "Palestra com Elemar" },
-        { src: "img/tech/guilherme_cavalcanti.jpeg", alt: "Palestra com Guilherme Cavalcanti" },
-        { src: "img/tech/juliano.jpeg", alt: "Palestra com Juliano" },
-        { src: "img/tech/loovi.jpeg", alt: "Evento Loovi" },
-        { src: "img/tech/meetup.jpeg", alt: "Meetup de tecnologia" },
-        { src: "img/tech/tdw_palestrantes.jpeg", alt: "Palestrantes do TDW" },
-        { src: "img/tech/tdw.jpeg", alt: "Painel no TDW" }
+        { src: i18nAsset("img/tech/cover.jpeg"), altKey: "gallery.tech.cover" },
+        { src: i18nAsset("img/tech/arthur_igreja.jpeg"), altKey: "gallery.tech.arthur" },
+        { src: i18nAsset("img/tech/conf1.jpeg"), altKey: "gallery.tech.conf1" },
+        { src: i18nAsset("img/tech/conf3.jpeg"), altKey: "gallery.tech.conf3" },
+        { src: i18nAsset("img/tech/elemar.jpeg"), altKey: "gallery.tech.elemar" },
+        { src: i18nAsset("img/tech/guilherme_cavalcanti.jpeg"), altKey: "gallery.tech.guilherme" },
+        { src: i18nAsset("img/tech/juliano.jpeg"), altKey: "gallery.tech.juliano" },
+        { src: i18nAsset("img/tech/loovi.jpeg"), altKey: "gallery.tech.loovi" },
+        { src: i18nAsset("img/tech/meetup.jpeg"), altKey: "gallery.tech.meetup" },
+        { src: i18nAsset("img/tech/tdw_palestrantes.jpeg"), altKey: "gallery.tech.tdwSpeakers" },
+        { src: i18nAsset("img/tech/tdw.jpeg"), altKey: "gallery.tech.tdwPanel" }
       ]
     }
   };
@@ -488,11 +535,17 @@ document.querySelectorAll("a.btn[data-mailto]").forEach((link) => {
     const item = gallery.images[currentIndex];
     if (!item) return;
 
+    const title = i18nT(gallery.titleKey);
+    const alt = i18nT(item.altKey);
+
     imgEl.src = item.src;
-    imgEl.alt = item.alt || gallery.title;
-    if (titleEl) titleEl.textContent = gallery.title;
-    if (captionEl) captionEl.textContent = item.alt || "";
-    if (counterEl) counterEl.textContent = `Foto ${currentIndex + 1} de ${gallery.images.length}`;
+    imgEl.alt = alt || title;
+    if (titleEl) titleEl.textContent = title;
+    if (captionEl) captionEl.textContent = alt || "";
+    if (counterEl) counterEl.textContent = i18nT("gallery.counter", {
+      current: currentIndex + 1,
+      total: gallery.images.length
+    });
   }
 
   function openModal(galleryKey, startIndex) {

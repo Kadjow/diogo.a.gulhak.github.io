@@ -1,0 +1,15 @@
+* text=auto
+
+# Shell scripts should use LF
+*.sh text eol=lf
+
+# PowerShell scripts: keep CRLF on Windows (optional, but avoids noise)
+*.ps1 text eol=crlf
+
+# Images/binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text
+*.pdf binary
