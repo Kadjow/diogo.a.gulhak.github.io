@@ -68,5 +68,35 @@ window.PROJECTS = [
     githubUrl: "https://github.com/Kadjow/curse_css",
     readmeUrl: "https://github.com/Kadjow/curse_css#readme",
     accentClass: "grad-blue"
+  },
+  {
+    slug: "lp-gocoffee-cascavel",
+    nameKey: "projects.items.gocoffeeCascavel.name",
+    descriptionKey: "projects.items.gocoffeeCascavel.description",
+    techs: ["web"],
+    badge: "Web",
+    githubUrl: "https://github.com/Kadjow/LP_gocoffeeCascavel",
+    readmeUrl: "https://github.com/Kadjow/LP_gocoffeeCascavel#readme",
+    accentClass: "grad-blue-2"
+  },
+  {
+    slug: "form-api",
+    nameKey: "projects.items.formApi.name",
+    descriptionKey: "projects.items.formApi.description",
+    techs: ["flutter"],
+    badge: "Flutter",
+    githubUrl: "https://github.com/Kadjow/formAPI",
+    readmeUrl: "https://github.com/Kadjow/formAPI#readme",
+    accentClass: "grad-blue-3"
+  },
+  {
+    slug: "post-ia",
+    nameKey: "projects.items.postIa.name",
+    descriptionKey: "projects.items.postIa.description",
+    techs: ["web"],
+    badge: "Web",
+    githubUrl: "https://github.com/Kadjow/Post.IA",
+    readmeUrl: "https://github.com/Kadjow/Post.IA#readme",
+    accentClass: "grad-blue"
   }
 ];

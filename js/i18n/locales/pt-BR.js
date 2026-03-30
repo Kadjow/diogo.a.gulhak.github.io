@@ -183,6 +183,18 @@ window.__I18N_LOCALES["pt-BR"] = {
       lab: {
         name: "Lab HTML/CSS/JS",
         description: "Laboratório de HTML, CSS e JavaScript com pequenos projetos de interface, efeitos visuais e manipulação de DOM."
+      },
+      gocoffeeCascavel: {
+        name: "GoCoffee Cascavel - Landing Page",
+        description: "Landing page em Angular com foco em UI/UX, componentizacao, layout responsivo e apresentacao de marca."
+      },
+      formApi: {
+        name: "FormAPI",
+        description: "App Flutter com consumo de API (GET/POST), formulario com validacao, MVVM com Riverpod, paginacao, cache local e testes."
+      },
+      postIa: {
+        name: "Post.IA",
+        description: "Projeto web com Next.js para transformar briefing em posts estrategicos com apoio de IA."
       }
     }
   },
