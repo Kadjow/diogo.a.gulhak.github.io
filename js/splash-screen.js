@@ -1,40 +1,35 @@
 (function () {
   const body = document.body;
-  if (!body.classList.contains('is-loading')) {
-    body.classList.add('is-loading');
+  if (!body.classList.contains("is-loading")) {
+    body.classList.add("is-loading");
   }
 
-  const promptText = 'diogo@portfolio:~$ ';
-  const commandText = 'sh start_portfolio.sh';
-  const bootLogs = [
-    '[    0.000] Loading Flutter environment...',
-    '[    0.003] Initializing React Native modules...',
-    '[    0.006] Connecting to Firebase services...',
-    '[    0.010] Fetching portfolio projects...',
-    '[    0.015] Applying dark theme...',
-    '[    0.017] Preparing Angular dashboards...',
-    '[    0.020] Starting Diogo Gulhak portfolio UI...'
-  ];
-  const finalLine = 'Initialising Diogo Gulhak portfolio UI...';
+  const i18n = window.I18N;
+  const t = (key) => (i18n && typeof i18n.t === "function" ? i18n.t(key) : key);
+
+  const promptText = t("splash.promptText");
+  const commandText = t("splash.commandText");
+  const bootLogs = t("splash.bootLogs");
+  const finalLine = t("splash.finalLine");
 
   const FINAL_LINE_HOLD_TIME = 2000;
 
   function initSplash() {
-    const existing = document.getElementById('portfolio-splash');
-    const splash = existing || document.createElement('div');
-    splash.className = 'load';
-    splash.id = 'portfolio-splash';
-    splash.innerHTML = '';
+    const existing = document.getElementById("portfolio-splash");
+    const splash = existing || document.createElement("div");
+    splash.className = "load";
+    splash.id = "portfolio-splash";
+    splash.innerHTML = "";
 
-    const term = document.createElement('pre');
-    term.className = 'term';
-    term.setAttribute('aria-label', 'Terminal de inicialização do portfólio');
+    const term = document.createElement("pre");
+    term.className = "term";
+    term.setAttribute("aria-label", t("splash.ariaLabel"));
     term.textContent = promptText;
 
-    const commandSpan = document.createElement('span');
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    cursor.textContent = '_';
+    const commandSpan = document.createElement("span");
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    cursor.textContent = "_";
 
     term.appendChild(commandSpan);
     term.appendChild(cursor);
@@ -45,7 +40,7 @@
     }
 
     typeCommand(term, commandSpan, cursor, commandText, () => {
-      printLogs(term, cursor, bootLogs, () => {
+      printLogs(term, cursor, Array.isArray(bootLogs) ? bootLogs : [], () => {
         appendLine(term, cursor, finalLine);
 
         setTimeout(() => {
@@ -68,7 +63,7 @@
       }
 
       setTimeout(() => {
-        appendLine(term, cursor, '');
+        appendLine(term, cursor, "");
         onDone();
       }, 200);
     };
@@ -90,19 +85,19 @@
   }
 
   function appendLine(term, cursor, text) {
-    const line = document.createTextNode('\n' + text);
+    const line = document.createTextNode(`\n${text}`);
     term.insertBefore(line, cursor);
     scrollTerm(term);
   }
 
   function fadeOutSplash(splash) {
-    body.classList.remove('is-loading');
-    body.classList.add('is-loaded');
+    body.classList.remove("is-loading");
+    body.classList.add("is-loaded");
 
-    splash.classList.add('is-fading');
+    splash.classList.add("is-fading");
 
     const removeSplash = () => splash.remove();
-    splash.addEventListener('transitionend', removeSplash, { once: true });
+    splash.addEventListener("transitionend", removeSplash, { once: true });
 
     setTimeout(removeSplash, 1200);
   }
@@ -115,5 +110,5 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  document.addEventListener('DOMContentLoaded', initSplash);
+  document.addEventListener("DOMContentLoaded", initSplash);
 })();

@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.yarn/
+.yarn-cache/
+.yarn-unplugged/
+.pnp.*
+.npm/
+
+# Builds / outputs
+dist/
+build/
+out/
+out-tsc/
+coverage/
+.tmp/
+temp/
+.cache/
+.angular/
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+.turbo/
+.vercel/
+.netlify/
+storybook-static/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files (keep examples)
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE / Editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Angular CLI
+.angular/cache/
+
+# Misc
+*.swp
+*.swo

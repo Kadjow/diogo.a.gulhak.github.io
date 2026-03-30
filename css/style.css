@@ -142,6 +142,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .nav{display:flex;align-items:center;justify-content:space-between;padding-block:10px;flex-wrap:nowrap}
 .controls{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
 .controls>*{flex:0 0 auto}
+.lang-switch{display:flex;gap:6px;align-items:center}
+.lang-switch .btn{padding:8px 10px}
 .brand{font-weight:800;letter-spacing:.5px;white-space:nowrap}
 .icon-btn{width:42px;height:42px;border:1px solid var(--border);border-radius:999px;background:var(--card);display:grid;place-items:center;box-shadow:var(--shadow-sm)}
 .icon{width:20px;height:20px}
@@ -274,7 +276,21 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 .btn.small{padding:8px 12px;border-radius:12px}
 @media (max-width:720px){
   .nav{padding-block:6px}
+  .controls{gap:6px}
+  .lang-switch .btn{padding:7px 9px;font-size:.82rem}
   #openContact{padding:8px 12px;border-radius:12px;font-size:.9rem}
+}
+
+@media (max-width:560px){
+  .nav{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .controls{
+    width:100%;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+  }
 }
 
 .hero{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(20px,4vw,32px);align-items:center}
