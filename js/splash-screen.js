@@ -1,5 +1,25 @@
 (function () {
   const body = document.body;
+  const SPLASH_SKIP_KEY = "portfolio:splash:skip-once";
+  const SPLASH_SKIP_REASON_LOCALE_SWITCH = "locale-switch";
+
+  function shouldSkipSplashForLocaleSwitch() {
+    try {
+      const reason = window.sessionStorage.getItem(SPLASH_SKIP_KEY);
+      if (reason !== SPLASH_SKIP_REASON_LOCALE_SWITCH) return false;
+      window.sessionStorage.removeItem(SPLASH_SKIP_KEY);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  if (shouldSkipSplashForLocaleSwitch()) {
+    body.classList.remove("is-loading");
+    body.classList.add("is-loaded");
+    return;
+  }
+
   if (!body.classList.contains("is-loading")) {
     body.classList.add("is-loading");
   }

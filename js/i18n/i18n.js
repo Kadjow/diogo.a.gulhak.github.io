@@ -1,6 +1,8 @@
 (function i18nBootstrap() {
   const FALLBACK_LOCALE = "pt-BR";
   const ENGLISH_LOCALE = "en";
+  const SPLASH_SKIP_KEY = "portfolio:splash:skip-once";
+  const SPLASH_SKIP_REASON_LOCALE_SWITCH = "locale-switch";
   const locales = window.__I18N_LOCALES || {};
 
   function getPathSegments() {
@@ -111,6 +113,28 @@
     if (container) container.setAttribute("aria-label", t("locale.switcherAria"));
   }
 
+  function markSkipSplashOnNextLoad() {
+    try {
+      window.sessionStorage.setItem(SPLASH_SKIP_KEY, SPLASH_SKIP_REASON_LOCALE_SWITCH);
+    } catch (error) {
+      // Ignore storage errors; language switch should still work.
+    }
+  }
+
+  function bindSplashSkipOnLanguageSwitch(link, locale) {
+    if (!link || link.dataset.splashSkipBound === "true") return;
+
+    link.addEventListener("click", (event) => {
+      if (locale === currentLocale) return;
+      if (event.defaultPrevented) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (typeof event.button === "number" && event.button !== 0) return;
+      markSkipSplashOnNextLoad();
+    });
+
+    link.dataset.splashSkipBound = "true";
+  }
+
   function applyDomTranslations() {
     document.documentElement.lang = currentLocale === ENGLISH_LOCALE ? "en" : "pt-BR";
     document.title = t("seo.title");
@@ -164,6 +188,8 @@
     });
 
     setLanguageSwitcherLinks();
+    bindSplashSkipOnLanguageSwitch(document.getElementById("langPtLink"), FALLBACK_LOCALE);
+    bindSplashSkipOnLanguageSwitch(document.getElementById("langEnLink"), ENGLISH_LOCALE);
     updateSeoLinks();
   }
 
