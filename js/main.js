@@ -147,13 +147,13 @@ function setAttr(selector, attr, value) {
     const contactItems = document.querySelectorAll("#contactModal .contact-item");
     if (contactItems[1]) {
       const strong = contactItems[1].querySelector("strong");
-      const span = contactItems[1].querySelector("span");
+      const span = contactItems[1].querySelector("div > span");
       if (strong) strong.textContent = i18nT("contact.whatsappLabel");
       if (span) span.textContent = i18nT("contact.whatsappSubtitle");
     }
     if (contactItems[2]) {
       const strong = contactItems[2].querySelector("strong");
-      const span = contactItems[2].querySelector("span");
+      const span = contactItems[2].querySelector("div > span");
       if (strong) strong.textContent = i18nT("contact.linkedinLabel");
       if (span) span.textContent = i18nT("contact.linkedinSubtitle");
     }
