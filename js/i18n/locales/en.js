@@ -71,17 +71,41 @@ window.__I18N_LOCALES.en = {
     },
     experienceTitle: "Selected experience",
     experience: {
-      atlasTitle: "Flutter Developer - Atlas",
-      atlasPeriod: "(Nov/2024 - present)",
-      atlasItem1: "Modular architecture (feature-first), REST/JWT consumption, caching, and error strategy.",
-      atlasItem2: "Android/iOS CI/CD (signing, versioning, publishing), feature flags, and monitoring.",
-      adsTitle: "Traffic Manager - Marcondes Comunicação",
-      adsPeriod: "(Feb/2024 - Aug/2024)",
-      adsItem1: "Google Ads & Meta Ads, GA, and A/B tests focused on ROI.",
-      adsItem2: "Dashboards and marketing funnel monitoring.",
-      academicTitle: "Academic projects",
-      academicItem1: "Sales System (C#, Flutter, Python API): mobile app, real-time inventory, and dashboard.",
-      academicItem2: "System Planning: requirements, UML, prototypes, and Scrum."
+      items: [
+        {
+          title: "Software Engineer (Mobile Flutter) - Atlas",
+          period: "(Nov/2024 - present)",
+          items: [
+            "Delivery and publication of 4 apps on the Play Store and App Store, from development to production.",
+            "White label / multi-tenant setup for 3 clients in a single codebase.",
+            "CI/CD with CodeMagic and GitHub Actions, plus modular architecture and REST/OAuth integrations."
+          ]
+        },
+        {
+          title: "Web Developer (Angular) - Slingui",
+          period: "(Jan/2025 - Mar/2026)",
+          items: [
+            "Evolution of a multi-tenant SaaS application focused on onboarding, authentication, and navigation.",
+            "Dynamic white label implementation with scalable themes, logos, and design tokens.",
+            "Component refactors, i18n improvements, UX enhancements, and interface stability fixes."
+          ]
+        },
+        {
+          title: "Traffic Manager - Marcondes Comunicação",
+          period: "(Feb/2024 - Aug/2024)",
+          items: [
+            "Google Ads & Meta Ads, GA, and A/B tests focused on ROI.",
+            "Dashboards and marketing funnel monitoring."
+          ]
+        },
+        {
+          title: "Academic Projects",
+          items: [
+            "Sales System (C#, Flutter, Python API): mobile app, real-time inventory, and dashboard.",
+            "System Planning: requirements, UML, prototypes, and Scrum."
+          ]
+        }
+      ]
     },
     aboutMeTitle: "Who I am (outside code)",
     aboutToggleShow: "Show about me",

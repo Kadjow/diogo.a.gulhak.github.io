@@ -71,17 +71,41 @@ window.__I18N_LOCALES["pt-BR"] = {
     },
     experienceTitle: "Experiência selecionada",
     experience: {
-      atlasTitle: "Desenvolvedor Flutter - Atlas",
-      atlasPeriod: "(nov/2024 - atual)",
-      atlasItem1: "Arquitetura modular (feature-first), consumo REST/JWT, cache e estratégia de erros.",
-      atlasItem2: "CI/CD para Android/iOS (assina, versiona e publica), feature flags e monitoramento.",
-      adsTitle: "Gestor de Tráfego - Marcondes Comunicação",
-      adsPeriod: "(fev/2024 - ago/2024)",
-      adsItem1: "Google Ads & Meta Ads, GA e testes A/B focados em ROI.",
-      adsItem2: "Dashboards e acompanhamento do funil de marketing.",
-      academicTitle: "Projetos Acadêmicos",
-      academicItem1: "Sistema de Vendas (C#, Flutter, API Python): app mobile, estoque em tempo real e dashboard.",
-      academicItem2: "Planejamento de Sistema: requisitos, UML, protótipos e Scrum."
+      items: [
+        {
+          title: "Software Engineer (Mobile Flutter) - Atlas",
+          period: "(nov/2024 - atual)",
+          items: [
+            "Entrega e publicação de 4 apps na Play Store e App Store, do desenvolvimento à produção.",
+            "White label / multi-tenant para 3 clientes em uma única base de código.",
+            "CI/CD com CodeMagic e GitHub Actions, além de arquitetura modular e integrações REST/OAuth."
+          ]
+        },
+        {
+          title: "Desenvolvedor Web (Angular) - Slingui",
+          period: "(jan/2025 - mar/2026)",
+          items: [
+            "Evolução de aplicação SaaS multi-tenant com foco em onboarding, autenticação e navegação.",
+            "White label dinâmico com temas, logos e design tokens escaláveis.",
+            "Refatoração de componentes, melhorias de i18n, UX e estabilidade da interface."
+          ]
+        },
+        {
+          title: "Gestor de Tráfego - Marcondes Comunicação",
+          period: "(fev/2024 - ago/2024)",
+          items: [
+            "Google Ads & Meta Ads, GA e testes A/B focados em ROI.",
+            "Dashboards e acompanhamento do funil de marketing."
+          ]
+        },
+        {
+          title: "Projetos Acadêmicos",
+          items: [
+            "Sistema de Vendas (C#, Flutter, API Python): app mobile, estoque em tempo real e dashboard.",
+            "Planejamento de Sistema: requisitos, UML, protótipos e Scrum."
+          ]
+        }
+      ]
     },
     aboutMeTitle: "Quem sou eu (fora do código)",
     aboutToggleShow: "Mostrar sobre mim",

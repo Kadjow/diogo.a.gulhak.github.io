@@ -78,27 +78,30 @@ function setAttr(selector, attr, value) {
     setAttr("#projectsNext", "aria-label", i18nT("a11y.nextProjects"));
 
     setText("#experiencia h2", i18nT("sections.experienceTitle"));
-    const xpCards = document.querySelectorAll("#experiencia .xp-card");
-    if (xpCards[0]) {
-      const title = xpCards[0].querySelector("h3");
-      const items = xpCards[0].querySelectorAll("li");
-      if (title) title.innerHTML = `${i18nT("sections.experience.atlasTitle")} <small>${i18nT("sections.experience.atlasPeriod")}</small>`;
-      if (items[0]) items[0].textContent = i18nT("sections.experience.atlasItem1");
-      if (items[1]) items[1].textContent = i18nT("sections.experience.atlasItem2");
-    }
-    if (xpCards[1]) {
-      const title = xpCards[1].querySelector("h3");
-      const items = xpCards[1].querySelectorAll("li");
-      if (title) title.innerHTML = `${i18nT("sections.experience.adsTitle")} <small>${i18nT("sections.experience.adsPeriod")}</small>`;
-      if (items[0]) items[0].textContent = i18nT("sections.experience.adsItem1");
-      if (items[1]) items[1].textContent = i18nT("sections.experience.adsItem2");
-    }
-    if (xpCards[2]) {
-      const title = xpCards[2].querySelector("h3");
-      const items = xpCards[2].querySelectorAll("li");
-      if (title) title.textContent = i18nT("sections.experience.academicTitle");
-      if (items[0]) items[0].textContent = i18nT("sections.experience.academicItem1");
-      if (items[1]) items[1].textContent = i18nT("sections.experience.academicItem2");
+    const experienceEntries = i18nT("sections.experience.items");
+    const xpCards = Array.from(document.querySelectorAll("#experiencia .xp-card"));
+    if (Array.isArray(experienceEntries)) {
+      xpCards.forEach((card, index) => {
+        const entry = experienceEntries[index];
+        card.hidden = !entry;
+        if (!entry) return;
+
+        const title = card.querySelector("h3");
+        const list = card.querySelector("ul");
+
+        if (title) {
+          title.innerHTML = entry.period ? `${entry.title} <small>${entry.period}</small>` : entry.title;
+        }
+
+        if (list) {
+          const items = entry.items.map((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            return li;
+          });
+          list.replaceChildren(...items);
+        }
+      });
     }
 
     setText("#sobre-mim h2", i18nT("sections.aboutMeTitle"));
