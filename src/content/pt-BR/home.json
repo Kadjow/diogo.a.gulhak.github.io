@@ -1,0 +1,357 @@
+{
+  "metadata": {
+    "title": "Diogo Gulhak | Clareza, estrutura e execução para produtos digitais",
+    "description": "Portfólio de Diogo Gulhak com foco em transformar contexto complexo em produto mais claro, executável e sustentável, com base técnica sólida e delivery consistente."
+  },
+  "common": {
+    "skipToContent": "Ir para o conteúdo principal"
+  },
+  "links": {
+    "email": "mailto:dgulhak@gmail.com?subject=Novo%20projeto%20via%20portf%C3%B3lio",
+    "whatsapp": "https://wa.me/5545998549198?text=Ol%C3%A1%20Diogo!%20Vim%20do%20seu%20novo%20portf%C3%B3lio.",
+    "linkedin": "https://www.linkedin.com/in/dagulhakS/",
+    "github": "https://github.com/Kadjow"
+  },
+  "header": {
+    "brand": "Diogo Gulhak",
+    "monogram": "DAG",
+    "statusLabel": "Disponibilidade",
+    "status": "Disponível para organizar produto, fluxo e execução em contextos que precisam de mais clareza",
+    "nav": [
+      { "label": "Cases", "href": "#cases" },
+      { "label": "Como atuo", "href": "#como-atuo" },
+      { "label": "Expertise", "href": "#capabilities" },
+      { "label": "Contato", "href": "#contato" }
+    ],
+    "cta": {
+      "label": "Conversar sobre projeto",
+      "href": "#contato"
+    },
+    "localeSwitchLabel": "Idioma"
+  },
+  "hero": {
+    "eyebrow": "Portfólio 2026 · clareza de produto, estrutura técnica e execução com critério",
+    "title": "Transformo contexto complexo em produto mais claro, executável e sustentável.",
+    "description": "Entro melhor em cenários que precisam organizar problema, interface, arquitetura e entrega ao mesmo tempo. Flutter e Angular aparecem como base técnica para fazer isso acontecer com consistência.",
+    "primaryCta": {
+      "label": "Abrir conversa no WhatsApp",
+      "href": "https://wa.me/5545998549198?text=Ol%C3%A1%20Diogo!%20Vim%20do%20seu%20novo%20portf%C3%B3lio.",
+      "external": true
+    },
+    "secondaryCta": {
+      "label": "Ver cases selecionados",
+      "href": "#cases",
+      "variant": "secondary"
+    },
+    "highlights": [
+      {
+        "title": "4 apps publicados",
+        "description": "Experiência com publicação e continuidade de produtos mobile em Play Store e App Store, com foco em sustentação depois do launch."
+      },
+      {
+        "title": "Estrutura para 3 operações",
+        "description": "Estruturei bases multi-tenant para atender operações diferentes sem cair em duplicação de código ou manutenção caótica."
+      },
+      {
+        "title": "Entrega sem depender de improviso",
+        "description": "Uso CI/CD, arquitetura modular e organização de release para reduzir atrito entre desenvolvimento, QA e publicação."
+      }
+    ],
+    "aside": {
+      "eyebrow": "Como eu contribuo",
+      "title": "Leitura de produto, estrutura técnica e capacidade real de execução no mesmo raciocínio.",
+      "description": "Meu melhor trabalho aparece quando a solução precisa nascer bem, ganhar clareza de fluxo e continuar evoluindo sem virar ruído operacional.",
+      "imageAlt": "Retrato de Diogo Gulhak",
+      "details": [
+        {
+          "label": "Onde gero valor",
+          "value": "Organizo contexto, fluxo e execução para o time tomar decisões melhores e entregar com menos atrito."
+        },
+        {
+          "label": "Base técnica",
+          "value": "Flutter, Angular, integrações REST, OAuth/OIDC, FCM e WebView entram como suporte para dar solidez ao produto."
+        },
+        {
+          "label": "Entrega e evolução",
+          "value": "Apps publicados, contexto multi-tenant e esteiras de release que ajudam a solução a continuar evoluindo sem caos."
+        }
+      ]
+    }
+  },
+  "proofStrip": {
+    "eyebrow": "Sinais rápidos de confiança",
+    "items": [
+      {
+        "title": "4 apps nas lojas",
+        "description": "Publicação real em Play Store e App Store com rotina de manutenção, correção e evolução contínua."
+      },
+      {
+        "title": "3 clientes no mesmo core",
+        "description": "Base white-label e multi-tenant preparada para branding, configuração e evolução por operação."
+      },
+      {
+        "title": "CI/CD com CodeMagic + GitHub Actions",
+        "description": "Esteiras para build, versionamento e release que reduzem dependência manual no ciclo de entrega."
+      },
+      {
+        "title": "Flutter e Angular em contexto real",
+        "description": "Experiência aplicada tanto em produtos mobile quanto em SaaS multi-tenant com preocupações de arquitetura e UX."
+      }
+    ]
+  },
+  "cases": {
+    "eyebrow": "Cases principais",
+    "title": "Casos que mostram arquitetura aplicada, não vitrine decorativa.",
+    "description": "Cada case abaixo foi reescrito para deixar claro o contexto, as decisões técnicas, a stack e o impacto que a base gerou no produto.",
+    "contextLabel": "Contexto",
+    "highlightsLabel": "Highlights",
+    "stackLabel": "Stack",
+    "outcomeLabel": "Impacto",
+    "items": [
+      {
+        "slug": "atlas-mobile-suite",
+        "label": "Produto mobile",
+        "name": "Atlas Mobile Suite",
+        "headline": "Aplicação Flutter em produção com 4 apps publicados e pipeline confiável para Android e iOS.",
+        "context": "O desafio era manter ritmo de entrega sem sacrificar a base. O trabalho concentrou arquitetura modular, integrações críticas e publicação para que o produto não dependesse de ajustes manuais a cada release.",
+        "details": [
+          {
+            "label": "Escopo",
+            "value": "4 apps publicados"
+          },
+          {
+            "label": "Integrações",
+            "value": "REST, OAuth/OIDC, FCM e WebView"
+          },
+          {
+            "label": "Entrega",
+            "value": "CodeMagic + GitHub Actions"
+          }
+        ],
+        "highlights": [
+          "Arquitetura modular em Flutter para separar domínio, fluxos e responsabilidades por feature.",
+          "Integrações com APIs REST e autenticação com leitura mais estável de erro, sessão e fallback operacional.",
+          "Esteira de build e release para Android e iOS reduzindo fricção entre desenvolvimento, QA e publicação."
+        ],
+        "stack": ["Flutter", "Dart", "REST APIs", "OAuth/OIDC", "FCM", "WebView", "CodeMagic", "GitHub Actions"],
+        "outcome": "Base mais previsível para evoluir produto, publicar versões com menos atrito e sustentar continuidade depois do launch.",
+        "actions": [
+          {
+            "label": "Quero uma base parecida",
+            "href": "#contato"
+          },
+          {
+            "label": "Ver abordagem de arquitetura",
+            "href": "#como-atuo",
+            "variant": "ghost"
+          }
+        ]
+      },
+      {
+        "slug": "white-label-mobile-platform",
+        "label": "White-label",
+        "name": "Plataforma White-label",
+        "headline": "Mesmo core de app, 3 clientes e regras de branding sem virar manutenção caótica.",
+        "context": "O desafio era atender operações diferentes com identidade, configuração e evolução próprias, evitando forks e retrabalho a cada nova demanda de cliente.",
+        "details": [
+          {
+            "label": "Modelo",
+            "value": "White-label / multi-tenant"
+          },
+          {
+            "label": "Clientes",
+            "value": "3 operações no mesmo core"
+          },
+          {
+            "label": "Arquitetura",
+            "value": "Branding, módulos e configuração por tenant"
+          }
+        ],
+        "highlights": [
+          "Separação entre core compartilhado e customizações por cliente para preservar velocidade de evolução.",
+          "Definição de pontos de extensão para tema, navegação, regras e features sem quebrar a base comum.",
+          "Leitura mais clara para manutenção, onboarding técnico e novas entregas por cliente."
+        ],
+        "stack": ["Flutter", "Multi-tenant", "White-label", "Feature modules", "Config-driven UI", "Design tokens", "CI/CD"],
+        "outcome": "Menos duplicação, mais consistência entre clientes e uma base preparada para crescer com controle.",
+        "actions": [
+          {
+            "label": "Explorar arquitetura white-label",
+            "href": "#contato"
+          },
+          {
+            "label": "Ver expertise",
+            "href": "#capabilities",
+            "variant": "ghost"
+          }
+        ]
+      },
+      {
+        "slug": "angular-saas-multitenant",
+        "label": "Frontend SaaS",
+        "name": "Angular SaaS Multi-tenant",
+        "headline": "Frontend Angular para SaaS com onboarding, autenticação, navegação, i18n e design tokens trabalhando como sistema.",
+        "context": "Em SaaS multi-tenant, a experiência quebra rápido quando onboarding, autenticação e navegação são tratados como fluxos isolados. O trabalho foi organizar a interface como plataforma, não como conjunto de telas soltas.",
+        "details": [
+          {
+            "label": "Fluxos",
+            "value": "Onboarding, auth e navegação"
+          },
+          {
+            "label": "Produto",
+            "value": "SaaS multi-tenant"
+          },
+          {
+            "label": "Consistência",
+            "value": "i18n + design tokens"
+          }
+        ],
+        "highlights": [
+          "Estruturação da aplicação para suportar autenticação, estados de acesso e navegação com leitura consistente.",
+          "Internacionalização e design tokens para sustentar evolução de interface sem perder coerência.",
+          "Pensamento de frontend orientado a produto, conectando UX, componentização e manutenção."
+        ],
+        "stack": ["Angular", "TypeScript", "SaaS", "Multi-tenant", "Authentication", "i18n", "Design tokens"],
+        "outcome": "Mais consistência de interface, onboarding mais claro e base de frontend preparada para escalar features sem ruído visual ou técnico.",
+        "actions": [
+          {
+            "label": "Falar sobre um SaaS assim",
+            "href": "#contato"
+          },
+          {
+            "label": "Ver atuação",
+            "href": "#como-atuo",
+            "variant": "ghost"
+          }
+        ]
+      }
+    ]
+  },
+  "approach": {
+    "eyebrow": "Experiência / Como atuo",
+    "title": "Decisão de produto, arquitetura e delivery no mesmo raciocínio.",
+    "description": "Meu melhor trabalho acontece quando a UI precisa ser madura, a base precisa continuar legível e o release não pode depender de improviso.",
+    "principles": [
+      {
+        "title": "Arquitetura que reduz ruído futuro",
+        "description": "Estruturo apps e frontends para que novas features entrem com menos acoplamento, menos reescrita e mais clareza para o time."
+      },
+      {
+        "title": "Interface com intenção de produto",
+        "description": "Onboarding, autenticação, navegação, i18n e design tokens não entram como detalhe visual. Eles fazem parte da coerência do produto."
+      },
+      {
+        "title": "Entrega com trilha operacional",
+        "description": "CodeMagic, GitHub Actions, publicação em lojas e padronização de release entram cedo para evitar gargalos quando o produto acelera."
+      }
+    ],
+    "experienceEyebrow": "Recortes de experiência",
+    "experienceTitle": "Experiência aplicada em produtos mobile e SaaS com impacto direto na operação.",
+    "experienceItems": [
+      {
+        "role": "Flutter Engineer",
+        "company": "Apps mobile publicados",
+        "period": "4 apps em produção",
+        "summary": "Arquitetura modular, integrações REST, OAuth/OIDC, FCM e WebView, com publicação contínua em Play Store e App Store."
+      },
+      {
+        "role": "Frontend Angular",
+        "company": "SaaS multi-tenant",
+        "period": "Onboarding, auth e i18n",
+        "summary": "Experiência em onboarding, autenticação, navegação, internacionalização e design tokens para produto com múltiplos contextos de uso."
+      },
+      {
+        "role": "Arquitetura & Delivery",
+        "company": "White-label para 3 clientes",
+        "period": "CI/CD com CodeMagic + GitHub Actions",
+        "summary": "Base compartilhada, configuração por cliente e esteira de release para reduzir retrabalho e aumentar previsibilidade de entrega."
+      }
+    ]
+  },
+  "capabilities": {
+    "eyebrow": "Atuação / Expertise",
+    "title": "Competências organizadas pelo tipo de problema que eu resolvo melhor.",
+    "description": "A leitura abaixo mostra como minha experiência se distribui entre app, frontend, integração, arquitetura e entrega.",
+    "groups": [
+      {
+        "title": "Mobile",
+        "description": "Apps com preocupação real de publicação, manutenção e evolução depois do launch.",
+        "items": ["Flutter", "Dart", "Arquitetura modular", "Play Store / App Store", "FCM", "WebView"]
+      },
+      {
+        "title": "Frontend",
+        "description": "Interfaces de produto pensadas para onboarding, navegação e leitura clara de estado.",
+        "items": ["Angular", "TypeScript", "SaaS multi-tenant", "Design tokens", "Componentização", "i18n"]
+      },
+      {
+        "title": "Integrações",
+        "description": "Conexão entre app, backend e autenticação sem fricção desnecessária para o usuário ou para o time.",
+        "items": ["REST APIs", "OAuth/OIDC", "Auth flows", "FCM", "WebView", "Suporte a operação"]
+      },
+      {
+        "title": "Arquitetura",
+        "description": "Bases desenhadas para evoluir com menos acoplamento e mais previsibilidade.",
+        "items": ["White-label", "Multi-tenant", "Feature modules", "Config-driven setup", "Estratégia de erro", "Escalabilidade pragmática"]
+      },
+      {
+        "title": "Delivery",
+        "description": "Release menos artesanal e mais confiável do desenvolvimento até a publicação.",
+        "items": ["CodeMagic", "GitHub Actions", "Versionamento", "Build pipelines", "Publicação Android/iOS", "Documentação enxuta"]
+      }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Vamos conversar",
+    "title": "Se você precisa organizar arquitetura, interface e release com mais clareza, eu consigo entrar nessa conversa.",
+    "description": "Posso ajudar em apps Flutter, frentes Angular e bases multi-tenant que precisem ganhar estrutura, previsibilidade de entrega e comunicação técnica mais madura.",
+    "primaryCta": {
+      "label": "Chamar no WhatsApp",
+      "href": "https://wa.me/5545998549198?text=Ol%C3%A1%20Diogo!%20Vim%20do%20seu%20novo%20portf%C3%B3lio.",
+      "external": true
+    },
+    "secondaryCta": {
+      "label": "Enviar briefing por e-mail",
+      "href": "mailto:dgulhak@gmail.com?subject=Novo%20projeto%20via%20portf%C3%B3lio",
+      "variant": "secondary"
+    },
+    "methods": [
+      {
+        "label": "Email",
+        "value": "dgulhak@gmail.com",
+        "description": "Melhor canal para briefing, escopo, proposta e alinhamento mais detalhado.",
+        "href": "mailto:dgulhak@gmail.com?subject=Novo%20projeto%20via%20portf%C3%B3lio"
+      },
+      {
+        "label": "WhatsApp",
+        "value": "+55 45 99854-9198",
+        "description": "Bom para alinhar contexto, timing e próximos passos de forma rápida.",
+        "href": "https://wa.me/5545998549198?text=Ol%C3%A1%20Diogo!%20Vim%20do%20seu%20novo%20portf%C3%B3lio."
+      },
+      {
+        "label": "LinkedIn",
+        "value": "/in/diogo-arthur-gulhak-0bbaa0273",
+        "description": "Para contexto profissional, trajetória e conexão de longo prazo.",
+        "href": "https://www.linkedin.com/in/diogo-arthur-gulhak-0bbaa0273/"
+      }
+    ]
+  },
+  "footer": {
+    "name": "Diogo Gulhak",
+    "role": "Clareza de produto · Estrutura técnica · Execução confiável",
+    "description": "Ajudo produtos a ganhar estrutura, comunicação técnica mais madura e evolução sustentável.",
+    "navigationLabel": "Navegação",
+    "navigationLinks": [
+      { "label": "Cases", "href": "#cases" },
+      { "label": "Como atuo", "href": "#como-atuo" },
+      { "label": "Expertise", "href": "#capabilities" },
+      { "label": "Contato", "href": "#contato" }
+    ],
+    "connectLabel": "Contato",
+    "connectLinks": [
+      { "label": "Email", "href": "mailto:dgulhak@gmail.com?subject=Novo%20projeto%20via%20portf%C3%B3lio" },
+      { "label": "WhatsApp", "href": "https://wa.me/5545998549198?text=Ol%C3%A1%20Diogo!%20Vim%20do%20seu%20novo%20portf%C3%B3lio.", "external": true },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/diogo-arthur-gulhak-0bbaa0273/", "external": true }
+    ],
+    "note": "Portfólio pensado para mostrar execução com contexto real: apps publicados, multi-tenant e delivery contínuo."
+  }
+}

@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4ede2;
+  --background-muted: #eadfce;
+  --background-strong: #decfb9;
+  --surface: rgba(255, 250, 244, 0.74);
+  --surface-strong: rgba(255, 252, 248, 0.86);
+  --surface-elevated: rgba(255, 255, 252, 0.94);
+  --surface-muted: rgba(255, 248, 240, 0.58);
+  --surface-inverse: rgba(247, 242, 235, 0.08);
+  --surface-inverse-strong: rgba(247, 242, 235, 0.14);
+  --foreground: #102031;
+  --foreground-soft: #223447;
+  --foreground-muted: #637386;
+  --foreground-inverse: #f7f2eb;
+  --foreground-inverse-muted: rgba(247, 242, 235, 0.78);
+  --foreground-inverse-subtle: rgba(247, 242, 235, 0.56);
+  --muted: #748194;
+  --muted-strong: #4c5c70;
+  --border: rgba(16, 32, 49, 0.08);
+  --border-strong: rgba(16, 32, 49, 0.14);
+  --border-interactive: rgba(19, 138, 120, 0.28);
+  --border-inverse: rgba(247, 242, 235, 0.14);
+  --primary: #138a78;
+  --primary-strong: #0f7062;
+  --primary-soft: rgba(19, 138, 120, 0.14);
+  --primary-surface: rgba(19, 138, 120, 0.1);
+  --primary-border: rgba(19, 138, 120, 0.24);
+  --primary-foreground: #f3fbf8;
+  --secondary: #c8945a;
+  --secondary-strong: #a67743;
+  --secondary-soft: rgba(200, 148, 90, 0.16);
+  --secondary-surface: rgba(200, 148, 90, 0.1);
+  --secondary-border: rgba(200, 148, 90, 0.24);
+  --accent: #18304b;
+  --accent-strong: #102338;
+  --accent-soft: rgba(24, 48, 75, 0.12);
+  --accent-surface: rgba(24, 48, 75, 0.08);
+  --accent-border: rgba(24, 48, 75, 0.18);
+  --ring: rgba(19, 138, 120, 0.22);
+  --canvas: var(--background);
+  --canvas-alt: var(--background-muted);
+  --canvas-strong: var(--background-strong);
+  --shadow-soft:
+    0 18px 48px rgba(16, 32, 49, 0.08),
+    0 2px 10px rgba(16, 32, 49, 0.04);
+  --shadow-medium:
+    0 26px 72px rgba(16, 32, 49, 0.12),
+    0 8px 24px rgba(16, 32, 49, 0.06);
+  --shadow-strong:
+    0 34px 96px rgba(16, 32, 49, 0.16),
+    0 14px 32px rgba(16, 32, 49, 0.08);
+  --shadow-button:
+    0 18px 34px rgba(19, 138, 120, 0.18),
+    0 8px 18px rgba(16, 32, 49, 0.08);
+  --shadow-button-strong:
+    0 22px 42px rgba(19, 138, 120, 0.22),
+    0 10px 24px rgba(16, 32, 49, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 12%, var(--primary-soft), transparent 24%),
+    radial-gradient(circle at 84% 9%, var(--secondary-soft), transparent 24%),
+    radial-gradient(circle at 50% -8%, rgba(255, 255, 255, 0.92), transparent 26%),
+    linear-gradient(
+      180deg,
+      #faf6ef 0%,
+      var(--background) 30%,
+      var(--background-muted) 66%,
+      var(--background-strong) 100%
+    );
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.6), transparent 18%),
+    linear-gradient(rgba(16, 32, 49, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 32, 49, 0.022) 1px, transparent 1px);
+  background-size:
+    auto,
+    136px 136px,
+    136px 136px;
+  mask-image: radial-gradient(circle at center, black 46%, transparent 88%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.26), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 28%, rgba(16, 32, 49, 0.06) 100%);
+  mix-blend-mode: soft-light;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--primary-soft);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
