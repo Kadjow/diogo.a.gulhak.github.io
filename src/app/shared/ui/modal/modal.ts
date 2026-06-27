@@ -1,0 +1,39 @@
+import { Component, EventEmitter, HostListener, Input, OnChanges, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-modal',
+  standalone: true,
+  template: `
+    <div class="modal-overlay" [class.is-open]="open" [attr.aria-hidden]="!open"
+         role="dialog" [attr.aria-labelledby]="labelledby" (click)="onOverlay($event)">
+      <div class="modal-card" role="document">
+        <button class="modal-close" type="button" (click)="close.emit()" aria-label="Close">✕</button>
+        <ng-content />
+      </div>
+    </div>`,
+  styleUrl: './modal.scss',
+})
+export class Modal implements OnChanges {
+  @Input() open = false;
+  @Input() labelledby = '';
+  @Output() close = new EventEmitter<void>();
+
+  ngOnChanges(): void {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = this.open ? 'hidden' : '';
+    }
+  }
+
+  onOverlay(e: MouseEvent): void {
+    if ((e.target as HTMLElement).classList.contains('modal-overlay')) {
+      this.close.emit();
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(e: KeyboardEvent): void {
+    if (this.open && e.key === 'Escape') {
+      this.close.emit();
+    }
+  }
+}
