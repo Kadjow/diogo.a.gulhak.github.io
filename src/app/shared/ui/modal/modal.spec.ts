@@ -20,4 +20,12 @@ describe('Modal', () => {
     fixture.componentInstance.onKeydown(new KeyboardEvent('keydown', { key: 'Escape' }));
     expect(closed).toBe(false);
   });
+  it('clears scroll lock on destroy when open', () => {
+    const fixture = TestBed.createComponent(Modal);
+    fixture.componentRef.setInput('open', true);
+    fixture.detectChanges();
+    expect(document.body.style.overflow).toBe('hidden');
+    fixture.destroy();
+    expect(document.body.style.overflow).toBe('');
+  });
 });

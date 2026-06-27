@@ -1,19 +1,19 @@
-import { Component, EventEmitter, HostListener, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
   template: `
     <div class="modal-overlay" [class.is-open]="open" [attr.aria-hidden]="!open"
-         role="dialog" [attr.aria-labelledby]="labelledby" (click)="onOverlay($event)">
-      <div class="modal-card" role="document">
+         (click)="onOverlay($event)">
+      <div class="modal-card" role="dialog" [attr.aria-labelledby]="labelledby">
         <button class="modal-close" type="button" (click)="close.emit()" aria-label="Close">✕</button>
         <ng-content />
       </div>
     </div>`,
   styleUrl: './modal.scss',
 })
-export class Modal implements OnChanges {
+export class Modal implements OnChanges, OnDestroy {
   @Input() open = false;
   @Input() labelledby = '';
   @Output() close = new EventEmitter<void>();
@@ -21,6 +21,12 @@ export class Modal implements OnChanges {
   ngOnChanges(): void {
     if (typeof document !== 'undefined') {
       document.body.style.overflow = this.open ? 'hidden' : '';
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
     }
   }
 
