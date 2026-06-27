@@ -33,6 +33,9 @@
             "styles": [
               "src/styles.scss"
             ],
+            "polyfills": [
+              "@angular/localize/init"
+            ],
             "server": "src/main.server.ts",
             "outputMode": "static",
             "security": {
