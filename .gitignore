@@ -63,3 +63,8 @@ Desktop.ini
 # Misc
 *.swp
 *.swo
+
+# Brainstorm / design scratch
+.superpowers/
+design-paletas.html
+design-paleta-05.html
