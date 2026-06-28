@@ -15,9 +15,9 @@ import { AboutMe } from './about-me/about-me';
       <app-hero />
       <app-about />
       <app-skills />
-      <div id="projetos"><app-projects /></div>
-      <div id="experiencia"><app-experience /></div>
-      <div id="sobre-mim"><app-about-me /></div>
+      <app-projects />
+      <app-experience />
+      <app-about-me />
     </main>
   `,
 })
