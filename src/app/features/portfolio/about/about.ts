@@ -10,19 +10,11 @@ import { SectionHeading } from '../../../shared/ui/section-heading/section-headi
       <app-section-heading number="01" title="Sobre" i18n-title="@@section.sobre" />
 
       <p class="about__text" i18n="@@about.p1">
-        Sou Diogo Gulhak, desenvolvedor mobile e full-stack com foco em
-        <strong>Flutter</strong>, <strong>React Native</strong> e
-        <strong>Angular</strong>. Tenho experiência construindo aplicações do
-        zero — do design à entrega na loja — sempre priorizando
-        <strong>clean architecture</strong>, <strong>testes automatizados</strong>
-        e <strong>CI/CD</strong> sólido.
+        Desenho e publico apps em Flutter end-to-end: APIs, autenticação, cache/offline, push e CI/CD confiável (Actions/Codemagic). Experiência em whitelabel (visual e identidade por cliente) e uso de WebView quando acelera o time-to-market. Cobertura extra em Angular/React e NestJS/Node + PostgreSQL.
       </p>
 
       <p class="about__text" i18n="@@about.p2">
-        Acredito que bom software é aquele que o usuário mal percebe que existe:
-        rápido, acessível e confiável. Fora do editor, me encontro aprendendo
-        sobre sistemas distribuídos, contribuindo com projetos open-source
-        ou explorando trilhas perto de casa.
+        Resultado esperado: produto no ar, manutenção simples e evolução contínua. Gosto de processos claros, automação e foco na experiência do usuário.
       </p>
     </section>
   `,
