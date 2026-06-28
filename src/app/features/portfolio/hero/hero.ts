@@ -1,4 +1,4 @@
-import { Component, PLATFORM_ID, inject, signal } from '@angular/core';
+import { Component, OnDestroy, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { LocaleService } from '../../../core/locale.service';
 import { SectionHeading } from '../../../shared/ui/section-heading/section-heading';
@@ -46,7 +46,7 @@ const PHRASES: string[] = [
   imports: [SectionHeading],
   template: `
     <section class="hero container" aria-label="Apresentação">
-      <div class="hero__photo-wrap" aria-hidden="true">
+      <div class="hero__photo-wrap">
         <img
           class="hero__photo"
           [src]="photoSrc"
@@ -95,14 +95,14 @@ const PHRASES: string[] = [
             </a>
           </li>
           <li>
-            <a rel="me" href="https://github.com/Kadjow" target="_blank" rel="noopener"
+            <a rel="me noopener" href="https://github.com/Kadjow" target="_blank"
                aria-label="GitHub" i18n-aria-label="@@a11y.socialGithub">
               GitHub
             </a>
           </li>
           <li>
-            <a rel="me" href="https://www.linkedin.com/in/diogo-arthur-gulhak-0bbaa0273/"
-               target="_blank" rel="noopener"
+            <a rel="me noopener" href="https://www.linkedin.com/in/diogo-arthur-gulhak-0bbaa0273/"
+               target="_blank"
                aria-label="LinkedIn" i18n-aria-label="@@a11y.socialLinkedin">
               LinkedIn
             </a>
@@ -113,7 +113,7 @@ const PHRASES: string[] = [
   `,
   styleUrl: './hero.scss',
 })
-export class Hero {
+export class Hero implements OnDestroy {
   private readonly locale = inject(LocaleService);
   private readonly platformId = inject(PLATFORM_ID);
 
@@ -122,6 +122,8 @@ export class Hero {
   readonly roleText = signal('');
 
   private typingState: TypingState = { phraseIndex: 0, charIndex: 0, deleting: false, text: '' };
+  private typingTimer: ReturnType<typeof setTimeout> | undefined;
+  private intervalTimer: ReturnType<typeof setInterval> | undefined;
 
   constructor() {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -131,7 +133,7 @@ export class Hero {
     if (reducedMotion) {
       this.roleText.set(this.phrases[0]);
       let idx = 0;
-      setInterval(() => {
+      this.intervalTimer = setInterval(() => {
         idx = (idx + 1) % this.phrases.length;
         this.roleText.set(this.phrases[idx]);
       }, 3000);
@@ -140,9 +142,14 @@ export class Hero {
     }
   }
 
+  ngOnDestroy(): void {
+    clearTimeout(this.typingTimer);
+    clearInterval(this.intervalTimer);
+  }
+
   private scheduleNext(): void {
     const delay = this.typingState.deleting ? 60 : 100;
-    setTimeout(() => {
+    this.typingTimer = setTimeout(() => {
       this.typingState = nextTypingState(this.typingState, this.phrases);
       this.roleText.set(this.typingState.text);
       this.scheduleNext();
