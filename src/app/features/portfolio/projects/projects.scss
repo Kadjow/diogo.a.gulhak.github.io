@@ -1,0 +1,152 @@
+.projects {
+  padding: 5rem 0;
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 2rem 0;
+  }
+
+  &__filter {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--accent, #6c63ff);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink, #1a1a2e);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.2s, color 0.2s;
+
+    &--active,
+    &:hover {
+      background: var(--accent, #6c63ff);
+      color: #fff;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    min-height: 280px;
+  }
+
+  &__card {
+    background: var(--surface, #fff);
+    border: 1px solid var(--border, #e0e0e0);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    animation: cardIn 0.35s ease both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+
+    &--stagger-0 { animation-delay: 0ms; }
+    &--stagger-1 { animation-delay: 70ms; }
+    &--stagger-2 { animation-delay: 140ms; }
+  }
+
+  &__card-index {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent, #6c63ff);
+    letter-spacing: 0.1em;
+  }
+
+  &__card-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    background: var(--accent-muted, rgba(108, 99, 255, 0.12));
+    color: var(--accent, #6c63ff);
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+
+  &__card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink, #1a1a2e);
+    margin: 0;
+  }
+
+  &__card-desc {
+    font-size: 0.875rem;
+    color: var(--ink-muted, #555);
+    line-height: 1.5;
+    flex: 1;
+    margin: 0;
+  }
+
+  &__card-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+
+    a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent, #6c63ff);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  &__arrow {
+    background: transparent;
+    border: 1px solid var(--accent, #6c63ff);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--accent, #6c63ff);
+    transition: background 0.2s, color 0.2s;
+
+    &:hover:not(:disabled) {
+      background: var(--accent, #6c63ff);
+      color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+  }
+
+  &__page-indicator {
+    font-size: 0.875rem;
+    color: var(--ink-muted, #555);
+    min-width: 4rem;
+    text-align: center;
+  }
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
