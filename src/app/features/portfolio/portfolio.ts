@@ -1,3 +1,15 @@
 import { Component } from '@angular/core';
-@Component({ selector: 'app-portfolio', standalone: true, template: `<main id="conteudo"><!-- sections added in later tasks --></main>` })
+import { Hero } from './hero/hero';
+
+@Component({
+  selector: 'app-portfolio',
+  standalone: true,
+  imports: [Hero],
+  template: `
+    <main id="conteudo">
+      <app-hero />
+      <!-- sections added in later tasks -->
+    </main>
+  `,
+})
 export class Portfolio {}
