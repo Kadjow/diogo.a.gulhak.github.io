@@ -2,6 +2,9 @@ import { Component, inject } from '@angular/core';
 import { ThemeToggle } from '../../shared/ui/theme-toggle/theme-toggle';
 import { LocaleService } from '../../core/locale.service';
 import { UiStateService } from '../../core/ui-state.service';
+import { StorageService } from '../../core/storage.service';
+
+const SPLASH_SKIP_KEY = 'portfolio:splash:skip-once';
 
 @Component({
   selector: 'app-header',
@@ -18,13 +21,15 @@ import { UiStateService } from '../../core/ui-state.service';
               [href]="locale.localePath('pt-BR')"
               [attr.aria-current]="locale.locale === 'pt-BR' ? 'true' : null"
               [class.active]="locale.locale === 'pt-BR'"
-              hreflang="pt-BR">PT</a>
+              hreflang="pt-BR"
+              (click)="setSplashSkip()">PT</a>
             <span class="lang-sep" aria-hidden="true">·</span>
             <a
               [href]="locale.localePath('en')"
               [attr.aria-current]="locale.locale === 'en' ? 'true' : null"
               [class.active]="locale.locale === 'en'"
-              hreflang="en">EN</a>
+              hreflang="en"
+              (click)="setSplashSkip()">EN</a>
           </div>
 
           <app-theme-toggle />
@@ -44,4 +49,9 @@ import { UiStateService } from '../../core/ui-state.service';
 export class Header {
   locale = inject(LocaleService);
   ui = inject(UiStateService);
+  private storage = inject(StorageService);
+
+  setSplashSkip(): void {
+    this.storage.setSession(SPLASH_SKIP_KEY, 'locale-switch');
+  }
 }
