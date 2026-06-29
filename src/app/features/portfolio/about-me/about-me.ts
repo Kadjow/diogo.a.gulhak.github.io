@@ -21,11 +21,8 @@ const STORAGE_KEY = 'about-open';
         class="about-me__toggle"
         [attr.aria-expanded]="open()"
         (click)="toggle()"
-        i18n="@@sections.aboutToggleShow"
       >
-        {{ open()
-          ? ('Esconder sobre mim')
-          : ('Mostrar sobre mim') }}
+        {{ open() ? hideLabel : showLabel }}
       </button>
 
       @if (open()) {
@@ -110,6 +107,9 @@ const STORAGE_KEY = 'about-open';
 export class AboutMe implements OnInit {
   private readonly storage = inject(StorageService);
   readonly gallery = inject(GalleryService);
+
+  readonly showLabel = $localize`:@@sections.aboutToggleShow:Mostrar sobre mim`;
+  readonly hideLabel = $localize`:@@sections.aboutToggleHide:Esconder sobre mim`;
 
   readonly open = signal(false);
 

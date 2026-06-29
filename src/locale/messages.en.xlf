@@ -231,15 +231,19 @@
         </context-group>
       </trans-unit>
       <trans-unit id="sections.aboutToggleShow" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{ open()
-          ? (&apos;Esconder sobre mim&apos;)
-          : (&apos;Mostrar sobre mim&apos;) }}"/> </source>
-        <target state="translated"> <x id="INTERPOLATION" equiv-text="{{ open()
-          ? (&apos;Esconder sobre mim&apos;)
-          : (&apos;Mostrar sobre mim&apos;) }}"/> </target>
+        <source>Mostrar sobre mim</source>
+        <target state="translated">Show about me</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">26,31</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.aboutToggleHide" datatype="html">
+        <source>Esconder sobre mim</source>
+        <target state="translated">Hide about me</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.scoutingTitle" datatype="html">
