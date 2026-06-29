@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pt-BR" target-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="gallery.scout.cover" datatype="html">
+        <source>Atividade escoteira em grupo</source>
+        <target state="translated">Scouting group activity</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.scout.camp" datatype="html">
+        <source>Acampamento sênior do grupo escoteiro</source>
+        <target state="translated">Senior scouting camp</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.scout.congresso1" datatype="html">
+        <source>Congresso escoteiro - registro 1</source>
+        <target state="translated">Scouting congress - record 1</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.scout.congresso2" datatype="html">
+        <source>Congresso escoteiro - registro 2</source>
+        <target state="translated">Scouting congress - record 2</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.scout.congresso3" datatype="html">
+        <source>Congresso escoteiro - registro 3</source>
+        <target state="translated">Scouting congress - record 3</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.scout.congresso4" datatype="html">
+        <source>Congresso escoteiro - registro 4</source>
+        <target state="translated">Scouting congress - record 4</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.scout.pico" datatype="html">
+        <source>Vista do Pico Caratuva</source>
+        <target state="translated">View from Pico Caratuva</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.scout.cascavel" datatype="html">
+        <source>Atividade escoteira em Cascavel</source>
+        <target state="translated">Scouting activity in Cascavel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.cover" datatype="html">
+        <source>Evento de tecnologia</source>
+        <target state="translated">Technology event</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.arthur" datatype="html">
+        <source>Palestra com Arthur Igreja</source>
+        <target state="translated">Talk with Arthur Igreja</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.conf1" datatype="html">
+        <source>Conferência de tecnologia 1</source>
+        <target state="translated">Technology conference 1</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.conf3" datatype="html">
+        <source>Conferência de tecnologia 3</source>
+        <target state="translated">Technology conference 3</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.elemar" datatype="html">
+        <source>Palestra com Elemar</source>
+        <target state="translated">Talk with Elemar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.guilherme" datatype="html">
+        <source>Palestra com Guilherme Cavalcanti</source>
+        <target state="translated">Talk with Guilherme Cavalcanti</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.juliano" datatype="html">
+        <source>Palestra com Juliano</source>
+        <target state="translated">Talk with Juliano</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.loovi" datatype="html">
+        <source>Evento Loovi</source>
+        <target state="translated">Loovi event</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.meetup" datatype="html">
+        <source>Meetup de tecnologia</source>
+        <target state="translated">Tech meetup</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.tdwSpeakers" datatype="html">
+        <source>Palestrantes do TDW</source>
+        <target state="translated">TDW speakers</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.tech.tdwPanel" datatype="html">
+        <source>Painel no TDW</source>
+        <target state="translated">Panel at TDW</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/gallery.service.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3603276136494720453" datatype="html">
+        <source>Diogo Gulhak - Portfólio</source>
+        <target state="translated">Diogo Gulhak - Portfolio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3097424482648401672" datatype="html">
+        <source>Portfólio de Diogo Arthur Gulhak - Desenvolvedor Mobile (Flutter/React Native). Projetos, skills, experiência e quem sou eu.</source>
+        <target state="translated">Portfolio of Diogo Arthur Gulhak - Mobile Developer (Flutter/React Native). Projects, skills, experience, and about me.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4244853010605365544" datatype="html">
+        <source>Flutter - React Native - Angular - NestJS</source>
+        <target state="translated">Flutter - React Native - Angular - NestJS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1355292073742251654" datatype="html">
+        <source>Sobre - Diogo Gulhak</source>
+        <target state="translated">About - Diogo Gulhak</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3278372317338368623" datatype="html">
+        <source>Skills - Diogo Gulhak</source>
+        <target state="translated">Skills - Diogo Gulhak</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1647049399324125749" datatype="html">
+        <source>Projetos - Diogo Gulhak</source>
+        <target state="translated">Projects - Diogo Gulhak</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5944819333543779264" datatype="html">
+        <source>Experiência - Diogo Gulhak</source>
+        <target state="translated">Experience - Diogo Gulhak</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="279371487292737037" datatype="html">
+        <source>Quem sou eu - Diogo Gulhak</source>
+        <target state="translated">Who I am - Diogo Gulhak</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/seo.service.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.aboutMeTitle" datatype="html">
+        <source>Quem sou eu (fora do código)</source>
+        <target state="translated">Who I am (outside code)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.aboutToggleShow" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ open()
+          ? (&apos;Esconder sobre mim&apos;)
+          : (&apos;Mostrar sobre mim&apos;) }}"/> </source>
+        <target state="translated"> <x id="INTERPOLATION" equiv-text="{{ open()
+          ? (&apos;Esconder sobre mim&apos;)
+          : (&apos;Mostrar sobre mim&apos;) }}"/> </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">26,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.scoutingTitle" datatype="html">
+        <source>Escotismo - GEAV</source>
+        <target state="translated">Scouting - GEAV</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.scoutingItem1" datatype="html">
+        <source> Faço parte do <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Grupo Escoteiro Aldeia Verde<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, em Cascavel/PR, desde <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>2016<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. O movimento escoteiro sempre foi meu ponto de equilíbrio: natureza, serviço à comunidade e trabalho em equipe. </source>
+        <target state="translated"> I have been part of <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Grupo Escoteiro Aldeia Verde<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> in Cascavel/PR since <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>2016<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. Scouting has always been my balance point: nature, community service, and teamwork. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.scoutingItem2" datatype="html">
+        <source> Conquistei a <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Insígnia de Escoteiro da Pátria<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> no ramo Sênior, que é o reconhecimento máximo dessa etapa. Sigo ativo no grupo até hoje, ajudando na organização e no apoio das atividades. </source>
+        <target state="translated"> I earned the <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Insígnia de Escoteiro da Pátria<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> in the Senior branch, the highest recognition at that stage. I am still active in the group, helping with organization and activity support. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.natureTitle" datatype="html">
+        <source>Natureza &amp; Rotina</source>
+        <target state="translated">Nature &amp; Routine</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">51,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.natureItem1" datatype="html">
+        <source> Trilhas, acampamentos e tempo ao ar livre são o meu jeito de sair da frente da tela. É onde eu recarrego as baterias depois de semanas codando e resolvendo problemas. </source>
+        <target state="translated"> Hiking, camping, and time outdoors are my way of stepping away from the screen. That is where I recharge after weeks of coding and problem solving. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.natureItem2" datatype="html">
+        <source> No dia a dia, mantenho uma rotina de treinos e leitura para segurar foco e disciplina. Tento equilibrar o lado técnico com sono em dia, movimento e um pouco de calma no meio do caos. </source>
+        <target state="translated"> In my daily life, I keep a training and reading routine to sustain focus and discipline. I try to balance technical intensity with good sleep, movement, and a bit of calm. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.coffeeTitle" datatype="html">
+        <source>Café &amp; Hobbies</source>
+        <target state="translated">Coffee &amp; Hobbies</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aboutCards.coffeeItem1" datatype="html">
+        <source> O café acabou virando bem mais do que uma bebida pra mim: é uma forma de conexão. Gosto de preparar café pra galera, trocar ideia em volta da xícara e ver como isso aproxima as pessoas. Tem muito de amor, união e até de networking aí no meio: algumas das melhores conversas e oportunidades que tive começaram com um &quot;bora tomar um café?&quot;. </source>
+        <target state="translated"> Coffee became much more than a drink for me: it is a way to connect. I enjoy making coffee for friends, talking around a cup, and seeing how it brings people together. There is love, unity, and even networking in it: some of my best conversations and opportunities started with &quot;want to grab a coffee?&quot;. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">67,68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="media.title" datatype="html">
+        <source>Alguns registros</source>
+        <target state="translated">Some moments</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">75,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="media.scoutCaption" datatype="html">
+        <source>Escotismo &amp; atividades</source>
+        <target state="translated">Scouting &amp; activities</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">86,87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="media.techCaption" datatype="html">
+        <source>Tecnologia &amp; comunidade</source>
+        <target state="translated">Technology &amp; community</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">97,98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="media.note" datatype="html">
+        <source> Clique em cada tema para ver as fotos em tela cheia. </source>
+        <target state="translated"> Click each topic to view photos fullscreen. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="section.sobre" datatype="html">
+        <source>Sobre</source>
+        <target state="translated">About</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about/about.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.p1" datatype="html">
+        <source> Desenho e publico apps em Flutter end-to-end: APIs, autenticação, cache/offline, push e CI/CD confiável (Actions/Codemagic). Experiência em whitelabel (visual e identidade por cliente) e uso de WebView quando acelera o time-to-market. Cobertura extra em Angular/React e NestJS/Node + PostgreSQL. </source>
+        <target state="translated"> I design and ship Flutter apps end-to-end: APIs, authentication, cache/offline, push notifications, and reliable CI/CD (Actions/Codemagic). I have whitelabel experience (branding and identity by client) and use WebView when it accelerates time-to-market. I also work with Angular/React and NestJS/Node + PostgreSQL. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about/about.ts</context>
+          <context context-type="linenumber">13,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.p2" datatype="html">
+        <source> Resultado esperado: produto no ar, manutenção simples e evolução contínua. Gosto de processos claros, automação e foco na experiência do usuário. </source>
+        <target state="translated"> Expected outcome: product live, easy maintenance, and continuous evolution. I value clear processes, automation, and user-focused experiences. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about/about.ts</context>
+          <context context-type="linenumber">17,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.backToTop" datatype="html">
+        <source>Voltar ao topo</source>
+        <target state="translated">Back to top</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/back-to-top/back-to-top.ts</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.title" datatype="html">
+        <source>Vamos conversar?</source>
+        <target state="translated">Let&apos;s talk?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.subtitle" datatype="html">
+        <source>Escolha o melhor canal para falar comigo.</source>
+        <target state="translated">Choose the best channel to reach me.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.whatsappLabel" datatype="html">
+        <source>WhatsApp</source>
+        <target state="translated">WhatsApp</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.whatsappSubtitle" datatype="html">
+        <source>Mensagem rápida</source>
+        <target state="translated">Quick message</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.linkedinLabel" datatype="html">
+        <source>LinkedIn</source>
+        <target state="translated">LinkedIn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.linkedinSubtitle" datatype="html">
+        <source>Conectar ou enviar mensagem</source>
+        <target state="translated">Connect or send a message</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">44,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.experienceTitle" datatype="html">
+        <source>Experiência selecionada</source>
+        <target state="translated">Selected experience</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/experience/experience.ts</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.title" datatype="html">
+        <source>Galeria</source>
+        <target state="translated">Gallery</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/gallery/gallery.ts</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.previousPhoto" datatype="html">
+        <source>Foto anterior</source>
+        <target state="translated">Previous photo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/gallery/gallery.ts</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.nextPhoto" datatype="html">
+        <source>Próxima foto</source>
+        <target state="translated">Next photo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/gallery/gallery.ts</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gallery.hint" datatype="html">
+        <source> Use as setas ou as setas do teclado para navegar pelas fotos. </source>
+        <target state="translated"> Use the arrows or keyboard arrows to browse photos. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/gallery/gallery.ts</context>
+          <context context-type="linenumber">28,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.phrase1" datatype="html">
+        <source>um desenvolvedor mobile.</source>
+        <target state="translated">a mobile developer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.phrase2" datatype="html">
+        <source>um desenvolvedor full-stack.</source>
+        <target state="translated">a full-stack developer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.phrase3" datatype="html">
+        <source>um desenvolvedor front-end.</source>
+        <target state="translated">a front-end developer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.phrase4" datatype="html">
+        <source>um developer advocate.</source>
+        <target state="translated">a developer advocate.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.photoAlt" datatype="html">
+        <source>Diogo Arthur Gulhak sorrindo; foto usada como avatar do portfólio</source>
+        <target state="translated">Diogo Arthur Gulhak smiling; profile photo used as portfolio avatar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="section.portfolio" datatype="html">
+        <source>Portfólio</source>
+        <target state="translated">Portfolio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.rolePrefix" datatype="html">
+        <source>Sou</source>
+        <target state="translated">I am</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">68,69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.bio" datatype="html">
+        <source> Construo apps em <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Flutter<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> e <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>React Native<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> com <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>arquitetura limpa<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>testes<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> e <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>CI/CD<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> estáveis para garantir <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>performance<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>acessibilidade<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> e uma <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>experiência consistente<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> para o usuário. </source>
+        <target state="translated"> I build apps with <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Flutter<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> and <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>React Native<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> using <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>clean architecture<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>tests<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, and stable <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>CI/CD<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> to ensure <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>performance<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>accessibility<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, and a <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>consistent user experience<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">73,80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.ctaGithub" datatype="html">
+        <source>Ver meus repositórios no GitHub</source>
+        <target state="translated">View my GitHub repositories</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">87,88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.ctaProjects" datatype="html">
+        <source>Explorar projetos</source>
+        <target state="translated">Explore projects</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">88,91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.socialEmail" datatype="html">
+        <source>Email</source>
+        <target state="translated">Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.socialGithub" datatype="html">
+        <source>GitHub</source>
+        <target state="translated">GitHub</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.socialLinkedin" datatype="html">
+        <source>LinkedIn</source>
+        <target state="translated">LinkedIn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="section.projects" datatype="html">
+        <source>Projetos</source>
+        <target state="translated">Projects</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="section.skills" datatype="html">
+        <source>Skills</source>
+        <target state="translated">Skills</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/skills/skills.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="skills.tablistLabel" datatype="html">
+        <source>Categorias de skills</source>
+        <target state="translated">Skill groups</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/skills/skills.ts</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.contact" datatype="html">
+        <source> Contact </source>
+        <target state="translated"> Contact </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/header/header.ts</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.themeToggle" datatype="html">
+        <source>Alternar tema</source>
+        <target state="translated">Toggle dark mode</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/ui/theme-toggle/theme-toggle.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.atlas.title" datatype="html">
+        <source>Software Engineer (Mobile Flutter) - Atlas</source>
+        <target state="translated">Software Engineer (Mobile Flutter) - Atlas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.atlas.period" datatype="html">
+        <source>(nov/2024 - atual)</source>
+        <target state="translated">(Nov/2024 - present)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.atlas.b1" datatype="html">
+        <source>Entrega e publicação de 4 apps na Play Store e App Store, do desenvolvimento à produção.</source>
+        <target state="translated">Delivery and publication of 4 apps on the Play Store and App Store, from development to production.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.atlas.b2" datatype="html">
+        <source>White label / multi-tenant para 3 clientes em uma única base de código.</source>
+        <target state="translated">White label / multi-tenant setup for 3 clients in a single codebase.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.atlas.b3" datatype="html">
+        <source>CI/CD com CodeMagic e GitHub Actions, além de arquitetura modular e integrações REST/OAuth.</source>
+        <target state="translated">CI/CD with CodeMagic and GitHub Actions, plus modular architecture and REST/OAuth integrations.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.slingui.title" datatype="html">
+        <source>Desenvolvedor Web (Angular) - Slingui</source>
+        <target state="translated">Web Developer (Angular) - Slingui</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.slingui.period" datatype="html">
+        <source>(jan/2025 - mar/2026)</source>
+        <target state="translated">(Jan/2025 - Mar/2026)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.slingui.b1" datatype="html">
+        <source>Evolução de aplicação SaaS multi-tenant com foco em onboarding, autenticação e navegação.</source>
+        <target state="translated">Evolution of a multi-tenant SaaS application focused on onboarding, authentication, and navigation.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.slingui.b2" datatype="html">
+        <source>White label dinâmico com temas, logos e design tokens escaláveis.</source>
+        <target state="translated">Dynamic white label implementation with scalable themes, logos, and design tokens.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.slingui.b3" datatype="html">
+        <source>Refatoração de componentes, melhorias de i18n, UX e estabilidade da interface.</source>
+        <target state="translated">Component refactors, i18n improvements, UX enhancements, and interface stability fixes.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.marcondes.title" datatype="html">
+        <source>Gestor de Tráfego - Marcondes Comunicação</source>
+        <target state="translated">Traffic Manager - Marcondes Comunicação</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.marcondes.period" datatype="html">
+        <source>(fev/2024 - ago/2024)</source>
+        <target state="translated">(Feb/2024 - Aug/2024)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.marcondes.b1" datatype="html">
+        <source>Google Ads &amp; Meta Ads, GA e testes A/B focados em ROI.</source>
+        <target state="translated">Google Ads &amp; Meta Ads, GA, and A/B tests focused on ROI.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.marcondes.b2" datatype="html">
+        <source>Dashboards e acompanhamento do funil de marketing.</source>
+        <target state="translated">Dashboards and marketing funnel monitoring.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.academic.title" datatype="html">
+        <source>Projetos Acadêmicos</source>
+        <target state="translated">Academic Projects</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.academic.b1" datatype="html">
+        <source>Sistema de Vendas (C#, Flutter, API Python): app mobile, estoque em tempo real e dashboard.</source>
+        <target state="translated">Sales System (C#, Flutter, Python API): mobile app, real-time inventory, and dashboard.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="xp.academic.b2" datatype="html">
+        <source>Planejamento de Sistema: requisitos, UML, protótipos e Scrum.</source>
+        <target state="translated">System Planning: requirements, UML, prototypes, and Scrum.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/experience.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.rickAndMorty.name" datatype="html">
+        <source>Rick and Morty - API</source>
+        <target state="translated">Rick and Morty - API</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.rickAndMorty.desc" datatype="html">
+        <source>Camadas Domain/Data/UI, paginação + busca, tratamento de estados e layout responsivo.</source>
+        <target state="translated">Domain/Data/UI layers, pagination + search, state handling, and responsive layout.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.sobControle.name" datatype="html">
+        <source>SobControle - App</source>
+        <target state="translated">SobControle - App</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.sobControle.desc" datatype="html">
+        <source>Auth com refresh token, Context/Reducer, consumo REST tipado e organização por módulos.</source>
+        <target state="translated">Auth with refresh token, Context/Reducer, typed REST consumption, and module-based organization.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.climaHoje.name" datatype="html">
+        <source>Seu Clima Hoje</source>
+        <target state="translated">Today&apos;s Weather</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.climaHoje.desc" datatype="html">
+        <source>Geolocalização com fallback, consumo de API com retries e UX focada em carregamento rápido.</source>
+        <target state="translated">Geolocation with fallback, API consumption with retries, and UX focused on fast loading.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.sistemaVendas.name" datatype="html">
+        <source>Sistema Vendas - CRM</source>
+        <target state="translated">Sales System - CRM</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.sistemaVendas.desc" datatype="html">
+        <source>App de vendas em Flutter integrado a dashboard em C# e middleware em Python, usando Supabase e suporte offline.</source>
+        <target state="translated">Flutter sales app integrated with a C# dashboard and Python middleware, using Supabase and offline support.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.expenses.name" datatype="html">
+        <source>Expenses - Controle de Despesas</source>
+        <target state="translated">Expenses - Expense Tracker</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.expenses.desc" datatype="html">
+        <source>Gerenciador de despesas em Flutter com modelo de transações, formulário reativo, lista dinâmica e modal para novas entradas.</source>
+        <target state="translated">Flutter expense manager with transaction model, reactive form, dynamic list, and modal for new entries.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.memorandum.name" datatype="html">
+        <source>Memorandum - Notes App</source>
+        <target state="translated">Memorandum - Notes App</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.memorandum.desc" datatype="html">
+        <source>App de notas e tarefas em Flutter (multi-plataforma), focado em organização diária de atividades e lembretes.</source>
+        <target state="translated">Flutter notes and tasks app (multi-platform), focused on daily organization of activities and reminders.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.lab.name" datatype="html">
+        <source>Lab HTML/CSS/JS</source>
+        <target state="translated">HTML/CSS/JS Lab</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.lab.desc" datatype="html">
+        <source>Laboratório de HTML, CSS e JavaScript com pequenos projetos de interface, efeitos visuais e manipulação de DOM.</source>
+        <target state="translated">HTML, CSS, and JavaScript lab with small UI projects, visual effects, and DOM manipulation.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.gocoffeeCascavel.name" datatype="html">
+        <source>GoCoffee Cascavel - Landing Page</source>
+        <target state="translated">GoCoffee Cascavel - Landing Page</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.gocoffeeCascavel.desc" datatype="html">
+        <source>Landing page em Angular com foco em UI/UX, componentizacao, layout responsivo e apresentacao de marca.</source>
+        <target state="translated">Angular landing page focused on UI/UX, component-based structure, responsive layout, and brand presentation.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.formApi.name" datatype="html">
+        <source>FormAPI</source>
+        <target state="translated">FormAPI</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.formApi.desc" datatype="html">
+        <source>App Flutter com consumo de API (GET/POST), formulario com validacao, MVVM com Riverpod, paginacao, cache local e testes.</source>
+        <target state="translated">Flutter app with API consumption (GET/POST), validated form, MVVM with Riverpod, pagination, local cache, and tests.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.postIa.name" datatype="html">
+        <source>Post.IA</source>
+        <target state="translated">Post.IA</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="proj.postIa.desc" datatype="html">
+        <source>Projeto web com Next.js para transformar briefing em posts estrategicos com apoio de IA.</source>
+        <target state="translated">Next.js web project to transform briefs into strategic posts with AI support.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/projects.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="skills.mobile.label" datatype="html">
+        <source>Mobile</source>
+        <target state="translated">Mobile</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/skills.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="skills.web.label" datatype="html">
+        <source>Web</source>
+        <target state="translated">Web</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/skills.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="skills.backend.label" datatype="html">
+        <source>Back-end &amp; DB</source>
+        <target state="translated">Back-end &amp; DB</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/skills.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="skills.devops.label" datatype="html">
+        <source>DevOps</source>
+        <target state="translated">DevOps</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/skills.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

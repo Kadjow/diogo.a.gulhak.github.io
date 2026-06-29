@@ -9,6 +9,18 @@
   "projects": {
     "portfolio": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": {
+          "code": "pt-BR",
+          "subPath": ""
+        },
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "subPath": "en"
+          }
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -47,6 +59,7 @@
           },
           "configurations": {
             "production": {
+              "localize": true,
               "budgets": [
                 {
                   "type": "initial",
