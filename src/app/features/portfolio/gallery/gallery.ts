@@ -12,8 +12,8 @@ import { GalleryService } from '../../../core/gallery.service';
       <p class="gallery-counter">{{ svc.index() + 1 }} / {{ svc.total() }}</p>
       <img class="gallery-img"
            [src]="svc.current().src"
-           [alt]="svc.current().altKey" />
-      <p class="gallery-caption">{{ svc.current().altKey }}</p>
+           [alt]="svc.current().alt" />
+      <p class="gallery-caption">{{ svc.current().alt }}</p>
       <div class="gallery-controls">
         <button type="button" class="gallery-prev"
                 (click)="svc.prev()"

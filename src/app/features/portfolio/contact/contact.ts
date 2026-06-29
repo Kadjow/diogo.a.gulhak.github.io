@@ -14,8 +14,7 @@ import { UiStateService } from '../../../core/ui-state.service';
       <ul class="contact-list">
         <li class="contact-item">
           <a href="mailto:dgulhak@gmail.com?subject=Contato%20via%20Portf%C3%B3lio"
-             class="contact-link"
-             rel="noopener">
+             class="contact-link">
             <span class="contact-icon">✉️</span>
             <div>
               <strong>dgulhak@gmail.com</strong>

@@ -5,37 +5,37 @@ export type GalleryGroup = 'scout' | 'tech';
 
 export interface GalleryImage {
   src: string;
-  altKey: string;
+  alt: string;
 }
 
 const GALLERY_DATA: Record<GalleryGroup, { titleKey: string; images: GalleryImage[] }> = {
   scout: {
     titleKey: 'gallery.groups.scout',
     images: [
-      { src: 'img/scout/cover.jpeg',          altKey: 'gallery.scout.cover'      },
-      { src: 'img/scout/acamp_senior.jpeg',   altKey: 'gallery.scout.camp'       },
-      { src: 'img/scout/congresso.jpeg',      altKey: 'gallery.scout.congresso1' },
-      { src: 'img/scout/congresso2.jpeg',     altKey: 'gallery.scout.congresso2' },
-      { src: 'img/scout/congresso3.jpeg',     altKey: 'gallery.scout.congresso3' },
-      { src: 'img/scout/congresso4.jpeg',     altKey: 'gallery.scout.congresso4' },
-      { src: 'img/scout/pico_caratuva2.jpeg', altKey: 'gallery.scout.pico'       },
-      { src: 'img/scout/vj_cm.jpeg',          altKey: 'gallery.scout.cascavel'   },
+      { src: 'img/scout/cover.jpeg',          alt: $localize`:@@gallery.scout.cover:Atividade escoteira em grupo`      },
+      { src: 'img/scout/acamp_senior.jpeg',   alt: $localize`:@@gallery.scout.camp:Acampamento sênior do grupo escoteiro`       },
+      { src: 'img/scout/congresso.jpeg',      alt: $localize`:@@gallery.scout.congresso1:Congresso escoteiro - registro 1` },
+      { src: 'img/scout/congresso2.jpeg',     alt: $localize`:@@gallery.scout.congresso2:Congresso escoteiro - registro 2` },
+      { src: 'img/scout/congresso3.jpeg',     alt: $localize`:@@gallery.scout.congresso3:Congresso escoteiro - registro 3` },
+      { src: 'img/scout/congresso4.jpeg',     alt: $localize`:@@gallery.scout.congresso4:Congresso escoteiro - registro 4` },
+      { src: 'img/scout/pico_caratuva2.jpeg', alt: $localize`:@@gallery.scout.pico:Vista do Pico Caratuva`       },
+      { src: 'img/scout/vj_cm.jpeg',          alt: $localize`:@@gallery.scout.cascavel:Atividade escoteira em Cascavel`   },
     ],
   },
   tech: {
     titleKey: 'gallery.groups.tech',
     images: [
-      { src: 'img/tech/cover.jpeg',                altKey: 'gallery.tech.cover'      },
-      { src: 'img/tech/arthur_igreja.jpeg',        altKey: 'gallery.tech.arthur'     },
-      { src: 'img/tech/conf1.jpeg',                altKey: 'gallery.tech.conf1'      },
-      { src: 'img/tech/conf3.jpeg',                altKey: 'gallery.tech.conf3'      },
-      { src: 'img/tech/elemar.jpeg',               altKey: 'gallery.tech.elemar'     },
-      { src: 'img/tech/guilherme_cavalcanti.jpeg', altKey: 'gallery.tech.guilherme'  },
-      { src: 'img/tech/juliano.jpeg',              altKey: 'gallery.tech.juliano'    },
-      { src: 'img/tech/loovi.jpeg',                altKey: 'gallery.tech.loovi'      },
-      { src: 'img/tech/meetup.jpeg',               altKey: 'gallery.tech.meetup'     },
-      { src: 'img/tech/tdw_palestrantes.jpeg',     altKey: 'gallery.tech.tdwSpeakers'},
-      { src: 'img/tech/tdw.jpeg',                  altKey: 'gallery.tech.tdwPanel'   },
+      { src: 'img/tech/cover.jpeg',                alt: $localize`:@@gallery.tech.cover:Evento de tecnologia`      },
+      { src: 'img/tech/arthur_igreja.jpeg',        alt: $localize`:@@gallery.tech.arthur:Palestra com Arthur Igreja`     },
+      { src: 'img/tech/conf1.jpeg',                alt: $localize`:@@gallery.tech.conf1:Conferência de tecnologia 1`      },
+      { src: 'img/tech/conf3.jpeg',                alt: $localize`:@@gallery.tech.conf3:Conferência de tecnologia 3`      },
+      { src: 'img/tech/elemar.jpeg',               alt: $localize`:@@gallery.tech.elemar:Palestra com Elemar`     },
+      { src: 'img/tech/guilherme_cavalcanti.jpeg', alt: $localize`:@@gallery.tech.guilherme:Palestra com Guilherme Cavalcanti`  },
+      { src: 'img/tech/juliano.jpeg',              alt: $localize`:@@gallery.tech.juliano:Palestra com Juliano`    },
+      { src: 'img/tech/loovi.jpeg',                alt: $localize`:@@gallery.tech.loovi:Evento Loovi`      },
+      { src: 'img/tech/meetup.jpeg',               alt: $localize`:@@gallery.tech.meetup:Meetup de tecnologia`     },
+      { src: 'img/tech/tdw_palestrantes.jpeg',     alt: $localize`:@@gallery.tech.tdwSpeakers:Palestrantes do TDW`},
+      { src: 'img/tech/tdw.jpeg',                  alt: $localize`:@@gallery.tech.tdwPanel:Painel no TDW`   },
     ],
   },
 };
@@ -58,7 +58,7 @@ export class GalleryService {
     const img = GALLERY_DATA[g].images[i];
     return {
       src: this.locale.assetPath(img.src),
-      altKey: img.altKey,
+      alt: img.alt,
     };
   });
 
