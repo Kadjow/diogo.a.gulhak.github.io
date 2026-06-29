@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { Hero } from './hero/hero';
 import { About } from './about/about';
 import { Skills } from './skills/skills';
@@ -27,5 +27,13 @@ export class Portfolio implements OnInit {
 
   ngOnInit(): void {
     this.seo.applyForLocale();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const anchor = (event.target as HTMLElement).closest('a[href^="#"]') as HTMLAnchorElement | null;
+    if (!anchor) return;
+    const hash = anchor.getAttribute('href');
+    if (hash) this.seo.setSectionTitle(hash);
   }
 }

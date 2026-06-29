@@ -23,7 +23,14 @@ const SEO_PT: Record<string, string> = {
   description: $localize`Portfólio de Diogo Arthur Gulhak - Desenvolvedor Mobile (Flutter/React Native). Projetos, skills, experiência e quem sou eu.`,
   ogTitle: $localize`Diogo Gulhak - Portfólio`,
   ogDescription: $localize`Flutter - React Native - Angular - NestJS`,
-  ogLocale: $localize`pt_BR`,
+};
+
+export const NAV_TITLES: Record<string, string> = {
+  '#sobre':       $localize`Sobre - Diogo Gulhak`,
+  '#skills':      $localize`Skills - Diogo Gulhak`,
+  '#projetos':    $localize`Projetos - Diogo Gulhak`,
+  '#experiencia': $localize`Experiência - Diogo Gulhak`,
+  '#sobre-mim':   $localize`Quem sou eu - Diogo Gulhak`,
 };
 
 @Injectable({ providedIn: 'root' })
@@ -40,18 +47,20 @@ export class SeoService {
 
   applyForLocale(): void {
     const seo = SEO_PT;
+    const ogLocale = this.locale.locale === 'en' ? 'en_US' : 'pt_BR';
     this.titleSvc.setTitle(seo['title']);
     this.meta.updateTag({ name: 'description', content: seo['description'] });
     this.meta.updateTag({ property: 'og:title', content: seo['ogTitle'] });
     this.meta.updateTag({ property: 'og:description', content: seo['ogDescription'] });
-    this.meta.updateTag({ property: 'og:locale', content: seo['ogLocale'] });
+    this.meta.updateTag({ property: 'og:locale', content: ogLocale });
 
     this._setCanonical();
     this._setHreflangs();
   }
 
-  setSectionTitle(section: string): void {
-    this.titleSvc.setTitle(`${section} - Diogo Gulhak`);
+  setSectionTitle(hash: string): void {
+    const title = NAV_TITLES[hash];
+    if (title) this.titleSvc.setTitle(title);
   }
 
   private _setCanonical(): void {
