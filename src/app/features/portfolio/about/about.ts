@@ -7,7 +7,7 @@ import { SectionHeading } from '../../../shared/ui/section-heading/section-headi
   imports: [SectionHeading],
   template: `
     <section class="about container" id="sobre" aria-labelledby="sobre-heading">
-      <app-section-heading number="01" title="Sobre" i18n-title="@@section.sobre" />
+      <app-section-heading number="01" title="Sobre" i18n-title="@@section.sobre" headingId="sobre-heading" />
 
       <p class="about__text" i18n="@@about.p1">
         Desenho e publico apps em Flutter end-to-end: APIs, autenticação, cache/offline, push e CI/CD confiável (Actions/Codemagic). Experiência em whitelabel (visual e identidade por cliente) e uso de WebView quando acelera o time-to-market. Cobertura extra em Angular/React e NestJS/Node + PostgreSQL.

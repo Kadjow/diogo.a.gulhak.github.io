@@ -12,6 +12,7 @@ import { SectionHeading } from '../../../shared/ui/section-heading/section-headi
         number="04"
         title="Experiência selecionada"
         i18n-title="@@sections.experienceTitle"
+        headingId="experience-heading"
       />
 
       <div class="experience__cards">

@@ -934,6 +934,102 @@
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="a11y.close" datatype="html">
+        <source>Fechar</source>
+        <target state="translated">Close</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/ui/modal/modal.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hero.sectionAria" datatype="html">
+        <source>Apresentação</source>
+        <target state="translated">Introduction</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.projectFilters" datatype="html">
+        <source>Filtros</source>
+        <target state="translated">Filters</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="projects.paginationAria" datatype="html">
+        <source>Paginação de projetos</source>
+        <target state="translated">Project pagination</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.prevProjects" datatype="html">
+        <source>Projetos anteriores</source>
+        <target state="translated">Previous projects</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.nextProjects" datatype="html">
+        <source>Próximos projetos</source>
+        <target state="translated">Next projects</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.top" datatype="html">
+        <source>Topo</source>
+        <target state="translated">Top</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/header/header.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.navMain" datatype="html">
+        <source>navegação principal</source>
+        <target state="translated">main navigation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/header/header.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.projectFilters.all" datatype="html">
+        <source>Tudo</source>
+        <target state="translated">All</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.projectFilters.flutter" datatype="html">
+        <source>Flutter</source>
+        <target state="translated">Flutter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.projectFilters.reactNative" datatype="html">
+        <source>React Native</source>
+        <target state="translated">React Native</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.projectFilters.web" datatype="html">
+        <source>Web</source>
+        <target state="translated">Web</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

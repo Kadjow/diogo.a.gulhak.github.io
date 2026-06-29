@@ -45,7 +45,7 @@ const PHRASES: string[] = [
   standalone: true,
   imports: [SectionHeading],
   template: `
-    <section class="hero container" aria-label="Apresentação">
+    <section class="hero container" aria-label="Apresentação" i18n-aria-label="@@hero.sectionAria">
       <div class="hero__photo-wrap">
         <img
           class="hero__photo"

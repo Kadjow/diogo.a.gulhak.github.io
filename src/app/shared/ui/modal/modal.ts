@@ -7,7 +7,7 @@ import { Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Out
     <div class="modal-overlay" [class.is-open]="open" [attr.aria-hidden]="!open"
          (click)="onOverlay($event)">
       <div class="modal-card" role="dialog" [attr.aria-labelledby]="labelledby">
-        <button class="modal-close" type="button" (click)="close.emit()" aria-label="Close">✕</button>
+        <button class="modal-close" type="button" (click)="close.emit()" aria-label="Fechar" i18n-aria-label="@@a11y.close">✕</button>
         <ng-content />
       </div>
     </div>`,

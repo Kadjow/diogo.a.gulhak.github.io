@@ -27,10 +27,10 @@ export function wrapPage(page: number, total: number): number {
 type FilterOption = { label: string; tech: 'all' | ProjectTech };
 
 const FILTERS: FilterOption[] = [
-  { label: 'Tudo', tech: 'all' },
-  { label: 'Flutter', tech: 'flutter' },
-  { label: 'React Native', tech: 'react-native' },
-  { label: 'Web', tech: 'web' },
+  { label: $localize`:@@sections.projectFilters.all:Tudo`, tech: 'all' },
+  { label: $localize`:@@sections.projectFilters.flutter:Flutter`, tech: 'flutter' },
+  { label: $localize`:@@sections.projectFilters.reactNative:React Native`, tech: 'react-native' },
+  { label: $localize`:@@sections.projectFilters.web:Web`, tech: 'web' },
 ];
 
 @Component({
@@ -39,10 +39,10 @@ const FILTERS: FilterOption[] = [
   imports: [SectionHeading],
   template: `
     <section class="projects container" id="projetos" aria-labelledby="projects-heading">
-      <app-section-heading number="03" title="Projetos" i18n-title="@@section.projects" />
+      <app-section-heading number="03" title="Projetos" i18n-title="@@section.projects" headingId="projects-heading" />
 
       <!-- Filter tabs -->
-      <div class="projects__filters" role="tablist" aria-label="Filtrar por tecnologia">
+      <div class="projects__filters" role="tablist" aria-label="Filtros" i18n-aria-label="@@a11y.projectFilters">
         @for (f of filters; track f.tech) {
           <button
             role="tab"
@@ -72,17 +72,19 @@ const FILTERS: FilterOption[] = [
       </div>
 
       <!-- Pagination arrows -->
-      <div class="projects__pagination" aria-label="Paginação de projetos">
+      <div class="projects__pagination" aria-label="Paginação de projetos" i18n-aria-label="@@projects.paginationAria">
         <button
           class="projects__arrow"
-          aria-label="Anterior"
+          aria-label="Projetos anteriores"
+          i18n-aria-label="@@a11y.prevProjects"
           [disabled]="totalPages() <= 1"
           (click)="prev()"
         >&#8592;</button>
         <span class="projects__page-indicator">{{ page() + 1 }} / {{ totalPages() }}</span>
         <button
           class="projects__arrow"
-          aria-label="Próximo"
+          aria-label="Próximos projetos"
+          i18n-aria-label="@@a11y.nextProjects"
           [disabled]="totalPages() <= 1"
           (click)="next()"
         >&#8594;</button>

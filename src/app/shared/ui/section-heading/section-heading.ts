@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   template: `
     <p class="snum">{{ number }} — …</p>
-    <h2>{{ title }}</h2>`,
+    <h2 [attr.id]="headingId">{{ title }}</h2>`,
   styles: [`
     .snum {
       font-size: 0.75rem;
@@ -26,4 +26,5 @@ import { Component, Input } from '@angular/core';
 export class SectionHeading {
   @Input() number = '';
   @Input() title = '';
+  @Input() headingId?: string;
 }

@@ -13,9 +13,9 @@ const SPLASH_SKIP_KEY = 'portfolio:splash:skip-once';
   template: `
     <header class="site-header">
       <div class="container header-inner">
-        <a href="/" class="brand" aria-label="Home">DAG.</a>
+        <a href="/" class="brand" aria-label="Topo" i18n-aria-label="@@a11y.top">DAG.</a>
 
-        <nav class="header-nav" aria-label="Main navigation">
+        <nav class="header-nav" aria-label="navegação principal" i18n-aria-label="@@a11y.navMain">
           <div class="lang-switch">
             <a
               [href]="locale.localePath('pt-BR')"

@@ -19,7 +19,7 @@ export function nextTabIndex(current: number, key: string, len: number): number 
   imports: [SectionHeading],
   template: `
     <section class="skills container" id="skills" aria-labelledby="skills-heading">
-      <app-section-heading number="02" title="Skills" i18n-title="@@section.skills" />
+      <app-section-heading number="02" title="Skills" i18n-title="@@section.skills" headingId="skills-heading" />
 
       <div
         class="skills__tabs"

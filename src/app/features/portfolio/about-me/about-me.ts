@@ -15,6 +15,7 @@ const STORAGE_KEY = 'about-open';
         number="05"
         title="Quem sou eu (fora do código)"
         i18n-title="@@sections.aboutMeTitle"
+        headingId="about-me-heading"
       />
 
       <button
