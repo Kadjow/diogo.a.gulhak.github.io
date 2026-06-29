@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Hero } from './hero/hero';
 import { About } from './about/about';
 import { Skills } from './skills/skills';
 import { Projects } from './projects/projects';
 import { Experience } from './experience/experience';
 import { AboutMe } from './about-me/about-me';
+import { SeoService } from '../../core/seo.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -21,4 +22,10 @@ import { AboutMe } from './about-me/about-me';
     </main>
   `,
 })
-export class Portfolio {}
+export class Portfolio implements OnInit {
+  private readonly seo = inject(SeoService);
+
+  ngOnInit(): void {
+    this.seo.applyForLocale();
+  }
+}
