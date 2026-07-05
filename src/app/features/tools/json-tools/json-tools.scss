@@ -1,0 +1,27 @@
+.field-label { display: block; font-size: 0.8125rem; color: var(--muted); margin: 12px 0 6px; }
+.field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-monospace, monospace;
+  font-size: 0.8125rem;
+  resize: vertical;
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+}
+.actions { display: flex; gap: 10px; margin: 14px 0; }
+.btn {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  &:hover { background: var(--ink); color: var(--bg); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+}
+.error { color: var(--danger); font-size: 0.875rem; }
