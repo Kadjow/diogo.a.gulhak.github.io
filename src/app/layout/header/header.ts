@@ -31,6 +31,8 @@ import { SPLASH_SKIP_KEY } from '../../core/storage-keys';
               (click)="setSplashSkip()">EN</a>
           </div>
 
+          <a class="nav-link" [href]="locale.path('tools')" i18n="@@header.tools">Tools</a>
+
           <app-theme-toggle />
 
           <button

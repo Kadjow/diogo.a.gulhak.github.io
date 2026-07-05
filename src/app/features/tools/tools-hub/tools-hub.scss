@@ -1,0 +1,39 @@
+.hub { padding: 40px 0 64px; }
+.hub-head { margin-bottom: 32px; }
+.hub-title { font-size: 2rem; letter-spacing: -0.03em; color: var(--ink); margin: 0 0 6px; }
+.hub-sub { color: var(--muted); margin: 0; }
+.hub-group { margin-bottom: 28px; }
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+  &:hover { border-color: var(--accent); transform: translateY(-2px); }
+  &.is-soon { opacity: 0.55; }
+}
+.tool-icon { font-size: 1.25rem; }
+.tool-name { font-weight: 600; }
+.tool-card-desc { font-size: 0.8125rem; color: var(--muted); }
+.tool-soon {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tool-card { transition: none; }
+  .tool-card:hover { transform: none; }
+}

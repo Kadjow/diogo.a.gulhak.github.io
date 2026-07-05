@@ -82,3 +82,11 @@
     outline-offset: 2px;
   }
 }
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  &:hover { color: var(--ink); }
+}
