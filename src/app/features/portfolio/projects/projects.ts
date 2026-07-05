@@ -1,6 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { Project, ProjectTech, PROJECTS } from '../../../../data/projects';
 import { SectionHeading } from '../../../shared/ui/section-heading/section-heading';
+import { nextTabIndex } from '../../../shared/a11y/roving-tabindex';
 
 // ---------------------------------------------------------------------------
 // Pure helpers (exported for unit tests)
@@ -24,7 +25,7 @@ export function wrapPage(page: number, total: number): number {
 // Component
 // ---------------------------------------------------------------------------
 
-type FilterOption = { label: string; tech: 'all' | ProjectTech };
+interface FilterOption { label: string; tech: 'all' | ProjectTech }
 
 const FILTERS: FilterOption[] = [
   { label: $localize`:@@sections.projectFilters.all:Tudo`, tech: 'all' },
@@ -42,7 +43,13 @@ const FILTERS: FilterOption[] = [
       <app-section-heading number="03" title="Projetos" i18n-title="@@section.projects" headingId="projects-heading" />
 
       <!-- Filter tabs -->
-      <div class="projects__filters" role="tablist" aria-label="Filtros" i18n-aria-label="@@a11y.projectFilters">
+      <div
+        class="projects__filters"
+        role="tablist"
+        aria-label="Filtros"
+        i18n-aria-label="@@a11y.projectFilters"
+        (keydown)="onKeydown($event)"
+      >
         @for (f of filters; track f.tech) {
           <button
             role="tab"
@@ -50,6 +57,8 @@ const FILTERS: FilterOption[] = [
             [class.projects__filter--active]="activeTech() === f.tech"
             [attr.aria-selected]="activeTech() === f.tech"
             [attr.data-tech]="f.tech"
+            [attr.id]="'filter-' + f.tech"
+            [tabindex]="activeTech() === f.tech ? 0 : -1"
             (click)="setFilter(f.tech)"
           >{{ f.label }}</button>
         }
@@ -109,6 +118,19 @@ export class Projects {
   setFilter(tech: 'all' | ProjectTech): void {
     this.activeTech.set(tech);
     this.page.set(0);
+  }
+
+  onKeydown(event: KeyboardEvent): void {
+    const currentIndex = this.filters.findIndex(f => f.tech === this.activeTech());
+    const next = nextTabIndex(currentIndex, event.key, this.filters.length);
+    if (next !== currentIndex) {
+      event.preventDefault();
+      const tech = this.filters[next].tech;
+      this.setFilter(tech);
+      if (typeof document !== 'undefined') {
+        document.getElementById('filter-' + tech)?.focus();
+      }
+    }
   }
 
   next(): void {

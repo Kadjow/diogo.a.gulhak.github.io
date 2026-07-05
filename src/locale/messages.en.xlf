@@ -942,6 +942,46 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="a11y.contactEmail" datatype="html">
+        <source>Enviar e-mail para dgulhak@gmail.com</source>
+        <target state="translated">Send an email to dgulhak@gmail.com</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.contactWhatsapp" datatype="html">
+        <source>Abrir conversa no WhatsApp</source>
+        <target state="translated">Open WhatsApp chat</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.contactLinkedin" datatype="html">
+        <source>Abrir perfil no LinkedIn</source>
+        <target state="translated">Open LinkedIn profile</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.openGalleryScout" datatype="html">
+        <source>Abrir galeria: Escotismo &amp; atividades</source>
+        <target state="translated">Open gallery: Scouting &amp; activities</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">80,81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.openGalleryTech" datatype="html">
+        <source>Abrir galeria: Tecnologia &amp; comunidade</source>
+        <target state="translated">Open gallery: Technology &amp; community</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">93,94</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="hero.sectionAria" datatype="html">
         <source>Apresentação</source>
         <target state="translated">Introduction</target>

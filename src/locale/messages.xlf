@@ -202,81 +202,74 @@
           <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="sections.aboutToggleShow" datatype="html">
-        <source>Mostrar sobre mim</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">114</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="sections.aboutToggleHide" datatype="html">
-        <source>Esconder sobre mim</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">115</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="aboutCards.scoutingTitle" datatype="html">
         <source>Escotismo - GEAV</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="linenumber">36,37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.scoutingItem1" datatype="html">
         <source> Faço parte do <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Grupo Escoteiro Aldeia Verde<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, em Cascavel/PR, desde <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>2016<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. O movimento escoteiro sempre foi meu ponto de equilíbrio: natureza, serviço à comunidade e trabalho em equipe. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">41,42</context>
+          <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.scoutingItem2" datatype="html">
         <source> Conquistei a <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Insígnia de Escoteiro da Pátria<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> no ramo Sênior, que é o reconhecimento máximo dessa etapa. Sigo ativo no grupo até hoje, ajudando na organização e no apoio das atividades. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">44,45</context>
+          <context context-type="linenumber">42,43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.natureTitle" datatype="html">
         <source>Natureza &amp; Rotina</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">51,52</context>
+          <context context-type="linenumber">49,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.natureItem1" datatype="html">
         <source> Trilhas, acampamentos e tempo ao ar livre são o meu jeito de sair da frente da tela. É onde eu recarrego as baterias depois de semanas codando e resolvendo problemas. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">54,55</context>
+          <context context-type="linenumber">52,53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.natureItem2" datatype="html">
         <source> No dia a dia, mantenho uma rotina de treinos e leitura para segurar foco e disciplina. Tento equilibrar o lado técnico com sono em dia, movimento e um pouco de calma no meio do caos. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">55,56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.coffeeTitle" datatype="html">
         <source>Café &amp; Hobbies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">64,65</context>
+          <context context-type="linenumber">62,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="aboutCards.coffeeItem1" datatype="html">
         <source> O café acabou virando bem mais do que uma bebida pra mim: é uma forma de conexão. Gosto de preparar café pra galera, trocar ideia em volta da xícara e ver como isso aproxima as pessoas. Tem muito de amor, união e até de networking aí no meio: algumas das melhores conversas e oportunidades que tive começaram com um &quot;bora tomar um café?&quot;. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">67,68</context>
+          <context context-type="linenumber">65,66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="media.title" datatype="html">
         <source>Alguns registros</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">75,76</context>
+          <context context-type="linenumber">73,74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.openGalleryScout" datatype="html">
+        <source>Abrir galeria: Escotismo &amp; atividades</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">80,81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="media.scoutCaption" datatype="html">
@@ -286,18 +279,39 @@
           <context context-type="linenumber">86,87</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="a11y.openGalleryTech" datatype="html">
+        <source>Abrir galeria: Tecnologia &amp; comunidade</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">93,94</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="media.techCaption" datatype="html">
         <source>Tecnologia &amp; comunidade</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">97,98</context>
+          <context context-type="linenumber">99,100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="media.note" datatype="html">
         <source> Clique em cada tema para ver as fotos em tela cheia. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
-          <context context-type="linenumber">101,102</context>
+          <context context-type="linenumber">103,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.aboutToggleShow" datatype="html">
+        <source>Mostrar sobre mim</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.aboutToggleHide" datatype="html">
+        <source>Esconder sobre mim</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/about-me/about-me.ts</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="section.sobre" datatype="html">
@@ -342,32 +356,53 @@
           <context context-type="linenumber">12,14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="a11y.contactEmail" datatype="html">
+        <source>Enviar e-mail para dgulhak@gmail.com</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.contactWhatsapp" datatype="html">
+        <source>Abrir conversa no WhatsApp</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="contact.whatsappLabel" datatype="html">
         <source>WhatsApp</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
-          <context context-type="linenumber">31,32</context>
+          <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="contact.whatsappSubtitle" datatype="html">
         <source>Mensagem rápida</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
-          <context context-type="linenumber">32,34</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.contactLinkedin" datatype="html">
+        <source>Abrir perfil no LinkedIn</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
+          <context context-type="linenumber">45,46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="contact.linkedinLabel" datatype="html">
         <source>LinkedIn</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
-          <context context-type="linenumber">43,44</context>
+          <context context-type="linenumber">49,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="contact.linkedinSubtitle" datatype="html">
         <source>Conectar ou enviar mensagem</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/contact/contact.ts</context>
-          <context context-type="linenumber">44,46</context>
+          <context context-type="linenumber">50,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sections.experienceTitle" datatype="html">
@@ -433,6 +468,13 @@
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="hero.sectionAria" datatype="html">
+        <source>Apresentação</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/hero/hero.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="hero.photoAlt" datatype="html">
         <source>Diogo Arthur Gulhak sorrindo; foto usada como avatar do portfólio</source>
         <context-group purpose="location">
@@ -496,32 +538,109 @@
           <context context-type="linenumber">106</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="sections.projectFilters.all" datatype="html">
+        <source>Tudo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.projectFilters.flutter" datatype="html">
+        <source>Flutter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.projectFilters.reactNative" datatype="html">
+        <source>React Native</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sections.projectFilters.web" datatype="html">
+        <source>Web</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="section.projects" datatype="html">
         <source>Projetos</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.projectFilters" datatype="html">
+        <source>Filtros</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="projects.paginationAria" datatype="html">
+        <source>Paginação de projetos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.prevProjects" datatype="html">
+        <source>Projetos anteriores</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">87,88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.nextProjects" datatype="html">
+        <source>Próximos projetos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/portfolio/projects/projects.ts</context>
+          <context context-type="linenumber">95,96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="section.skills" datatype="html">
         <source>Skills</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/skills/skills.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="skills.tablistLabel" datatype="html">
         <source>Categorias de skills</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/portfolio/skills/skills.ts</context>
-          <context context-type="linenumber">27,28</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.top" datatype="html">
+        <source>Topo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/header/header.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.navMain" datatype="html">
+        <source>navegação principal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/header/header.ts</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.contact" datatype="html">
         <source> Contact </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/header/header.ts</context>
-          <context context-type="linenumber">42,43</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a11y.close" datatype="html">
+        <source>Fechar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/ui/modal/modal.ts</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a11y.themeToggle" datatype="html">

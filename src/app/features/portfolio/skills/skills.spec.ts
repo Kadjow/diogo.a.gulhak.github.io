@@ -1,4 +1,4 @@
-import { nextTabIndex } from './skills';
+import { nextTabIndex } from '../../../shared/a11y/roving-tabindex';
 
 describe('nextTabIndex', () => {
   it('wraps right', () => expect(nextTabIndex(3, 'ArrowRight', 4)).toBe(0));

@@ -1,8 +1,7 @@
-import { Component, OnInit, inject, signal, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { StorageService } from '../../core/storage.service';
-
-const SKIP_KEY = 'portfolio:splash:skip-once';
+import { SPLASH_SKIP_KEY } from '../../core/storage-keys';
 
 @Component({
   selector: 'app-splash',
@@ -16,18 +15,19 @@ const SKIP_KEY = 'portfolio:splash:skip-once';
   `,
   styleUrl: './splash.scss',
 })
-export class Splash implements OnInit {
+export class Splash implements OnInit, OnDestroy {
   private storage = inject(StorageService);
   private platformId = inject(PLATFORM_ID);
 
   visible = signal(false);
+  private hideTimer: ReturnType<typeof setTimeout> | null = null;
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
     // Skip-once: flag set by locale switch
-    if (this.storage.getSession(SKIP_KEY)) {
-      this.storage.removeSession(SKIP_KEY);
+    if (this.storage.getSession(SPLASH_SKIP_KEY)) {
+      this.storage.removeSession(SPLASH_SKIP_KEY);
       this.visible.set(false);
       return;
     }
@@ -42,6 +42,13 @@ export class Splash implements OnInit {
 
     // Normal flow: show then hide after ~900ms
     this.visible.set(true);
-    setTimeout(() => this.visible.set(false), 900);
+    this.hideTimer = setTimeout(() => this.visible.set(false), 900);
+  }
+
+  ngOnDestroy(): void {
+    if (this.hideTimer !== null) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
   }
 }

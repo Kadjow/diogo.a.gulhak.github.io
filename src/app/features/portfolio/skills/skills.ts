@@ -1,17 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { SKILL_GROUPS } from '../../../../data/skills';
 import { SectionHeading } from '../../../shared/ui/section-heading/section-heading';
-
-/** Pure keyboard-navigation helper for roving tabindex. */
-export function nextTabIndex(current: number, key: string, len: number): number {
-  switch (key) {
-    case 'ArrowRight': return (current + 1) % len;
-    case 'ArrowLeft':  return (current - 1 + len) % len;
-    case 'Home':       return 0;
-    case 'End':        return len - 1;
-    default:           return current;
-  }
-}
+import { nextTabIndex } from '../../../shared/a11y/roving-tabindex';
 
 @Component({
   selector: 'app-skills',
@@ -80,8 +70,10 @@ export class Skills {
       event.preventDefault();
       this.selectTab(this.groups[next].id);
       // Move focus to the newly active tab button
-      const tabEl = document.getElementById('tab-' + this.groups[next].id);
-      tabEl?.focus();
+      if (typeof document !== 'undefined') {
+        const tabEl = document.getElementById('tab-' + this.groups[next].id);
+        tabEl?.focus();
+      }
     }
   }
 }

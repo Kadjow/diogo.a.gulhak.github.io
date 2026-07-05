@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ThemeService } from './theme.service';
+import { ThemeService, isTheme } from './theme.service';
 import { StorageService } from './storage.service';
 
 describe('ThemeService', () => {
@@ -30,5 +30,23 @@ describe('ThemeService', () => {
     localStorage.setItem('theme','dark');
     svc.init();
     expect(svc.theme()).toBe('dark');
+  });
+  it('ignores a corrupted stored value and falls back to a valid theme', () => {
+    localStorage.setItem('theme','banana');
+    svc.init();
+    expect(['light','dark']).toContain(svc.theme());
+  });
+
+  describe('isTheme', () => {
+    it('accepts valid themes', () => {
+      expect(isTheme('light')).toBe(true);
+      expect(isTheme('dark')).toBe(true);
+    });
+    it('rejects invalid values', () => {
+      expect(isTheme('banana')).toBe(false);
+      expect(isTheme(null)).toBe(false);
+      expect(isTheme(undefined)).toBe(false);
+      expect(isTheme(1)).toBe(false);
+    });
   });
 });

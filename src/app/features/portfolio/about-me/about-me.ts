@@ -77,6 +77,8 @@ const STORAGE_KEY = 'about-open';
                 class="about-me__figure"
                 role="button"
                 tabindex="0"
+                aria-label="Abrir galeria: Escotismo &amp; atividades"
+                i18n-aria-label="@@a11y.openGalleryScout"
                 (click)="gallery.open('scout')"
                 (keydown)="onFigureKey($event, 'scout')"
               >
@@ -88,6 +90,8 @@ const STORAGE_KEY = 'about-open';
                 class="about-me__figure"
                 role="button"
                 tabindex="0"
+                aria-label="Abrir galeria: Tecnologia &amp; comunidade"
+                i18n-aria-label="@@a11y.openGalleryTech"
                 (click)="gallery.open('tech')"
                 (keydown)="onFigureKey($event, 'tech')"
               >

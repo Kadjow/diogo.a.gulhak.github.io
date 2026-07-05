@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { Splash } from './splash';
-import { StorageService } from '../../core/storage.service';
 
 describe('Splash', () => {
   beforeEach(() => sessionStorage.clear());

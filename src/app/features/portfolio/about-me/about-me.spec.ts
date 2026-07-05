@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { AboutMe } from './about-me';
-import { StorageService } from '../../../core/storage.service';
 
 describe('AboutMe persistence', () => {
   beforeEach(() => localStorage.clear());

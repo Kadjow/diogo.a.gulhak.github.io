@@ -4,6 +4,10 @@ import { StorageService } from './storage.service';
 type Theme = 'light' | 'dark';
 const KEY = 'theme';
 
+export function isTheme(value: unknown): value is Theme {
+  return value === 'light' || value === 'dark';
+}
+
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private storage = inject(StorageService);
@@ -11,10 +15,10 @@ export class ThemeService {
   readonly theme = this._theme.asReadonly();
 
   init(): void {
-    const stored = this.storage.getLocal(KEY) as Theme | null;
+    const stored = this.storage.getLocal(KEY);
     const prefersDark = typeof window !== 'undefined'
       && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-    const theme: Theme = stored ?? (prefersDark ? 'dark' : 'light');
+    const theme: Theme = isTheme(stored) ? stored : (prefersDark ? 'dark' : 'light');
     this.apply(theme);
   }
 
