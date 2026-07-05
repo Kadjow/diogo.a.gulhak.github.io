@@ -1,0 +1,24 @@
+.tool-shell {
+  padding: 32px 0 64px;
+}
+.tool-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  &:hover { color: var(--accent); }
+}
+.tool-title {
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.tool-desc {
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+.tool-body {
+  display: block;
+}
