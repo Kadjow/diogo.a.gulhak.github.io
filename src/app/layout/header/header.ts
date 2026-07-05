@@ -3,8 +3,7 @@ import { ThemeToggle } from '../../shared/ui/theme-toggle/theme-toggle';
 import { LocaleService } from '../../core/locale.service';
 import { UiStateService } from '../../core/ui-state.service';
 import { StorageService } from '../../core/storage.service';
-
-const SPLASH_SKIP_KEY = 'portfolio:splash:skip-once';
+import { SPLASH_SKIP_KEY } from '../../core/storage-keys';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +12,7 @@ const SPLASH_SKIP_KEY = 'portfolio:splash:skip-once';
   template: `
     <header class="site-header">
       <div class="container header-inner">
-        <a href="/" class="brand" aria-label="Topo" i18n-aria-label="@@a11y.top">DAG.</a>
+        <a [href]="locale.localePath('pt-BR')" class="brand" aria-label="Topo" i18n-aria-label="@@a11y.top">DAG.</a>
 
         <nav class="header-nav" aria-label="navegação principal" i18n-aria-label="@@a11y.navMain">
           <div class="lang-switch">

@@ -8,13 +8,15 @@ export interface HreflangEntry {
   href: string;
 }
 
-const DEFAULT_ORIGIN = 'https://diogo.a.gulhak.github.io';
+const DEFAULT_ORIGIN = 'https://kadjow.github.io';
 
-export function buildHreflangs(origin: string): HreflangEntry[] {
+/** `rootUrl` is the absolute, locale-agnostic site root, e.g. `https://host/sub/`. */
+export function buildHreflangs(rootUrl: string): HreflangEntry[] {
+  const root = rootUrl.endsWith('/') ? rootUrl : `${rootUrl}/`;
   return [
-    { rel: 'alternate', hreflang: 'pt-BR', href: `${origin}/` },
-    { rel: 'alternate', hreflang: 'en', href: `${origin}/en/` },
-    { rel: 'alternate', hreflang: 'x-default', href: `${origin}/` },
+    { rel: 'alternate', hreflang: 'pt-BR', href: root },
+    { rel: 'alternate', hreflang: 'en', href: `${root}en/` },
+    { rel: 'alternate', hreflang: 'x-default', href: root },
   ];
 }
 
@@ -48,11 +50,20 @@ export class SeoService {
   applyForLocale(): void {
     const seo = SEO_PT;
     const ogLocale = this.locale.locale === 'en' ? 'en_US' : 'pt_BR';
+    const url = `${this.origin}${this.locale.localePath(this.locale.locale)}`;
+    const image = `${this.origin}${this.locale.assetPath('img/ft_perfil.jpg')}`;
     this.titleSvc.setTitle(seo['title']);
     this.meta.updateTag({ name: 'description', content: seo['description'] });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:title', content: seo['ogTitle'] });
     this.meta.updateTag({ property: 'og:description', content: seo['ogDescription'] });
     this.meta.updateTag({ property: 'og:locale', content: ogLocale });
+    this.meta.updateTag({ property: 'og:url', content: url });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: seo['ogTitle'] });
+    this.meta.updateTag({ name: 'twitter:description', content: seo['ogDescription'] });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
 
     this._setCanonical();
     this._setHreflangs();
@@ -78,7 +89,8 @@ export class SeoService {
   private _setHreflangs(): void {
     // Remove existing hreflang links
     this.doc.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
-    const entries = buildHreflangs(this.origin);
+    const rootUrl = `${this.origin}${this.locale.localePath('pt-BR')}`;
+    const entries = buildHreflangs(rootUrl);
     entries.forEach(entry => {
       const link = this.doc.createElement('link');
       link.setAttribute('rel', 'alternate');

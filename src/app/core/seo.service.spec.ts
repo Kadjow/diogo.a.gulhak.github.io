@@ -6,10 +6,15 @@ import { LocaleService } from './locale.service';
 
 describe('buildHreflangs', () => {
   it('builds pt, en and x-default', () => {
-    const h = buildHreflangs('https://diogo.a.gulhak.github.io');
+    const h = buildHreflangs('https://kadjow.github.io/diogo.a.gulhak.github.io/');
     const langs = h.map(x => x.hreflang).sort();
     expect(langs).toEqual(['en', 'pt-BR', 'x-default']);
-    expect(h.find(x => x.hreflang === 'en')!.href).toContain('/en/');
+    expect(h.find(x => x.hreflang === 'pt-BR')!.href).toBe(
+      'https://kadjow.github.io/diogo.a.gulhak.github.io/',
+    );
+    expect(h.find(x => x.hreflang === 'en')!.href).toBe(
+      'https://kadjow.github.io/diogo.a.gulhak.github.io/en/',
+    );
   });
 });
 
@@ -36,7 +41,7 @@ describe('SeoService.setSectionTitle', () => {
         LocaleService,
         { provide: LOCALE_ID, useValue: 'pt-BR' },
         { provide: Title, useValue: { setTitle: (t: string) => { lastTitle = t; } } },
-        { provide: Meta, useValue: { updateTag: () => {} } },
+        { provide: Meta, useValue: { updateTag: () => undefined } },
       ],
     });
     svc = TestBed.inject(SeoService);
