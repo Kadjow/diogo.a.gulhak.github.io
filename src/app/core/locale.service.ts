@@ -41,4 +41,7 @@ export class LocaleService {
   assetPath(rel: string): string {
     return `${this.root}${rel.replace(/^\/+/, '')}`;
   }
+  path(rel: string): string {
+    return `${this.localePath(this.locale)}${rel.replace(/^\/+/, '')}`;
+  }
 }

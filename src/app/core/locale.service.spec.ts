@@ -48,3 +48,19 @@ describe('deployRootFromBase', () => {
     expect(deployRootFromBase('/sub')).toBe('/sub/');
   });
 });
+
+describe('LocaleService.path', () => {
+  it('prefixes rel with the current-locale root (pt-BR)', () => {
+    const s = make('pt-BR');
+    expect(s.path('tools')).toBe('/tools');
+    expect(s.path('tools/hash')).toBe('/tools/hash');
+  });
+  it('prefixes rel with the en root', () => {
+    const s = make('en-US');
+    expect(s.path('tools')).toBe('/en/tools');
+  });
+  it('strips a leading slash on rel', () => {
+    const s = make('pt-BR');
+    expect(s.path('/tools')).toBe('/tools');
+  });
+});
