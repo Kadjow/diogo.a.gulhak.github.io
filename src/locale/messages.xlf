@@ -139,60 +139,60 @@
         <source>Diogo Gulhak - Portfólio</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3097424482648401672" datatype="html">
         <source>Portfólio de Diogo Arthur Gulhak - Desenvolvedor Mobile (Flutter/React Native). Projetos, skills, experiência e quem sou eu.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4244853010605365544" datatype="html">
         <source>Flutter - React Native - Angular - NestJS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1355292073742251654" datatype="html">
         <source>Sobre - Diogo Gulhak</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3278372317338368623" datatype="html">
         <source>Skills - Diogo Gulhak</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1647049399324125749" datatype="html">
         <source>Projetos - Diogo Gulhak</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5944819333543779264" datatype="html">
         <source>Experiência - Diogo Gulhak</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="279371487292737037" datatype="html">
         <source>Quem sou eu - Diogo Gulhak</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/seo.service.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sections.aboutMeTitle" datatype="html">
@@ -615,6 +615,191 @@
           <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="tools.hash.inputLabel" datatype="html">
+        <source>Texto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/hash/hash.ts</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.hash.name" datatype="html">
+        <source>Gerador de Hash</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/hash/hash.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.hash.desc" datatype="html">
+        <source>SHA-1, SHA-256, SHA-384 e SHA-512 de um texto.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/hash/hash.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.hash.placeholder" datatype="html">
+        <source>Digite o texto…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/hash/hash.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.render.modeMd" datatype="html">
+        <source>Markdown</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">19,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.render.modeHtml" datatype="html">
+        <source>HTML</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">25,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.html-markdown-render.name" datatype="html">
+        <source>Render HTML/Markdown</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.html-markdown-render.desc" datatype="html">
+        <source>Edite HTML ou Markdown e veja o preview ao vivo.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.render.placeholder" datatype="html">
+        <source>Escreva aqui…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.render.modeGroup" datatype="html">
+        <source>Modo de renderização</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.render.editor" datatype="html">
+        <source>Editor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.render.preview" datatype="html">
+        <source>Pré-visualização</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.inputLabel" datatype="html">
+        <source>Entrada</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.format" datatype="html">
+        <source>Formatar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.minify" datatype="html">
+        <source>Minificar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">23,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.outputLabel" datatype="html">
+        <source>Saída</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.name" datatype="html">
+        <source>Ferramentas JSON</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.desc" datatype="html">
+        <source>Formatar, minificar e validar JSON.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.placeholder" datatype="html">
+        <source>Cole seu JSON aqui…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.errorPrefix" datatype="html">
+        <source>JSON inválido:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.hub.title" datatype="html">
+        <source>Ferramentas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/tools-hub/tools-hub.ts</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.hub.sub" datatype="html">
+        <source>Utilitários do dia a dia, direto no navegador.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/tools-hub/tools-hub.ts</context>
+          <context context-type="linenumber">12,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.hub.soon" datatype="html">
+        <source>em breve</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/tools-hub/tools-hub.ts</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="a11y.top" datatype="html">
         <source>Topo</source>
         <context-group purpose="location">
@@ -629,11 +814,18 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="header.tools" datatype="html">
+        <source>Tools</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/header/header.ts</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="header.contact" datatype="html">
         <source> Contact </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/header/header.ts</context>
-          <context context-type="linenumber">41,42</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a11y.close" datatype="html">
@@ -648,6 +840,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/ui/theme-toggle/theme-toggle.ts</context>
           <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.shell.back" datatype="html">
+        <source>← Tools</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/ui/tool-shell/tool-shell.ts</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="xp.atlas.title" datatype="html">
@@ -935,6 +1134,34 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/data/skills.ts</context>
           <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.image-converter.name" datatype="html">
+        <source>Conversor de Imagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.image-converter.desc" datatype="html">
+        <source>Converte para AVIF, WebP, PNG e JPG no navegador.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.color-tools.name" datatype="html">
+        <source>Ferramentas de Cor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.color-tools.desc" datatype="html">
+        <source>Contraste WCAG, paletas e conversão de formatos.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
     </body>
