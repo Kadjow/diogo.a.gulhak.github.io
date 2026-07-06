@@ -1,0 +1,36 @@
+.console {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  min-height: 120px;
+  max-height: 220px;
+}
+.console-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.console-title { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+.console-clear {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  &:hover { color: var(--ink); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+}
+.console-body {
+  overflow-y: auto;
+  padding: 6px 10px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+}
+.console-line { white-space: pre-wrap; word-break: break-word; padding: 1px 0; color: var(--ink); }
+.console-line.lvl-warn { color: var(--warn); }
+.console-line.lvl-error { color: var(--danger); }
+.console-empty { color: var(--muted); font-style: italic; }
