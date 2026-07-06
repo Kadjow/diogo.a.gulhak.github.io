@@ -742,77 +742,89 @@
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.render.modeMd" datatype="html">
-        <source>Markdown</source>
-        <target state="translated">Markdown</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">19,21</context>
-        </context-group>
+      <trans-unit id="tools.playground.name" datatype="html">
+        <source>Playground HTML/CSS/JS</source>
+        <target state="translated">HTML/CSS/JS Playground</target>
       </trans-unit>
-      <trans-unit id="tools.render.modeHtml" datatype="html">
-        <source>HTML</source>
-        <target state="translated">HTML</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">25,28</context>
-        </context-group>
+      <trans-unit id="tools.playground.desc" datatype="html">
+        <source>Editor ao vivo de HTML, CSS e JS com preview e console.</source>
+        <target state="translated">Live HTML, CSS and JS editor with preview and console.</target>
       </trans-unit>
-      <trans-unit id="tools.html-markdown-render.name" datatype="html">
-        <source>Render HTML/Markdown</source>
-        <target state="translated">HTML/Markdown Render</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">48</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/data/tools.ts</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
+      <trans-unit id="tools.playground.tabs" datatype="html">
+        <source>Editores</source>
+        <target state="translated">Editors</target>
       </trans-unit>
-      <trans-unit id="tools.html-markdown-render.desc" datatype="html">
-        <source>Edite HTML ou Markdown e veja o preview ao vivo.</source>
-        <target state="translated">Edit HTML or Markdown and see the live preview.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/data/tools.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
+      <trans-unit id="tools.playground.viewport" datatype="html">
+        <source>Tamanho da tela</source>
+        <target state="translated">Screen size</target>
       </trans-unit>
-      <trans-unit id="tools.render.placeholder" datatype="html">
-        <source>Escreva aqui…</source>
-        <target state="translated">Write here…</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
+      <trans-unit id="tools.playground.desktop" datatype="html">
+        <source>Desktop</source>
+        <target state="translated">Desktop</target>
       </trans-unit>
-      <trans-unit id="tools.render.modeGroup" datatype="html">
-        <source>Modo de renderização</source>
-        <target state="translated">Render mode</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
+      <trans-unit id="tools.playground.tablet" datatype="html">
+        <source>Tablet</source>
+        <target state="translated">Tablet</target>
       </trans-unit>
-      <trans-unit id="tools.render.editor" datatype="html">
-        <source>Editor</source>
-        <target state="translated">Editor</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">52</context>
-        </context-group>
+      <trans-unit id="tools.playground.mobile" datatype="html">
+        <source>Mobile</source>
+        <target state="translated">Mobile</target>
       </trans-unit>
-      <trans-unit id="tools.render.preview" datatype="html">
+      <trans-unit id="tools.playground.preview" datatype="html">
         <source>Pré-visualização</source>
         <target state="translated">Preview</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/tools/html-markdown-render/html-markdown-render.ts</context>
-          <context context-type="linenumber">53</context>
-        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.run" datatype="html">
+        <source>Run</source>
+        <target state="translated">Run</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.stop" datatype="html">
+        <source>Stop</source>
+        <target state="translated">Stop</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.auto" datatype="html">
+        <source>Auto</source>
+        <target state="translated">Auto</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.export" datatype="html">
+        <source>Export</source>
+        <target state="translated">Export</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.reset" datatype="html">
+        <source>Reset</source>
+        <target state="translated">Reset</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.console" datatype="html">
+        <source>Console</source>
+        <target state="translated">Console</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.clear" datatype="html">
+        <source>limpar</source>
+        <target state="translated">clear</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.consoleEmpty" datatype="html">
+        <source>Sem saída ainda.</source>
+        <target state="translated">No output yet.</target>
+      </trans-unit>
+      <trans-unit id="tools.markdown-preview.name" datatype="html">
+        <source>Markdown Preview</source>
+        <target state="translated">Markdown Preview</target>
+      </trans-unit>
+      <trans-unit id="tools.markdown-preview.desc" datatype="html">
+        <source>Escreva Markdown e veja o preview ao vivo.</source>
+        <target state="translated">Write Markdown and see the live preview.</target>
+      </trans-unit>
+      <trans-unit id="tools.markdown-preview.placeholder" datatype="html">
+        <source>Escreva Markdown…</source>
+        <target state="translated">Write Markdown…</target>
+      </trans-unit>
+      <trans-unit id="tools.markdown-preview.editor" datatype="html">
+        <source>Editor</source>
+        <target state="translated">Editor</target>
+      </trans-unit>
+      <trans-unit id="tools.markdown-preview.preview" datatype="html">
+        <source>Pré-visualização</source>
+        <target state="translated">Preview</target>
       </trans-unit>
       <trans-unit id="tools.json-tools.inputLabel" datatype="html">
         <source>Entrada</source>
