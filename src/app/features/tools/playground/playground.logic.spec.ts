@@ -43,7 +43,7 @@ describe('formatConsoleArg', () => {
     expect(() => formatConsoleArg(o)).not.toThrow();
   });
   it('formats functions', () => {
-    expect(formatConsoleArg(function foo() {})).toBe('ƒ foo()');
+    expect(formatConsoleArg(function foo() { return undefined; })).toBe('ƒ foo()');
   });
 });
 
