@@ -11,8 +11,12 @@ export const routes: Routes = [
     loadComponent: () => import('./features/tools/json-tools/json-tools').then(m => m.JsonTools),
   },
   {
-    path: 'tools/html-markdown-render',
+    path: 'tools/playground',
+    loadComponent: () => import('./features/tools/playground/playground').then(m => m.Playground),
+  },
+  {
+    path: 'tools/markdown-preview',
     loadComponent: () =>
-      import('./features/tools/html-markdown-render/html-markdown-render').then(m => m.HtmlMarkdownRender),
+      import('./features/tools/markdown-preview/markdown-preview').then(m => m.MarkdownPreview),
   },
 ];

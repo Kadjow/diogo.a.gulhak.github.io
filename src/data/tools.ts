@@ -14,9 +14,15 @@ const GROUP_ORDER: ToolGroup[] = ['dev', 'media', 'text'];
 
 export const TOOLS: readonly ToolMeta[] = [
   {
-    slug: 'html-markdown-render',
-    name: $localize`:@@tools.html-markdown-render.name:Render HTML/Markdown`,
-    description: $localize`:@@tools.html-markdown-render.desc:Edite HTML ou Markdown e veja o preview ao vivo.`,
+    slug: 'playground',
+    name: $localize`:@@tools.playground.name:Playground HTML/CSS/JS`,
+    description: $localize`:@@tools.playground.desc:Editor ao vivo de HTML, CSS e JS com preview e console.`,
+    group: 'dev', icon: '</>', status: 'live',
+  },
+  {
+    slug: 'markdown-preview',
+    name: $localize`:@@tools.markdown-preview.name:Markdown Preview`,
+    description: $localize`:@@tools.markdown-preview.desc:Escreva Markdown e veja o preview ao vivo.`,
     group: 'dev', icon: '📝', status: 'live',
   },
   {

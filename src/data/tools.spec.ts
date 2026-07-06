@@ -10,9 +10,9 @@ describe('TOOLS catalog', () => {
       expect(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(t.slug)).toBe(true);
     }
   });
-  it('marks the three MVP tools live, rest soon', () => {
+  it('marks the live tools', () => {
     const live = TOOLS.filter(t => t.status === 'live').map(t => t.slug).sort();
-    expect(live).toEqual(['hash', 'html-markdown-render', 'json-tools']);
+    expect(live).toEqual(['hash', 'json-tools', 'markdown-preview', 'playground']);
   });
 });
 
