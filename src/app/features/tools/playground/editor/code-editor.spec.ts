@@ -24,4 +24,15 @@ describe('CodeEditor (fallback path on server)', () => {
     fixture.componentInstance.onFallback('hello');
     expect(emitted).toBe('hello');
   });
+  it('emits run on Ctrl+Enter from the fallback textarea, not on plain Enter', () => {
+    const fixture = make();
+    let ran = 0;
+    fixture.componentInstance.run.subscribe(() => (ran += 1));
+    fixture.componentInstance.onFallbackKeydown(
+      new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true }),
+    );
+    expect(ran).toBe(1);
+    fixture.componentInstance.onFallbackKeydown(new KeyboardEvent('keydown', { key: 'Enter' }));
+    expect(ran).toBe(1);
+  });
 });

@@ -19,6 +19,7 @@ export type EditorLanguage = 'html' | 'css' | 'javascript';
         spellcheck="false"
         [ngModel]="value"
         (ngModelChange)="onFallback($event)"
+        (keydown)="onFallbackKeydown($event)"
         [attr.aria-label]="ariaLabel"></textarea>
     } @else {
       <div class="cm-host" #host [attr.aria-label]="ariaLabel"></div>
@@ -40,6 +41,7 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   // Typed loosely: CodeMirror types are only available after the dynamic import.
   private view: { state: { doc: { toString(): string; length: number } }; dispatch(t: unknown): void; destroy(): void } | undefined;
   private lastEmitted = '';
+  private destroyed = false;
 
   async ngAfterViewInit(): Promise<void> {
     if (!this.isBrowser) return;
@@ -57,6 +59,7 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
       import('@codemirror/state'),
     ]);
     const langExt = await this.loadLanguage();
+    if (this.destroyed) return;
     const EditorView = cm.EditorView;
     const updateListener = EditorView.updateListener.of(u => {
       if (u.docChanged) {
@@ -86,6 +89,13 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
     this.valueChange.emit(value);
   }
 
+  onFallbackKeydown(e: KeyboardEvent): void {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      this.run.emit();
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (!changes['value'] || !this.view) return;
     if (this.value === this.lastEmitted) return;
@@ -95,6 +105,7 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.destroyed = true;
     this.view?.destroy();
   }
 }
