@@ -9,7 +9,8 @@ import { StorageService } from '../../../core/storage.service';
 import { PLAYGROUND_KEY } from '../../../core/storage-keys';
 import { debounce } from '../../../shared/util/debounce';
 import {
-  buildSrcdoc, buildExportDoc, DEFAULT_SNIPPET, VIEWPORTS, Viewport, ConsoleLine, Snippet,
+  buildSrcdoc, buildExportDoc, mergeToSingle, splitFromSingle, injectBootstrap,
+  DEFAULT_SNIPPET, VIEWPORTS, Viewport, ConsoleLine, Snippet, PlaygroundMode,
 } from './playground.logic';
 
 type EditorTab = 'html' | 'css' | 'javascript';
@@ -21,36 +22,53 @@ type EditorTab = 'html' | 'css' | 'javascript';
   template: `
     <app-tool-shell [title]="titleText" [description]="descText">
       <div class="pg">
-        <!-- Mobile tabs -->
-        <div class="pg-tabs" role="tablist" [attr.aria-label]="tabsLabel">
-          <button type="button" role="tab" class="pg-tab" [class.active]="tab() === 'html'"
-            [attr.aria-selected]="tab() === 'html'" (click)="tab.set('html')">HTML</button>
-          <button type="button" role="tab" class="pg-tab" [class.active]="tab() === 'css'"
-            [attr.aria-selected]="tab() === 'css'" (click)="tab.set('css')">CSS</button>
-          <button type="button" role="tab" class="pg-tab" [class.active]="tab() === 'javascript'"
-            [attr.aria-selected]="tab() === 'javascript'" (click)="tab.set('javascript')">JS</button>
-        </div>
-
-        <div class="pg-editors">
-          <div class="pg-editor" [class.hidden-mobile]="tab() !== 'html'">
-            <span class="pg-label">HTML</span>
-            <app-code-editor language="html" [value]="html()" [ariaLabel]="'HTML'"
-              (valueChange)="onHtml($event)" (run)="run()" />
+        @if (mode() === 'split') {
+          <!-- Mobile tabs -->
+          <div class="pg-tabs" role="tablist" [attr.aria-label]="tabsLabel">
+            <button type="button" role="tab" class="pg-tab" [class.active]="tab() === 'html'"
+              [attr.aria-selected]="tab() === 'html'" (click)="tab.set('html')">HTML</button>
+            <button type="button" role="tab" class="pg-tab" [class.active]="tab() === 'css'"
+              [attr.aria-selected]="tab() === 'css'" (click)="tab.set('css')">CSS</button>
+            <button type="button" role="tab" class="pg-tab" [class.active]="tab() === 'javascript'"
+              [attr.aria-selected]="tab() === 'javascript'" (click)="tab.set('javascript')">JS</button>
           </div>
-          <div class="pg-editor" [class.hidden-mobile]="tab() !== 'css'">
-            <span class="pg-label">CSS</span>
-            <app-code-editor language="css" [value]="css()" [ariaLabel]="'CSS'"
-              (valueChange)="onCss($event)" (run)="run()" />
+          <div class="pg-editors">
+            <div class="pg-editor" [class.hidden-mobile]="tab() !== 'html'">
+              <span class="pg-label">HTML</span>
+              <app-code-editor language="html" [value]="html()" [ariaLabel]="'HTML'"
+                (valueChange)="onHtml($event)" (run)="run()" />
+            </div>
+            <div class="pg-editor" [class.hidden-mobile]="tab() !== 'css'">
+              <span class="pg-label">CSS</span>
+              <app-code-editor language="css" [value]="css()" [ariaLabel]="'CSS'"
+                (valueChange)="onCss($event)" (run)="run()" />
+            </div>
+            <div class="pg-editor" [class.hidden-mobile]="tab() !== 'javascript'">
+              <span class="pg-label">JS</span>
+              <app-code-editor language="javascript" [value]="js()" [ariaLabel]="'JavaScript'"
+                (valueChange)="onJs($event)" (run)="run()" />
+            </div>
           </div>
-          <div class="pg-editor" [class.hidden-mobile]="tab() !== 'javascript'">
-            <span class="pg-label">JS</span>
-            <app-code-editor language="javascript" [value]="js()" [ariaLabel]="'JavaScript'"
-              (valueChange)="onJs($event)" (run)="run()" />
+        } @else {
+          <div class="pg-editors">
+            <div class="pg-editor">
+              <span class="pg-label">HTML</span>
+              <app-code-editor language="html" [value]="single()" [ariaLabel]="'HTML'"
+                (valueChange)="onSingle($event)" (run)="run()" />
+            </div>
           </div>
-        </div>
+        }
 
         <div class="pg-output">
           <div class="pg-toolbar">
+            <div class="pg-modes" role="group" [attr.aria-label]="modeGroupLabel">
+              <button type="button" class="pg-mode" [class.active]="mode() === 'split'"
+                [attr.aria-pressed]="mode() === 'split'" (click)="setMode('split')"
+                i18n="@@tools.playground.modeSplit">Separado</button>
+              <button type="button" class="pg-mode" [class.active]="mode() === 'single'"
+                [attr.aria-pressed]="mode() === 'single'" (click)="setMode('single')"
+                i18n="@@tools.playground.modeSingle">Único</button>
+            </div>
             <div class="pg-viewports" role="group" [attr.aria-label]="viewportLabel">
               <button type="button" class="pg-vp" [class.active]="viewport() === 'desktop'"
                 (click)="viewport.set('desktop')" [attr.aria-label]="desktopLabel">🖥</button>
@@ -96,6 +114,8 @@ export class Playground implements OnInit, OnDestroy {
   readonly consoleLines = signal<ConsoleLine[]>([]);
   readonly viewport = signal<Viewport>('desktop');
   readonly tab = signal<EditorTab>('html');
+  readonly mode = signal<PlaygroundMode>('split');
+  readonly single = signal('');
   readonly frameWidth = computed(() => {
     const w = VIEWPORTS[this.viewport()];
     return w === null ? '100%' : `${w}px`;
@@ -109,6 +129,7 @@ export class Playground implements OnInit, OnDestroy {
   readonly tabletLabel = $localize`:@@tools.playground.tablet:Tablet`;
   readonly mobileLabel = $localize`:@@tools.playground.mobile:Mobile`;
   readonly previewLabel = $localize`:@@tools.playground.preview:Pré-visualização`;
+  readonly modeGroupLabel = $localize`:@@tools.playground.modeGroup:Modo do editor`;
 
   private unlistenMessage?: () => void;
   private readonly scheduleRun = debounce(() => this.run(), 300);
@@ -135,13 +156,33 @@ export class Playground implements OnInit, OnDestroy {
   run(): void {
     if (!this.isBrowser || !this.frame) return;
     this.consoleLines.set([]);
-    this.frame.nativeElement.srcdoc = buildSrcdoc(this.html(), this.css(), this.js());
+    this.frame.nativeElement.srcdoc =
+      this.mode() === 'single'
+        ? injectBootstrap(this.single())
+        : buildSrcdoc(this.html(), this.css(), this.js());
   }
 
   stop(): void {
     if (!this.frame) return;
     this.frame.nativeElement.srcdoc = '<!doctype html>';
   }
+
+  setMode(next: PlaygroundMode): void {
+    if (next === this.mode()) return;
+    if (next === 'single') {
+      this.single.set(mergeToSingle(this.html(), this.css(), this.js()));
+    } else if (typeof DOMParser !== 'undefined') {
+      const parse = (h: string) => new DOMParser().parseFromString(h, 'text/html');
+      const s = splitFromSingle(this.single(), parse);
+      this.html.set(s.html);
+      this.css.set(s.css);
+      this.js.set(s.js);
+    }
+    this.mode.set(next);
+    this.afterChange();
+  }
+
+  onSingle(value: string): void { this.single.set(value); this.afterChange(); }
 
   toggleAutoRun(): void {
     this.autoRun.update(v => !v);
@@ -187,13 +228,19 @@ export class Playground implements OnInit, OnDestroy {
       if (typeof s.html === 'string') this.html.set(s.html);
       if (typeof s.css === 'string') this.css.set(s.css);
       if (typeof s.js === 'string') this.js.set(s.js);
+      const st = s as Partial<Snippet> & { single?: string; mode?: PlaygroundMode };
+      if (typeof st.single === 'string') this.single.set(st.single);
+      if (st.mode === 'single' || st.mode === 'split') this.mode.set(st.mode);
     } catch {
       // ignore corrupt storage
     }
   }
 
   private save(): void {
-    const snippet: Snippet = { html: this.html(), css: this.css(), js: this.js() };
+    const snippet = {
+      html: this.html(), css: this.css(), js: this.js(),
+      single: this.single(), mode: this.mode(),
+    };
     this.storage.setLocal(PLAYGROUND_KEY, JSON.stringify(snippet));
   }
 

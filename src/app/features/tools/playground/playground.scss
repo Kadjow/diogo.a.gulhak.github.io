@@ -19,6 +19,18 @@
 
 .pg-output { display: flex; flex-direction: column; gap: 12px; }
 .pg-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.pg-modes { display: flex; gap: 4px; }
+.pg-mode {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 0.75rem;
+  cursor: pointer;
+  &.active { background: var(--accent); color: var(--btn-fg); border-color: var(--accent); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+}
 .pg-viewports, .pg-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .pg-vp {
   width: 32px; height: 30px;
