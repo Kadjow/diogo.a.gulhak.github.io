@@ -195,13 +195,19 @@ export class Playground implements OnInit, OnDestroy {
     this.html.set(DEFAULT_SNIPPET.html);
     this.css.set(DEFAULT_SNIPPET.css);
     this.js.set(DEFAULT_SNIPPET.js);
+    if (this.mode() === 'single') {
+      this.single.set(mergeToSingle(DEFAULT_SNIPPET.html, DEFAULT_SNIPPET.css, DEFAULT_SNIPPET.js));
+    }
     this.save();
     this.run();
   }
 
   export(): void {
     if (!this.isBrowser) return;
-    const doc = buildExportDoc(this.html(), this.css(), this.js());
+    const doc =
+      this.mode() === 'single'
+        ? this.single()
+        : buildExportDoc(this.html(), this.css(), this.js());
     const blob = new Blob([doc], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = this.renderer.createElement('a') as HTMLAnchorElement;
