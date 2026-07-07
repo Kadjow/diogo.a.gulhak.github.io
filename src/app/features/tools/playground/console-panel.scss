@@ -8,6 +8,11 @@
   min-height: 120px;
   height: 100%;
 }
+@media (min-width: 1024px) {
+  // Inside the resizable grid the console must shrink to its fr-track,
+  // down to the 0.15 min fraction — the 120px floor is mobile-only.
+  .console { min-height: 0; }
+}
 @media (max-width: 1023px) {
   .console { height: auto; max-height: 220px; }
 }
