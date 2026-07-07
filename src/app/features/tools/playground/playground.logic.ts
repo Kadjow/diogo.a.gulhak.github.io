@@ -102,6 +102,19 @@ export function splitFromSingle(doc: string, parse: DomParse): Snippet {
   return { html, css, js };
 }
 
+/** Panel fractions per resizable axis. Each array sums to 1. */
+export interface PlaygroundLayout {
+  cols: number[];
+  out: number[];
+  editors: number[];
+}
+
+export const DEFAULT_LAYOUT: PlaygroundLayout = {
+  cols: [0.48, 0.52],
+  out: [0.62, 0.38],
+  editors: [0.34, 0.33, 0.33],
+};
+
 export function injectBootstrap(doc: string): string {
   const script = `<script>${CONSOLE_BOOTSTRAP}</script>`;
   const head = doc.match(/<head[^>]*>/i);

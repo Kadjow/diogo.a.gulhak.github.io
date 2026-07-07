@@ -8,9 +8,12 @@ import { ConsolePanel } from './console-panel';
 import { StorageService } from '../../../core/storage.service';
 import { PLAYGROUND_KEY } from '../../../core/storage-keys';
 import { debounce } from '../../../shared/util/debounce';
+import { ResizeHandle } from '../../../shared/ui/resizable/resize-handle';
+import { resizeStack, isValidSizes } from '../../../shared/util/resize';
 import {
   buildSrcdoc, buildExportDoc, mergeToSingle, splitFromSingle, injectBootstrap,
   DEFAULT_SNIPPET, VIEWPORTS, Viewport, ConsoleLine, Snippet, PlaygroundMode,
+  PlaygroundLayout, DEFAULT_LAYOUT,
 } from './playground.logic';
 
 type EditorTab = 'html' | 'css' | 'javascript';
@@ -18,10 +21,10 @@ type EditorTab = 'html' | 'css' | 'javascript';
 @Component({
   selector: 'app-playground',
   standalone: true,
-  imports: [ToolShell, CodeEditor, ConsolePanel],
+  imports: [ToolShell, CodeEditor, ConsolePanel, ResizeHandle],
   template: `
     <app-tool-shell [title]="titleText" [description]="descText">
-      <div class="pg">
+      <div class="pg" [style.gridTemplateColumns]="colsStyle()">
         @if (mode() === 'split') {
           <!-- Mobile tabs -->
           <div class="pg-tabs" role="tablist" [attr.aria-label]="tabsLabel">
@@ -32,17 +35,21 @@ type EditorTab = 'html' | 'css' | 'javascript';
             <button type="button" role="tab" class="pg-tab" [class.active]="tab() === 'javascript'"
               [attr.aria-selected]="tab() === 'javascript'" (click)="tab.set('javascript')">JS</button>
           </div>
-          <div class="pg-editors">
+          <div class="pg-editors" [style.gridTemplateRows]="editorRowsStyle()">
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'html'">
               <span class="pg-label">HTML</span>
               <app-code-editor language="html" [value]="html()" [ariaLabel]="'HTML'"
                 (valueChange)="onHtml($event)" (run)="run()" />
             </div>
+            <app-resize-handle axis="y" [label]="resizeEditorsLabel" [value]="editorRows()[0]"
+              (resizeBy)="onResizeEditors(0, $event)" (reset)="resetLayout('editors')" />
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'css'">
               <span class="pg-label">CSS</span>
               <app-code-editor language="css" [value]="css()" [ariaLabel]="'CSS'"
                 (valueChange)="onCss($event)" (run)="run()" />
             </div>
+            <app-resize-handle axis="y" [label]="resizeEditorsLabel" [value]="editorRows()[1]"
+              (resizeBy)="onResizeEditors(1, $event)" (reset)="resetLayout('editors')" />
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'javascript'">
               <span class="pg-label">JS</span>
               <app-code-editor language="javascript" [value]="js()" [ariaLabel]="'JavaScript'"
@@ -59,7 +66,10 @@ type EditorTab = 'html' | 'css' | 'javascript';
           </div>
         }
 
-        <div class="pg-output">
+        <app-resize-handle axis="x" [label]="resizeColsLabel" [value]="cols()[0]"
+          (resizeBy)="onResizeCols($event)" (reset)="resetLayout('cols')" />
+
+        <div class="pg-output" [style.gridTemplateRows]="outStyle()">
           <div class="pg-toolbar">
             <div class="pg-modes" role="group" [attr.aria-label]="modeGroupLabel">
               <button type="button" class="pg-mode" [class.active]="mode() === 'split'"
@@ -94,6 +104,9 @@ type EditorTab = 'html' | 'css' | 'javascript';
               sandbox="allow-scripts" [attr.title]="previewLabel"></iframe>
           </div>
 
+          <app-resize-handle axis="y" [label]="resizeOutputLabel" [value]="out()[0]"
+            (resizeBy)="onResizeOutput($event)" (reset)="resetLayout('out')" />
+
           <app-console-panel [lines]="consoleLines()" (clear)="clearConsole()" />
         </div>
       </div>
@@ -121,6 +134,20 @@ export class Playground implements OnInit, OnDestroy {
     return w === null ? '100%' : `${w}px`;
   });
 
+  readonly cols = signal<number[]>([...DEFAULT_LAYOUT.cols]);
+  readonly out = signal<number[]>([...DEFAULT_LAYOUT.out]);
+  readonly editorRows = signal<number[]>([...DEFAULT_LAYOUT.editors]);
+  readonly colsStyle = computed(
+    () => `minmax(0, ${this.cols()[0]}fr) auto minmax(0, ${this.cols()[1]}fr)`,
+  );
+  readonly outStyle = computed(
+    () => `auto minmax(0, ${this.out()[0]}fr) auto minmax(0, ${this.out()[1]}fr)`,
+  );
+  readonly editorRowsStyle = computed(() => {
+    const [a, b, c] = this.editorRows();
+    return `minmax(0, ${a}fr) auto minmax(0, ${b}fr) auto minmax(0, ${c}fr)`;
+  });
+
   readonly titleText = $localize`:@@tools.playground.name:Playground HTML/CSS/JS`;
   readonly descText = $localize`:@@tools.playground.desc:Editor ao vivo de HTML, CSS e JS com preview e console.`;
   readonly tabsLabel = $localize`:@@tools.playground.tabs:Editores`;
@@ -130,6 +157,9 @@ export class Playground implements OnInit, OnDestroy {
   readonly mobileLabel = $localize`:@@tools.playground.mobile:Mobile`;
   readonly previewLabel = $localize`:@@tools.playground.preview:Pré-visualização`;
   readonly modeGroupLabel = $localize`:@@tools.playground.modeGroup:Modo do editor`;
+  readonly resizeColsLabel = $localize`:@@tools.playground.resizeCols:Redimensionar editores e saída`;
+  readonly resizeOutputLabel = $localize`:@@tools.playground.resizeOutput:Redimensionar preview e console`;
+  readonly resizeEditorsLabel = $localize`:@@tools.playground.resizeEditors:Redimensionar editores`;
 
   private unlistenMessage?: () => void;
   private readonly scheduleRun = debounce(() => this.run(), 300);
@@ -184,6 +214,28 @@ export class Playground implements OnInit, OnDestroy {
 
   onSingle(value: string): void { this.single.set(value); this.afterChange(); }
 
+  onResizeCols(delta: number): void {
+    this.cols.set(resizeStack(this.cols(), 0, delta));
+    this.scheduleSave();
+  }
+
+  onResizeOutput(delta: number): void {
+    this.out.set(resizeStack(this.out(), 0, delta));
+    this.scheduleSave();
+  }
+
+  onResizeEditors(index: number, delta: number): void {
+    this.editorRows.set(resizeStack(this.editorRows(), index, delta));
+    this.scheduleSave();
+  }
+
+  resetLayout(axis: keyof PlaygroundLayout): void {
+    if (axis === 'cols') this.cols.set([...DEFAULT_LAYOUT.cols]);
+    else if (axis === 'out') this.out.set([...DEFAULT_LAYOUT.out]);
+    else this.editorRows.set([...DEFAULT_LAYOUT.editors]);
+    this.scheduleSave();
+  }
+
   toggleAutoRun(): void {
     this.autoRun.update(v => !v);
     if (this.autoRun()) this.run();
@@ -237,6 +289,12 @@ export class Playground implements OnInit, OnDestroy {
       const st = s as Partial<Snippet> & { single?: string; mode?: PlaygroundMode };
       if (typeof st.single === 'string') this.single.set(st.single);
       if (st.mode === 'single' || st.mode === 'split') this.mode.set(st.mode);
+      const layout = (s as { layout?: Partial<PlaygroundLayout> }).layout;
+      if (layout) {
+        if (isValidSizes(layout.cols, 2)) this.cols.set(layout.cols);
+        if (isValidSizes(layout.out, 2)) this.out.set(layout.out);
+        if (isValidSizes(layout.editors, 3)) this.editorRows.set(layout.editors);
+      }
     } catch {
       // ignore corrupt storage
     }
@@ -246,6 +304,7 @@ export class Playground implements OnInit, OnDestroy {
     const snippet = {
       html: this.html(), css: this.css(), js: this.js(),
       single: this.single(), mode: this.mode(),
+      layout: { cols: this.cols(), out: this.out(), editors: this.editorRows() },
     };
     this.storage.setLocal(PLAYGROUND_KEY, JSON.stringify(snippet));
   }

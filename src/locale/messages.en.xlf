@@ -818,6 +818,18 @@
         <source>Único</source>
         <target state="translated">Single</target>
       </trans-unit>
+      <trans-unit id="tools.playground.resizeCols" datatype="html">
+        <source>Redimensionar editores e saída</source>
+        <target state="translated">Resize editors and output</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.resizeOutput" datatype="html">
+        <source>Redimensionar preview e console</source>
+        <target state="translated">Resize preview and console</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.resizeEditors" datatype="html">
+        <source>Redimensionar editores</source>
+        <target state="translated">Resize editors</target>
+      </trans-unit>
       <trans-unit id="tools.markdown-preview.name" datatype="html">
         <source>Markdown Preview</source>
         <target state="translated">Markdown Preview</target>

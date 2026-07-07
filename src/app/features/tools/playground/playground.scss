@@ -70,11 +70,30 @@
 @media (min-width: 1024px) {
   .pg {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    align-items: start;
+    // colunas vêm do binding inline [style.gridTemplateColumns]
+    height: clamp(480px, calc(100vh - 240px), 900px);
   }
-  .pg-editors { grid-column: 1; }
-  .pg-output { grid-column: 2; }
+  .pg-editors {
+    display: grid;
+    // linhas vêm do binding inline [style.gridTemplateRows] (modo Separado)
+    min-height: 0;
+    gap: 0;
+  }
+  .pg-editor { min-height: 0; }
+  .pg-editor app-code-editor { flex: 1; min-height: 0; }
+  .pg-output {
+    display: grid;
+    // linhas vêm do binding inline [style.gridTemplateRows]
+    min-height: 0;
+    gap: 0;
+  }
+  .pg-preview { min-height: 0; }
+  .pg-frame { height: 100%; }
+  app-console-panel { min-height: 0; }
+}
+
+@media (max-width: 1023px) {
+  app-resize-handle { display: none; }
 }
 
 @media (max-width: 699px) {
