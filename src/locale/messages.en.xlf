@@ -806,6 +806,18 @@
         <source>Sem saída ainda.</source>
         <target state="translated">No output yet.</target>
       </trans-unit>
+      <trans-unit id="tools.playground.modeGroup" datatype="html">
+        <source>Modo do editor</source>
+        <target state="translated">Editor mode</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.modeSplit" datatype="html">
+        <source>Separado</source>
+        <target state="translated">Split</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.modeSingle" datatype="html">
+        <source>Único</source>
+        <target state="translated">Single</target>
+      </trans-unit>
       <trans-unit id="tools.markdown-preview.name" datatype="html">
         <source>Markdown Preview</source>
         <target state="translated">Markdown Preview</target>
