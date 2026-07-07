@@ -77,3 +77,36 @@ export function buildExportDoc(html: string, css: string, js: string): string {
     `<script>${js}</script></body></html>`
   );
 }
+
+export type PlaygroundMode = 'split' | 'single';
+
+export type DomParse = (html: string) => Document;
+
+export function mergeToSingle(html: string, css: string, js: string): string {
+  return buildExportDoc(html, css, js);
+}
+
+export function splitFromSingle(doc: string, parse: DomParse): Snippet {
+  const parsed = parse(doc);
+  const css = Array.from(parsed.querySelectorAll('style'))
+    .map(el => el.textContent ?? '')
+    .join('\n')
+    .trim();
+  const js = Array.from(parsed.querySelectorAll('script'))
+    .filter(el => !el.hasAttribute('src'))
+    .map(el => el.textContent ?? '')
+    .join('\n')
+    .trim();
+  parsed.querySelectorAll('style, script').forEach(el => el.remove());
+  const html = (parsed.body?.innerHTML ?? parsed.documentElement?.innerHTML ?? '').trim();
+  return { html, css, js };
+}
+
+export function injectBootstrap(doc: string): string {
+  const script = `<script>${CONSOLE_BOOTSTRAP}</script>`;
+  const head = doc.match(/<head[^>]*>/i);
+  if (head) return doc.replace(head[0], head[0] + script);
+  const html = doc.match(/<html[^>]*>/i);
+  if (html) return doc.replace(html[0], html[0] + script);
+  return script + doc;
+}

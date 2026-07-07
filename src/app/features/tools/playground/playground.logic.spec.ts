@@ -59,3 +59,64 @@ describe('constants', () => {
     expect(typeof DEFAULT_SNIPPET.js).toBe('string');
   });
 });
+
+import {
+  mergeToSingle, splitFromSingle, injectBootstrap, CONSOLE_BOOTSTRAP as BOOT,
+} from './playground.logic';
+
+const parse = (html: string): Document =>
+  new DOMParser().parseFromString(html, 'text/html');
+
+describe('mergeToSingle', () => {
+  it('embeds css in <style>, html in body and js in <script>', () => {
+    const doc = mergeToSingle('<h1>hi</h1>', 'h1{color:red}', 'var X=1;');
+    expect(doc.includes('<style>h1{color:red}</style>')).toBe(true);
+    expect(doc.includes('<h1>hi</h1>')).toBe(true);
+    expect(doc.includes('<script>var X=1;</script>')).toBe(true);
+    expect(doc.indexOf('<style>') < doc.indexOf('var X=1;')).toBe(true);
+  });
+});
+
+describe('splitFromSingle', () => {
+  it('extracts css from all <style> blocks', () => {
+    const doc = '<style>a{color:red}</style><style>b{color:blue}</style><p>x</p>';
+    expect(splitFromSingle(doc, parse).css).toBe('a{color:red}\nb{color:blue}');
+  });
+  it('extracts js only from <script> without src', () => {
+    const doc = '<script src="x.js"></script><script>var Y=2;</script><p>x</p>';
+    expect(splitFromSingle(doc, parse).js).toBe('var Y=2;');
+  });
+  it('returns body html without style/script tags', () => {
+    const doc = '<style>a{}</style><p>keep</p><script>1</script>';
+    const out = splitFromSingle(doc, parse);
+    expect(out.html.includes('<p>keep</p>')).toBe(true);
+    expect(out.html.includes('<style')).toBe(false);
+    expect(out.html.includes('<script')).toBe(false);
+  });
+  it('round-trips merge -> split for typical content', () => {
+    const merged = mergeToSingle('<h1>hi</h1>', 'h1{color:red}', 'var X=1;');
+    const out = splitFromSingle(merged, parse);
+    expect(out.html).toBe('<h1>hi</h1>');
+    expect(out.css).toBe('h1{color:red}');
+    expect(out.js).toBe('var X=1;');
+  });
+});
+
+describe('injectBootstrap', () => {
+  it('injects the bootstrap right after <head>', () => {
+    const out = injectBootstrap('<!doctype html><html><head></head><body></body></html>');
+    expect(out.includes(BOOT)).toBe(true);
+    expect(out.indexOf('<head>') < out.indexOf(BOOT)).toBe(true);
+    expect(out.indexOf(BOOT) < out.indexOf('<body>')).toBe(true);
+  });
+  it('falls back to after <html> when no <head>', () => {
+    const out = injectBootstrap('<html><body>x</body></html>');
+    expect(out.includes(BOOT)).toBe(true);
+    expect(out.indexOf('<html>') < out.indexOf(BOOT)).toBe(true);
+  });
+  it('prepends when neither head nor html present', () => {
+    const out = injectBootstrap('<p>x</p>');
+    expect(out.startsWith('<script>')).toBe(true);
+    expect(out.includes(BOOT)).toBe(true);
+  });
+});
