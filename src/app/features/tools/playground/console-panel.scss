@@ -1,3 +1,4 @@
+:host { display: block; min-height: 0; }
 .console {
   display: flex;
   flex-direction: column;
@@ -5,7 +6,10 @@
   border-radius: 10px;
   background: var(--surface);
   min-height: 120px;
-  max-height: 220px;
+  height: 100%;
+}
+@media (max-width: 1023px) {
+  .console { height: auto; max-height: 220px; }
 }
 .console-head {
   display: flex;

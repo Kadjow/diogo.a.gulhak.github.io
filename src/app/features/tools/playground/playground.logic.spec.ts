@@ -1,5 +1,6 @@
 import {
   buildSrcdoc, buildExportDoc, formatConsoleArg, CONSOLE_BOOTSTRAP, VIEWPORTS, DEFAULT_SNIPPET,
+  DEFAULT_LAYOUT,
 } from './playground.logic';
 
 describe('buildSrcdoc', () => {
@@ -99,6 +100,14 @@ describe('splitFromSingle', () => {
     expect(out.html).toBe('<h1>hi</h1>');
     expect(out.css).toBe('h1{color:red}');
     expect(out.js).toBe('var X=1;');
+  });
+});
+
+describe('DEFAULT_LAYOUT', () => {
+  it('has the spec fractions, each axis summing to 1', () => {
+    expect(DEFAULT_LAYOUT.cols).toEqual([0.48, 0.52]);
+    expect(DEFAULT_LAYOUT.out).toEqual([0.62, 0.38]);
+    expect(DEFAULT_LAYOUT.editors).toEqual([0.34, 0.33, 0.33]);
   });
 });
 
