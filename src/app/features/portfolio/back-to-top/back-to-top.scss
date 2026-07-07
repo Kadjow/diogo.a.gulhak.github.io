@@ -1,0 +1,26 @@
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent, #6c63ff);
+  background: var(--color-bg, #0d0d0d);
+  color: var(--color-accent, #6c63ff);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.85;
+    transform: translateY(-3px);
+    outline: 2px solid var(--color-accent, #6c63ff);
+    outline-offset: 2px;
+  }
+}

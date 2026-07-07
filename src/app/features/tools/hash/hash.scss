@@ -1,0 +1,25 @@
+.field-label { display: block; font-size: 0.8125rem; color: var(--muted); margin-bottom: 6px; }
+.field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: inherit;
+  resize: vertical;
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+}
+.results { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.result-row { display: flex; flex-direction: column; gap: 4px; }
+.result-algo { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+.result-hex {
+  font-size: 0.8125rem;
+  word-break: break-all;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-height: 1.5rem;
+}

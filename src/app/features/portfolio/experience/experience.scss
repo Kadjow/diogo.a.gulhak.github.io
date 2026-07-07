@@ -1,0 +1,53 @@
+.experience {
+  padding: 4rem 0;
+
+  &__cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  &__card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__card-period {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+  }
+
+  &__card-bullets {
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+
+    li {
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 0.4rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

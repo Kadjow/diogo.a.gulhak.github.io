@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kadjow.github.io/diogo.a.gulhak.github.io/sitemap.xml
