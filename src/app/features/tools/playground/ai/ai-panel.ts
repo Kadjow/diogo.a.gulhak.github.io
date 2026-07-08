@@ -24,7 +24,7 @@ interface Bubble { role: 'user' | 'assistant'; html: string; raw: string }
       <div class="ai-body">
         @if (!hasKey()) {
           <div class="ai-keyrow">
-            <input class="ai-key" type="password" [ngModel]="keyInput()"
+            <input class="ai-key" type="password" autocomplete="off" [ngModel]="keyInput()"
               (ngModelChange)="keyInput.set($event)"
               [attr.placeholder]="keyPlaceholder" [attr.aria-label]="keyPlaceholder" />
             <button type="button" class="ai-btn" (click)="saveKey()"
@@ -37,11 +37,11 @@ interface Bubble { role: 'user' | 'assistant'; html: string; raw: string }
           </p>
         } @else {
           <div class="ai-actions">
-            <button type="button" class="ai-chip" (click)="quick('explain')"
+            <button type="button" class="ai-chip" (click)="quick('explain')" [disabled]="busy()"
               i18n="@@tools.playground.ai.explain">Explicar código</button>
-            <button type="button" class="ai-chip" (click)="quick('fix')"
+            <button type="button" class="ai-chip" (click)="quick('fix')" [disabled]="busy()"
               i18n="@@tools.playground.ai.fix">Corrigir erros</button>
-            <button type="button" class="ai-chip ai-clearkey" (click)="clearKey()"
+            <button type="button" class="ai-chip ai-clearkey" (click)="clearKey()" [disabled]="busy()"
               i18n="@@tools.playground.ai.clearKey">Trocar chave</button>
           </div>
 
