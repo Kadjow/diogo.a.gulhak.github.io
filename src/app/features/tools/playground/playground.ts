@@ -5,6 +5,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { ToolShell } from '../../../shared/ui/tool-shell/tool-shell';
 import { CodeEditor } from './editor/code-editor';
 import { ConsolePanel } from './console-panel';
+import { AiPanel } from './ai/ai-panel';
+import { PlaygroundContext } from './ai/groq.logic';
 import { StorageService } from '../../../core/storage.service';
 import { PLAYGROUND_KEY } from '../../../core/storage-keys';
 import { debounce } from '../../../shared/util/debounce';
@@ -21,7 +23,7 @@ type EditorTab = 'html' | 'css' | 'javascript';
 @Component({
   selector: 'app-playground',
   standalone: true,
-  imports: [ToolShell, CodeEditor, ConsolePanel, ResizeHandle],
+  imports: [ToolShell, CodeEditor, ConsolePanel, AiPanel, ResizeHandle],
   template: `
     <app-tool-shell [title]="titleText" [description]="descText">
       <div class="pg" [style.gridTemplateColumns]="colsStyle()">
@@ -110,6 +112,8 @@ type EditorTab = 'html' | 'css' | 'javascript';
           <app-console-panel [lines]="consoleLines()" (clear)="clearConsole()" />
         </div>
       </div>
+
+      <app-ai-panel class="pg-ai" [context]="aiContext" />
     </app-tool-shell>
   `,
   styleUrl: './playground.scss',
@@ -242,6 +246,13 @@ export class Playground implements OnInit, OnDestroy {
   }
 
   clearConsole(): void { this.consoleLines.set([]); }
+
+  readonly aiContext = (): PlaygroundContext => ({
+    html: this.mode() === 'single' ? this.single() : this.html(),
+    css: this.mode() === 'single' ? '' : this.css(),
+    js: this.mode() === 'single' ? '' : this.js(),
+    console: this.consoleLines().map(l => `[${l.level}] ${l.text}`),
+  });
 
   reset(): void {
     this.html.set(DEFAULT_SNIPPET.html);
