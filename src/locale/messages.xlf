@@ -758,6 +758,139 @@
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="tools.playground.ai.title" datatype="html">
+        <source>Assistente de IA</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">21,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.saveKey" datatype="html">
+        <source>Salvar chave</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">31,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.keyHint" datatype="html">
+        <source>Sua chave fica só neste dispositivo.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.getKey" datatype="html">
+        <source>Criar chave grátis</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">36,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.explain" datatype="html">
+        <source>Explicar código</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.fix" datatype="html">
+        <source>Corrigir erros</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.clearKey" datatype="html">
+        <source>Trocar chave</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">45,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.copy" datatype="html">
+        <source>Copiar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">54,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.empty" datatype="html">
+        <source>Pergunte algo sobre seu código.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">58,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.send" datatype="html">
+        <source>Enviar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">71,74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.keyPlaceholder" datatype="html">
+        <source>Cole sua chave Groq</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.inputPlaceholder" datatype="html">
+        <source>Pergunte sobre o código…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.system" datatype="html">
+        <source>Você é um assistente de programação. O usuário está num playground HTML/CSS/JS. Responda em Markdown, focando no código e no console fornecidos.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.explainPrompt" datatype="html">
+        <source>Explique o que este código faz.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.fixPrompt" datatype="html">
+        <source>Aponte e corrija os erros deste código.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errInvalid" datatype="html">
+        <source>Chave inválida. Confira e salve de novo.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errRate" datatype="html">
+        <source>Limite atingido. Tente de novo em instantes.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errServer" datatype="html">
+        <source>Erro no servidor da IA. Tente de novo.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errUnknown" datatype="html">
+        <source>Falha ao falar com a IA.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/playground/ai/ai-panel.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="tools.playground.console" datatype="html">
         <source>Console</source>
         <context-group purpose="location">
@@ -783,56 +916,56 @@
         <source>Separado</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">77,78</context>
+          <context context-type="linenumber">79,80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.modeSingle" datatype="html">
         <source>Único</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">80,82</context>
+          <context context-type="linenumber">82,84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.run" datatype="html">
         <source>Run</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">91,92</context>
+          <context context-type="linenumber">93,94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.stop" datatype="html">
         <source>Stop</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">92,93</context>
+          <context context-type="linenumber">94,95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.auto" datatype="html">
         <source>Auto</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">95,97</context>
+          <context context-type="linenumber">97,99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.export" datatype="html">
         <source>Export</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">97,98</context>
+          <context context-type="linenumber">99,100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.reset" datatype="html">
         <source>Reset</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">98,100</context>
+          <context context-type="linenumber">100,102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.name" datatype="html">
         <source>Playground HTML/CSS/JS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">151</context>
+          <context context-type="linenumber">155</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/data/tools.ts</context>
@@ -843,7 +976,7 @@
         <source>Editor ao vivo de HTML, CSS e JS com preview e console.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">156</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/data/tools.ts</context>
@@ -854,70 +987,70 @@
         <source>Editores</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">153</context>
+          <context context-type="linenumber">157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.viewport" datatype="html">
         <source>Tamanho da tela</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">154</context>
+          <context context-type="linenumber">158</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.desktop" datatype="html">
         <source>Desktop</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">155</context>
+          <context context-type="linenumber">159</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.tablet" datatype="html">
         <source>Tablet</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">156</context>
+          <context context-type="linenumber">160</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.mobile" datatype="html">
         <source>Mobile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">157</context>
+          <context context-type="linenumber">161</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.preview" datatype="html">
         <source>Pré-visualização</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">158</context>
+          <context context-type="linenumber">162</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.modeGroup" datatype="html">
         <source>Modo do editor</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">159</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.resizeCols" datatype="html">
         <source>Redimensionar editores e saída</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">160</context>
+          <context context-type="linenumber">164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.resizeOutput" datatype="html">
         <source>Redimensionar preview e console</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">161</context>
+          <context context-type="linenumber">165</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.playground.resizeEditors" datatype="html">
         <source>Redimensionar editores</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/playground/playground.ts</context>
-          <context context-type="linenumber">162</context>
+          <context context-type="linenumber">166</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.hub.title" datatype="html">
