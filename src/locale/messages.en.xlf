@@ -830,6 +830,82 @@
         <source>Redimensionar editores</source>
         <target state="translated">Resize editors</target>
       </trans-unit>
+      <trans-unit id="tools.playground.ai.title" datatype="html">
+        <source>Assistente de IA</source>
+        <target state="translated">AI Assistant</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.saveKey" datatype="html">
+        <source>Salvar chave</source>
+        <target state="translated">Save key</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.keyHint" datatype="html">
+        <source>Sua chave fica só neste dispositivo.</source>
+        <target state="translated">Your key stays on this device only.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.getKey" datatype="html">
+        <source>Criar chave grátis</source>
+        <target state="translated">Get a free key</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.explain" datatype="html">
+        <source>Explicar código</source>
+        <target state="translated">Explain code</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.fix" datatype="html">
+        <source>Corrigir erros</source>
+        <target state="translated">Fix errors</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.clearKey" datatype="html">
+        <source>Trocar chave</source>
+        <target state="translated">Change key</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.empty" datatype="html">
+        <source>Pergunte algo sobre seu código.</source>
+        <target state="translated">Ask something about your code.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.send" datatype="html">
+        <source>Enviar</source>
+        <target state="translated">Send</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.copy" datatype="html">
+        <source>Copiar</source>
+        <target state="translated">Copy</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.keyPlaceholder" datatype="html">
+        <source>Cole sua chave Groq</source>
+        <target state="translated">Paste your Groq key</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.inputPlaceholder" datatype="html">
+        <source>Pergunte sobre o código…</source>
+        <target state="translated">Ask about the code…</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.system" datatype="html">
+        <source>Você é um assistente de programação. O usuário está num playground HTML/CSS/JS. Responda em Markdown, focando no código e no console fornecidos.</source>
+        <target state="translated">You are a coding assistant. The user is in an HTML/CSS/JS playground. Answer in Markdown, focusing on the provided code and console.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.explainPrompt" datatype="html">
+        <source>Explique o que este código faz.</source>
+        <target state="translated">Explain what this code does.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.fixPrompt" datatype="html">
+        <source>Aponte e corrija os erros deste código.</source>
+        <target state="translated">Point out and fix the errors in this code.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errInvalid" datatype="html">
+        <source>Chave inválida. Confira e salve de novo.</source>
+        <target state="translated">Invalid key. Check it and save again.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errRate" datatype="html">
+        <source>Limite atingido. Tente de novo em instantes.</source>
+        <target state="translated">Rate limit reached. Try again shortly.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errServer" datatype="html">
+        <source>Erro no servidor da IA. Tente de novo.</source>
+        <target state="translated">AI server error. Try again.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.ai.errUnknown" datatype="html">
+        <source>Falha ao falar com a IA.</source>
+        <target state="translated">Failed to reach the AI.</target>
+      </trans-unit>
       <trans-unit id="tools.markdown-preview.name" datatype="html">
         <source>Markdown Preview</source>
         <target state="translated">Markdown Preview</target>
