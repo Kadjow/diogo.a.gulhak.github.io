@@ -370,7 +370,11 @@ export class Playground implements OnInit, OnDestroy {
     if (e.source !== this.frame.nativeElement.contentWindow) return;
     const data = e.data as { __pg?: boolean; level?: ConsoleLine['level']; text?: unknown } | null;
     if (!data || data.__pg !== true || !data.level) return;
-    const line: ConsoleLine = { level: data.level, text: String(data.text) };
+    const line: ConsoleLine = {
+      level: data.level,
+      text: String(data.text),
+      time: new Date().toTimeString().slice(0, 8),
+    };
     this.consoleLines.update(lines => [...lines, line].slice(-200));
   }
 

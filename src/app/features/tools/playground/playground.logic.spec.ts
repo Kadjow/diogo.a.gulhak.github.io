@@ -1,7 +1,8 @@
 import {
-  buildSrcdoc, buildExportDoc, formatConsoleArg, CONSOLE_BOOTSTRAP, VIEWPORTS, DEFAULT_SNIPPET,
-  DEFAULT_LAYOUT, MODE_OPTIONS, VIEWPORT_OPTIONS,
+  buildSrcdoc, buildExportDoc, formatConsoleArg, filterConsoleLines, countByLevel,
+  CONSOLE_BOOTSTRAP, VIEWPORTS, DEFAULT_SNIPPET, DEFAULT_LAYOUT, MODE_OPTIONS, VIEWPORT_OPTIONS,
 } from './playground.logic';
+import type { ConsoleLine } from './playground.logic';
 
 describe('buildSrcdoc', () => {
   it('embeds css, html, bootstrap and user js in order', () => {
@@ -45,6 +46,34 @@ describe('formatConsoleArg', () => {
   });
   it('formats functions', () => {
     expect(formatConsoleArg(function foo() { return undefined; })).toBe('ƒ foo()');
+  });
+});
+
+describe('console filtering', () => {
+  const lines: ConsoleLine[] = [
+    { level: 'log', text: 'a' },
+    { level: 'error', text: 'b' },
+    { level: 'warn', text: 'c' },
+    { level: 'error', text: 'd' },
+  ];
+
+  it('filtra por níveis ativos', () => {
+    const out = filterConsoleLines(lines, new Set(['error']));
+    expect(out.length).toBe(2);
+    expect(out.every(l => l.level === 'error')).toBe(true);
+  });
+
+  it('conjunto vazio esconde tudo', () => {
+    expect(filterConsoleLines(lines, new Set()).length).toBe(0);
+  });
+
+  it('conta por nível', () => {
+    expect(countByLevel(lines)).toEqual({ log: 1, info: 0, warn: 1, error: 2 });
+  });
+
+  it('bootstrap reporta linha e coluna do erro', () => {
+    expect(CONSOLE_BOOTSTRAP.includes('e.lineno')).toBe(true);
+    expect(CONSOLE_BOOTSTRAP.includes('e.colno')).toBe(true);
   });
 });
 
