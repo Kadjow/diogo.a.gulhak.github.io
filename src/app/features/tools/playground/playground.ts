@@ -119,14 +119,24 @@ type EditorTab = 'html' | 'css' | 'javascript';
               <span class="pg-ruler">{{ frameWidth() }}</span>
             </div>
             <div class="pg-actions">
-              <button type="button" class="pg-btn" (click)="run()" i18n="@@tools.playground.run">Run</button>
-              <button type="button" class="pg-btn" (click)="stop()" i18n="@@tools.playground.stop">Stop</button>
-              <label class="pg-auto">
-                <input type="checkbox" [checked]="autoRun()" (change)="toggleAutoRun()" />
+              <button type="button" class="pgc-btn pgc-btn--primary" (click)="run()">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <ng-container i18n="@@tools.playground.run">Run</ng-container>
+              </button>
+              <button type="button" class="pgc-btn pgc-btn--secondary" (click)="stop()"
+                i18n="@@tools.playground.stop">Stop</button>
+              <button type="button" class="pgc-btn pgc-btn--secondary" (click)="export()"
+                i18n="@@tools.playground.export">Export</button>
+              <button type="button" class="pgc-btn"
+                [class.pgc-btn--ghost]="!resetPending()" [class.pgc-btn--danger]="resetPending()"
+                (click)="onReset()">{{ resetPending() ? resetConfirmLabel : resetLabel }}</button>
+              <button type="button" class="pgc-switch" role="switch" [attr.aria-checked]="autoRun()"
+                (click)="toggleAutoRun()">
+                <span class="pgc-switch-track"><span class="pgc-switch-thumb"></span></span>
                 <span i18n="@@tools.playground.auto">Auto</span>
-              </label>
-              <button type="button" class="pg-btn" (click)="export()" i18n="@@tools.playground.export">Export</button>
-              <button type="button" class="pg-btn" (click)="reset()" i18n="@@tools.playground.reset">Reset</button>
+              </button>
             </div>
           </div>
 
@@ -157,6 +167,7 @@ export class Playground implements OnInit, OnDestroy {
   readonly css = signal(DEFAULT_SNIPPET.css);
   readonly js = signal(DEFAULT_SNIPPET.js);
   readonly autoRun = signal(true);
+  readonly resetPending = signal(false);
   readonly consoleLines = signal<ConsoleLine[]>([]);
   readonly viewport = signal<Viewport>('desktop');
   readonly tab = signal<EditorTab>('html');
@@ -193,8 +204,11 @@ export class Playground implements OnInit, OnDestroy {
   readonly resizeColsLabel = $localize`:@@tools.playground.resizeCols:Redimensionar editores e saída`;
   readonly resizeOutputLabel = $localize`:@@tools.playground.resizeOutput:Redimensionar preview e console`;
   readonly resizeEditorsLabel = $localize`:@@tools.playground.resizeEditors:Redimensionar editores`;
+  readonly resetLabel = $localize`:@@tools.playground.reset:Reset`;
+  readonly resetConfirmLabel = $localize`:@@tools.playground.resetConfirm:Confirmar?`;
 
   private unlistenMessage?: () => void;
+  private resetTimer?: ReturnType<typeof setTimeout>;
   private readonly scheduleRun = debounce(() => this.run(), 300);
   private readonly scheduleSave = debounce(() => this.save(), 500);
 
@@ -287,6 +301,17 @@ export class Playground implements OnInit, OnDestroy {
     if (this.autoRun()) this.run();
   }
 
+  onReset(): void {
+    if (!this.resetPending()) {
+      this.resetPending.set(true);
+      this.resetTimer = setTimeout(() => this.resetPending.set(false), 4000);
+      return;
+    }
+    clearTimeout(this.resetTimer);
+    this.resetPending.set(false);
+    this.reset();
+  }
+
   clearConsole(): void { this.consoleLines.set([]); }
 
   readonly aiContext = (): PlaygroundContext => ({
@@ -364,6 +389,7 @@ export class Playground implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.unlistenMessage?.();
+    clearTimeout(this.resetTimer);
     this.scheduleRun.cancel();
     this.scheduleSave.cancel();
   }
