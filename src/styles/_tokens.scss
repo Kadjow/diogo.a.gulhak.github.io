@@ -5,6 +5,11 @@
   --danger: #dc2626;
   --warn: #b45309;
   --radius: 12px; --radius-lg: 18px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  /* Preview é um "mini-browser": páginas assumem fundo branco default nos 2 temas. */
+  --preview-bg: #fff;
+  /* Cores de marca das linguagens (dots dos editores) — iguais nos 2 temas. */
+  --lang-html: #E44D26; --lang-css: #2965F1; --lang-js: #F7DF1E;
   --maxw: 1080px;
 }
 :root[data-theme="dark"] {
@@ -13,4 +18,6 @@
   --glow: rgba(91,156,255,.14); --btn-fg: #06080F; --shadow-block: #5B9CFF;
   --danger: #f87171;
   --warn: #fbbf24;
+  --preview-bg: #fff;
+  --lang-html: #E44D26; --lang-css: #2965F1; --lang-js: #F7DF1E;
 }
