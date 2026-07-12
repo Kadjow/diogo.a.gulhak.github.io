@@ -794,6 +794,18 @@
         <source>Reset</source>
         <target state="translated">Reset</target>
       </trans-unit>
+      <trans-unit id="tools.playground.resetConfirm" datatype="html">
+        <source>Confirmar?</source>
+        <target state="translated">Confirm?</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.stoppedMsg" datatype="html">
+        <source>Preview parado. Aperte Run para recomeçar.</source>
+        <target state="translated">Preview stopped. Press Run to start again.</target>
+      </trans-unit>
+      <trans-unit id="tools.playground.consoleFilters" datatype="html">
+        <source>Filtrar por nível</source>
+        <target state="translated">Filter by level</target>
+      </trans-unit>
       <trans-unit id="tools.playground.console" datatype="html">
         <source>Console</source>
         <target state="translated">Console</target>
