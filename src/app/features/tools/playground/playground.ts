@@ -148,9 +148,12 @@ type EditorTab = 'html' | 'css' | 'javascript';
             </div>
           </div>
 
-          <div class="pg-preview">
-            <iframe #frame class="pg-frame" [style.width]="frameWidth()"
+          <div class="pg-preview" [class.is-loading]="running()">
+            <iframe #frame class="pg-frame" [style.width]="frameWidth()" (load)="onFrameLoad()"
               sandbox="allow-scripts" [attr.title]="previewLabel"></iframe>
+            @if (stopped()) {
+              <p class="pg-preview-msg">{{ stoppedMsg }}</p>
+            }
           </div>
 
           <app-resize-handle axis="y" [label]="resizeOutputLabel" [value]="out()[0]"
@@ -175,6 +178,8 @@ export class Playground implements OnInit, OnDestroy {
   readonly css = signal(DEFAULT_SNIPPET.css);
   readonly js = signal(DEFAULT_SNIPPET.js);
   readonly autoRun = signal(true);
+  readonly running = signal(false);
+  readonly stopped = signal(false);
   readonly resetPending = signal(false);
   readonly consoleLines = signal<ConsoleLine[]>([]);
   readonly viewport = signal<Viewport>('desktop');
@@ -208,6 +213,7 @@ export class Playground implements OnInit, OnDestroy {
   readonly tabletLabel = $localize`:@@tools.playground.tablet:Tablet`;
   readonly mobileLabel = $localize`:@@tools.playground.mobile:Mobile`;
   readonly previewLabel = $localize`:@@tools.playground.preview:Pré-visualização`;
+  readonly stoppedMsg = $localize`:@@tools.playground.stoppedMsg:Preview parado. Aperte Run para recomeçar.`;
   readonly modeGroupLabel = $localize`:@@tools.playground.modeGroup:Modo do editor`;
   readonly resizeColsLabel = $localize`:@@tools.playground.resizeCols:Redimensionar editores e saída`;
   readonly resizeOutputLabel = $localize`:@@tools.playground.resizeOutput:Redimensionar preview e console`;
@@ -240,6 +246,7 @@ export class Playground implements OnInit, OnDestroy {
 
   run(): void {
     if (!this.isBrowser || !this.frame) return;
+    this.running.set(true); this.stopped.set(false);
     this.consoleLines.set([]);
     this.frame.nativeElement.srcdoc =
       this.mode() === 'single'
@@ -250,7 +257,10 @@ export class Playground implements OnInit, OnDestroy {
   stop(): void {
     if (!this.frame) return;
     this.frame.nativeElement.srcdoc = '<!doctype html>';
+    this.stopped.set(true); this.running.set(false);
   }
+
+  onFrameLoad(): void { this.running.set(false); }
 
   setMode(next: PlaygroundMode): void {
     if (next === this.mode()) return;
