@@ -80,6 +80,9 @@ export function buildExportDoc(html: string, css: string, js: string): string {
 
 export type PlaygroundMode = 'split' | 'single';
 
+export const MODE_OPTIONS: PlaygroundMode[] = ['split', 'single'];
+export const VIEWPORT_OPTIONS: Viewport[] = ['desktop', 'tablet', 'mobile'];
+
 export type DomParse = (html: string) => Document;
 
 export function mergeToSingle(html: string, css: string, js: string): string {

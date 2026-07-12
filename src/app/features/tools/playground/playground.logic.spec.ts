@@ -1,6 +1,6 @@
 import {
   buildSrcdoc, buildExportDoc, formatConsoleArg, CONSOLE_BOOTSTRAP, VIEWPORTS, DEFAULT_SNIPPET,
-  DEFAULT_LAYOUT,
+  DEFAULT_LAYOUT, MODE_OPTIONS, VIEWPORT_OPTIONS,
 } from './playground.logic';
 
 describe('buildSrcdoc', () => {
@@ -58,6 +58,13 @@ describe('constants', () => {
     expect(typeof DEFAULT_SNIPPET.html).toBe('string');
     expect(typeof DEFAULT_SNIPPET.css).toBe('string');
     expect(typeof DEFAULT_SNIPPET.js).toBe('string');
+  });
+});
+
+describe('segmented options', () => {
+  it('expõe as opções na ordem da UI', () => {
+    expect(MODE_OPTIONS).toEqual(['split', 'single']);
+    expect(VIEWPORT_OPTIONS).toEqual(['desktop', 'tablet', 'mobile']);
   });
 });
 

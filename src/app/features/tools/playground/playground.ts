@@ -12,10 +12,11 @@ import { PLAYGROUND_KEY } from '../../../core/storage-keys';
 import { debounce } from '../../../shared/util/debounce';
 import { ResizeHandle } from '../../../shared/ui/resizable/resize-handle';
 import { resizeStack, isValidSizes } from '../../../shared/util/resize';
+import { nextTabIndex } from '../../../shared/a11y/roving-tabindex';
 import {
   buildSrcdoc, buildExportDoc, mergeToSingle, splitFromSingle, injectBootstrap,
   DEFAULT_SNIPPET, VIEWPORTS, Viewport, ConsoleLine, Snippet, PlaygroundMode,
-  PlaygroundLayout, DEFAULT_LAYOUT,
+  PlaygroundLayout, DEFAULT_LAYOUT, MODE_OPTIONS, VIEWPORT_OPTIONS,
 } from './playground.logic';
 
 type EditorTab = 'html' | 'css' | 'javascript';
@@ -73,21 +74,49 @@ type EditorTab = 'html' | 'css' | 'javascript';
 
         <div class="pg-output" [style.gridTemplateRows]="outStyle()">
           <div class="pg-toolbar">
-            <div class="pg-modes" role="group" [attr.aria-label]="modeGroupLabel">
-              <button type="button" class="pg-mode" [class.active]="mode() === 'split'"
-                [attr.aria-pressed]="mode() === 'split'" (click)="setMode('split')"
+            <div class="pgc-seg" role="group" [attr.aria-label]="modeGroupLabel"
+              (keydown)="onSegKeydown($event, 'mode')">
+              <button type="button" class="pgc-seg-btn" id="pg-mode-split"
+                [class.active]="mode() === 'split'" [attr.aria-pressed]="mode() === 'split'"
+                [tabindex]="mode() === 'split' ? 0 : -1" (click)="setMode('split')"
                 i18n="@@tools.playground.modeSplit">Separado</button>
-              <button type="button" class="pg-mode" [class.active]="mode() === 'single'"
-                [attr.aria-pressed]="mode() === 'single'" (click)="setMode('single')"
+              <button type="button" class="pgc-seg-btn" id="pg-mode-single"
+                [class.active]="mode() === 'single'" [attr.aria-pressed]="mode() === 'single'"
+                [tabindex]="mode() === 'single' ? 0 : -1" (click)="setMode('single')"
                 i18n="@@tools.playground.modeSingle">Único</button>
             </div>
-            <div class="pg-viewports" role="group" [attr.aria-label]="viewportLabel">
-              <button type="button" class="pg-vp" [class.active]="viewport() === 'desktop'"
-                (click)="viewport.set('desktop')" [attr.aria-label]="desktopLabel">🖥</button>
-              <button type="button" class="pg-vp" [class.active]="viewport() === 'tablet'"
-                (click)="viewport.set('tablet')" [attr.aria-label]="tabletLabel">▭</button>
-              <button type="button" class="pg-vp" [class.active]="viewport() === 'mobile'"
-                (click)="viewport.set('mobile')" [attr.aria-label]="mobileLabel">▯</button>
+            <div class="pg-view">
+              <div class="pgc-seg" role="group" [attr.aria-label]="viewportLabel"
+                (keydown)="onSegKeydown($event, 'viewport')">
+                <button type="button" class="pgc-seg-btn pgc-seg-btn--icon" id="pg-viewport-desktop"
+                  [class.active]="viewport() === 'desktop'" [attr.aria-pressed]="viewport() === 'desktop'"
+                  [tabindex]="viewport() === 'desktop' ? 0 : -1" (click)="viewport.set('desktop')"
+                  [attr.aria-label]="desktopLabel">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>
+                  </svg>
+                </button>
+                <button type="button" class="pgc-seg-btn pgc-seg-btn--icon" id="pg-viewport-tablet"
+                  [class.active]="viewport() === 'tablet'" [attr.aria-pressed]="viewport() === 'tablet'"
+                  [tabindex]="viewport() === 'tablet' ? 0 : -1" (click)="viewport.set('tablet')"
+                  [attr.aria-label]="tabletLabel">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/>
+                  </svg>
+                </button>
+                <button type="button" class="pgc-seg-btn pgc-seg-btn--icon" id="pg-viewport-mobile"
+                  [class.active]="viewport() === 'mobile'" [attr.aria-pressed]="viewport() === 'mobile'"
+                  [tabindex]="viewport() === 'mobile' ? 0 : -1" (click)="viewport.set('mobile')"
+                  [attr.aria-label]="mobileLabel">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 18h.01"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="pg-ruler">{{ frameWidth() }}</span>
             </div>
             <div class="pg-actions">
               <button type="button" class="pg-btn" (click)="run()" i18n="@@tools.playground.run">Run</button>
@@ -214,6 +243,19 @@ export class Playground implements OnInit, OnDestroy {
     }
     this.mode.set(next);
     this.afterChange();
+  }
+
+  onSegKeydown(e: KeyboardEvent, group: 'mode' | 'viewport'): void {
+    const opts: readonly string[] = group === 'mode' ? MODE_OPTIONS : VIEWPORT_OPTIONS;
+    const current = opts.indexOf(group === 'mode' ? this.mode() : this.viewport());
+    const next = nextTabIndex(current, e.key, opts.length);
+    if (next === current) return;
+    e.preventDefault();
+    if (group === 'mode') this.setMode(MODE_OPTIONS[next]);
+    else this.viewport.set(VIEWPORT_OPTIONS[next]);
+    if (typeof document !== 'undefined') {
+      document.getElementById(`pg-${group}-${opts[next]}`)?.focus();
+    }
   }
 
   onSingle(value: string): void { this.single.set(value); this.afterChange(); }
