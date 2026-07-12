@@ -17,7 +17,20 @@
 
 .pg-editors { display: flex; flex-direction: column; gap: 10px; }
 .pg-editor { display: flex; flex-direction: column; gap: 4px; }
-.pg-label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.pg-editor-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.pg-lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+.pg-lang-dot--html { background: var(--lang-html); }
+.pg-lang-dot--css { background: var(--lang-css); }
+.pg-lang-dot--js { background: var(--lang-js); }
 
 .pg-output { display: flex; flex-direction: column; gap: 12px; }
 .pg-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
@@ -72,7 +85,7 @@
 @media (max-width: 699px) {
   .pg-tabs { display: flex; }
   .pg-editor.hidden-mobile { display: none; }
-  .pg-editor .pg-label { display: none; }
+  .pg-editor .pg-editor-head { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

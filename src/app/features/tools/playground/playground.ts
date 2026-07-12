@@ -40,21 +40,27 @@ type EditorTab = 'html' | 'css' | 'javascript';
           </div>
           <div class="pg-editors" [style.gridTemplateRows]="editorRowsStyle()">
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'html'">
-              <span class="pg-label">HTML</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--html" aria-hidden="true"></i>HTML
+              </span>
               <app-code-editor language="html" [value]="html()" [ariaLabel]="'HTML'"
                 (valueChange)="onHtml($event)" (run)="run()" />
             </div>
             <app-resize-handle axis="y" [label]="resizeEditorsLabel" [value]="editorRows()[0]"
               (resizeBy)="onResizeEditors(0, $event)" (reset)="resetLayout('editors')" />
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'css'">
-              <span class="pg-label">CSS</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--css" aria-hidden="true"></i>CSS
+              </span>
               <app-code-editor language="css" [value]="css()" [ariaLabel]="'CSS'"
                 (valueChange)="onCss($event)" (run)="run()" />
             </div>
             <app-resize-handle axis="y" [label]="resizeEditorsLabel" [value]="editorRows()[1]"
               (resizeBy)="onResizeEditors(1, $event)" (reset)="resetLayout('editors')" />
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'javascript'">
-              <span class="pg-label">JS</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--js" aria-hidden="true"></i>JS
+              </span>
               <app-code-editor language="javascript" [value]="js()" [ariaLabel]="'JavaScript'"
                 (valueChange)="onJs($event)" (run)="run()" />
             </div>
@@ -62,7 +68,9 @@ type EditorTab = 'html' | 'css' | 'javascript';
         } @else {
           <div class="pg-editors">
             <div class="pg-editor">
-              <span class="pg-label">HTML</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--html" aria-hidden="true"></i>HTML
+              </span>
               <app-code-editor language="html" [value]="single()" [ariaLabel]="'HTML'"
                 (valueChange)="onSingle($event)" (run)="run()" />
             </div>
