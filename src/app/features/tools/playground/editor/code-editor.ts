@@ -53,14 +53,29 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private async mount(): Promise<void> {
-    const [cm, view, state] = await Promise.all([
+    const [cm, view, state, language, lezerHighlight] = await Promise.all([
       import('codemirror'),
       import('@codemirror/view'),
       import('@codemirror/state'),
+      import('@codemirror/language'),
+      import('@lezer/highlight'),
     ]);
     const langExt = await this.loadLanguage();
     if (this.destroyed) return;
     const EditorView = cm.EditorView;
+    // Highlight só com classes (tok-*) — cores vêm do CSS por tokens, tema troca com data-theme.
+    const tokenClasses = language.HighlightStyle.define([
+      { tag: lezerHighlight.tags.keyword, class: 'tok-keyword' },
+      { tag: [lezerHighlight.tags.string, lezerHighlight.tags.special(lezerHighlight.tags.string)], class: 'tok-string' },
+      { tag: [lezerHighlight.tags.number, lezerHighlight.tags.bool, lezerHighlight.tags.atom, lezerHighlight.tags.null], class: 'tok-number' },
+      { tag: lezerHighlight.tags.comment, class: 'tok-comment' },
+      { tag: lezerHighlight.tags.tagName, class: 'tok-tag' },
+      { tag: lezerHighlight.tags.attributeName, class: 'tok-attr' },
+      { tag: [lezerHighlight.tags.propertyName, lezerHighlight.tags.definition(lezerHighlight.tags.propertyName)], class: 'tok-prop' },
+      { tag: [lezerHighlight.tags.className, lezerHighlight.tags.typeName], class: 'tok-type' },
+      { tag: [lezerHighlight.tags.operator, lezerHighlight.tags.punctuation, lezerHighlight.tags.bracket], class: 'tok-punct' },
+      { tag: [lezerHighlight.tags.function(lezerHighlight.tags.variableName), lezerHighlight.tags.function(lezerHighlight.tags.propertyName)], class: 'tok-fn' },
+    ]);
     const updateListener = EditorView.updateListener.of(u => {
       if (u.docChanged) {
         const text = u.state.doc.toString();
@@ -73,7 +88,10 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
     ]);
     const startState = state.EditorState.create({
       doc: this.value,
-      extensions: [cm.basicSetup, langExt, updateListener, runKeymap, EditorView.lineWrapping],
+      extensions: [
+        cm.basicSetup, langExt, updateListener, runKeymap, EditorView.lineWrapping,
+        language.syntaxHighlighting(tokenClasses),
+      ],
     });
     this.view = new EditorView({ state: startState, parent: this.host!.nativeElement }) as unknown as typeof this.view;
   }
