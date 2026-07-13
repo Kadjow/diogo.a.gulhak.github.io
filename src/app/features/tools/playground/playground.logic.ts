@@ -127,7 +127,7 @@ export interface PlaygroundLayout {
 }
 
 export const DEFAULT_LAYOUT: PlaygroundLayout = {
-  cols: [0.48, 0.52],
+  cols: [0.55, 0.45],
   out: [0.62, 0.38],
   editors: [0.34, 0.33, 0.33],
 };

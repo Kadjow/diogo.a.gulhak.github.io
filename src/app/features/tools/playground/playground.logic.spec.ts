@@ -141,7 +141,7 @@ describe('splitFromSingle', () => {
 
 describe('DEFAULT_LAYOUT', () => {
   it('has the spec fractions, each axis summing to 1', () => {
-    expect(DEFAULT_LAYOUT.cols).toEqual([0.48, 0.52]);
+    expect(DEFAULT_LAYOUT.cols).toEqual([0.55, 0.45]);
     expect(DEFAULT_LAYOUT.out).toEqual([0.62, 0.38]);
     expect(DEFAULT_LAYOUT.editors).toEqual([0.34, 0.33, 0.33]);
   });

@@ -50,7 +50,7 @@
   border-radius: 10px;
   background: var(--preview-bg);
   overflow: auto;
-  min-height: 260px;
+  min-height: 220px;
 }
 .pg-frame {
   height: 320px;
@@ -76,7 +76,7 @@
   .pg {
     display: grid;
     // colunas vêm do binding inline [style.gridTemplateColumns]
-    height: clamp(480px, calc(100vh - 240px), 900px);
+    height: clamp(520px, calc(100vh - 190px), 1040px);
   }
   .pg-editors {
     display: grid;
