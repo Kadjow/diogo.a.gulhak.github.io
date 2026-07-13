@@ -1,6 +1,6 @@
 @use 'controls';
 
-.pg { display: flex; flex-direction: column; gap: var(--space-4); }
+.pg { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
 
 .pg-tabs { display: none; gap: var(--space-2); }
 .pg-tab {
@@ -15,8 +15,8 @@
   &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 
-.pg-editors { display: flex; flex-direction: column; gap: var(--space-3); }
-.pg-editor { display: flex; flex-direction: column; gap: var(--space-1); }
+.pg-editors { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.pg-editor { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
 .pg-editor-head {
   display: flex;
   align-items: center;
@@ -32,10 +32,10 @@
 .pg-lang-dot--css { background: var(--lang-css); }
 .pg-lang-dot--js { background: var(--lang-js); }
 
-.pg-output { display: flex; flex-direction: column; gap: var(--space-3); }
-.pg-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.pg-output { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.pg-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: var(--space-2) var(--space-3); }
 .pg-actions { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
-.pg-view { display: flex; align-items: center; gap: var(--space-2); }
+.pg-view { display: flex; align-items: center; gap: var(--space-2); margin-left: auto; }
 .pg-ruler {
   font-size: 0.6875rem;
   color: var(--muted);
@@ -105,6 +105,9 @@
   .pg-tabs { display: flex; }
   .pg-editor.hidden-mobile { display: none; }
   .pg-editor .pg-editor-head { display: none; }
+  .pg-toolbar { justify-content: space-between; }
+  .pg-view { margin-left: 0; }
+  .pg-ruler { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
