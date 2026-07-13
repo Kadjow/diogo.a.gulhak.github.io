@@ -1,24 +1,27 @@
 .tool-shell {
-  padding: 32px 0 64px;
+  padding: 20px 0 48px;
 }
 .tool-back {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   color: var(--muted);
   text-decoration: none;
   font-size: 0.875rem;
   &:hover { color: var(--accent); }
 }
 .tool-title {
-  font-size: 1.75rem;
+  font-size: 1.375rem;
   letter-spacing: -0.02em;
   color: var(--ink);
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 .tool-desc {
   color: var(--muted);
-  margin: 0 0 28px;
+  font-size: 0.9375rem;
+  margin: 0 0 16px;
+  overflow-wrap: anywhere;
 }
 .tool-body {
   display: block;
+  min-width: 0;
 }
