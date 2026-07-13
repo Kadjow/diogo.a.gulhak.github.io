@@ -10,6 +10,14 @@
   --preview-bg: #fff;
   /* Cores de marca das linguagens (dots dos editores) — iguais nos 2 temas. */
   --lang-html: #E44D26; --lang-css: #2965F1; --lang-js: #F7DF1E;
+  /* Tema de código (CodeMirror) — claro */
+  --code-bg: #FFFFFF; --code-gutter-bg: #F2F4F7; --code-gutter-fg: #8B93A7;
+  --code-active-bg: rgba(37,99,235,.05); --code-selection: rgba(37,99,235,.16); --code-caret: #2563EB;
+  --code-keyword: #7C3AED; --code-string: #047857; --code-number: #B45309; --code-comment: #94A3B8;
+  --code-tag: #2563EB; --code-attr: #0F766E; --code-prop: #1D4ED8; --code-type: #A21CAF;
+  --code-punct: #475569; --code-fn: #B91C1C;
+  --code-font: ui-monospace, 'Cascadia Code', Consolas, 'SF Mono', monospace;
+  --code-size: 0.84375rem;
   --maxw: 1080px;
 }
 :root[data-theme="dark"] {
@@ -20,4 +28,10 @@
   --warn: #fbbf24;
   --preview-bg: #fff;
   --lang-html: #E44D26; --lang-css: #2965F1; --lang-js: #F7DF1E;
+  /* Tema de código (CodeMirror) — dark */
+  --code-bg: #0D1322; --code-gutter-bg: #0F1626; --code-gutter-fg: #5F6B85;
+  --code-active-bg: rgba(91,156,255,.07); --code-selection: rgba(91,156,255,.24); --code-caret: #5B9CFF;
+  --code-keyword: #C4B5FD; --code-string: #6EE7B7; --code-number: #FCD34D; --code-comment: #64748B;
+  --code-tag: #7DB3FF; --code-attr: #5EEAD4; --code-prop: #93C5FD; --code-type: #F0ABFC;
+  --code-punct: #94A3B8; --code-fn: #FCA5A5;
 }
