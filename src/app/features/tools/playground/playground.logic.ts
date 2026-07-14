@@ -3,6 +3,7 @@ export type Viewport = 'desktop' | 'tablet' | 'mobile';
 export interface ConsoleLine {
   level: 'log' | 'info' | 'warn' | 'error';
   text: string;
+  time?: string;
 }
 
 export interface Snippet {
@@ -41,6 +42,19 @@ export function formatConsoleArg(value: unknown): string {
   }
 }
 
+export function filterConsoleLines(
+  lines: ConsoleLine[],
+  active: ReadonlySet<ConsoleLine['level']>,
+): ConsoleLine[] {
+  return lines.filter(l => active.has(l.level));
+}
+
+export function countByLevel(lines: ConsoleLine[]): Record<ConsoleLine['level'], number> {
+  const counts: Record<ConsoleLine['level'], number> = { log: 0, info: 0, warn: 0, error: 0 };
+  for (const l of lines) counts[l.level] += 1;
+  return counts;
+}
+
 // Injected INSIDE the sandboxed iframe. Cannot reference anything from the parent.
 // Overrides console.* and error events, serializes args, postMessages to the parent.
 export const CONSOLE_BOOTSTRAP = [
@@ -56,7 +70,7 @@ export const CONSOLE_BOOTSTRAP = [
   "text:Array.prototype.map.call(args,ser).join(' ')},'*');}catch(e){}};",
   "['log','info','warn','error'].forEach(function(m){var o=console[m];",
   'console[m]=function(){send(m,arguments);try{o.apply(console,arguments);}catch(e){}};});',
-  "window.addEventListener('error',function(e){send('error',[e.message]);});",
+  "window.addEventListener('error',function(e){send('error',[e.message+' ('+(e.lineno||0)+':'+(e.colno||0)+')']);});",
   "window.addEventListener('unhandledrejection',function(e){send('error',[String(e.reason)]);});",
   '})();',
 ].join('');
@@ -79,6 +93,9 @@ export function buildExportDoc(html: string, css: string, js: string): string {
 }
 
 export type PlaygroundMode = 'split' | 'single';
+
+export const MODE_OPTIONS: PlaygroundMode[] = ['split', 'single'];
+export const VIEWPORT_OPTIONS: Viewport[] = ['desktop', 'tablet', 'mobile'];
 
 export type DomParse = (html: string) => Document;
 
@@ -110,7 +127,7 @@ export interface PlaygroundLayout {
 }
 
 export const DEFAULT_LAYOUT: PlaygroundLayout = {
-  cols: [0.48, 0.52],
+  cols: [0.55, 0.45],
   out: [0.62, 0.38],
   editors: [0.34, 0.33, 0.33],
 };

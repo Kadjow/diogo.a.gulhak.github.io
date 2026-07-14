@@ -1,6 +1,8 @@
-.pg { display: flex; flex-direction: column; gap: 14px; }
+@use 'controls';
 
-.pg-tabs { display: none; gap: 6px; }
+.pg { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+
+.pg-tabs { display: none; gap: var(--space-2); }
 .pg-tab {
   padding: 6px 14px;
   border: 1px solid var(--border);
@@ -13,65 +15,68 @@
   &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 
-.pg-editors { display: flex; flex-direction: column; gap: 10px; }
-.pg-editor { display: flex; flex-direction: column; gap: 4px; }
-.pg-label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-
-.pg-output { display: flex; flex-direction: column; gap: 12px; }
-.pg-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
-.pg-modes { display: flex; gap: 4px; }
-.pg-mode {
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--ink);
-  font-size: 0.75rem;
-  cursor: pointer;
-  &.active { background: var(--accent); color: var(--btn-fg); border-color: var(--accent); }
-  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-}
-.pg-viewports, .pg-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.pg-vp {
-  width: 32px; height: 30px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--muted);
-  cursor: pointer;
-  &.active { border-color: var(--accent); color: var(--ink); }
-  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-}
-.pg-btn {
-  padding: 6px 14px;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
-  font-size: 0.8125rem;
+.pg-editors { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.pg-editor { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+.pg-editor-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.6875rem;
   font-weight: 600;
-  cursor: pointer;
-  &:hover { background: var(--ink); color: var(--bg); }
-  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
 }
-.pg-auto { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8125rem; color: var(--muted); cursor: pointer; }
+.pg-lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+.pg-lang-dot--html { background: var(--lang-html); }
+.pg-lang-dot--css { background: var(--lang-css); }
+.pg-lang-dot--js { background: var(--lang-js); }
 
+.pg-output { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.pg-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: var(--space-2) var(--space-3); }
+.pg-actions { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.pg-view { display: flex; align-items: center; gap: var(--space-2); margin-left: auto; }
+.pg-ruler {
+  font-size: 0.6875rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+}
 .pg-preview {
+  position: relative;
   display: flex;
   justify-content: center;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: #fff;
+  background: var(--preview-bg);
   overflow: auto;
-  min-height: 260px;
+  min-height: 220px;
 }
-.pg-frame { height: 320px; max-width: 100%; border: 0; background: #fff; }
+.pg-frame {
+  height: 320px;
+  max-width: 100%;
+  border: 0;
+  background: var(--preview-bg);
+  transition: opacity 0.15s ease;
+}
+.pg-preview.is-loading .pg-frame { opacity: 0.4; }
+.pg-preview-msg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  background: var(--surface);
+}
 
 @media (min-width: 1024px) {
   .pg {
     display: grid;
     // colunas vêm do binding inline [style.gridTemplateColumns]
-    height: clamp(480px, calc(100vh - 240px), 900px);
+    height: clamp(520px, calc(100vh - 190px), 1040px);
   }
   .pg-editors {
     display: grid;
@@ -99,11 +104,14 @@
 @media (max-width: 699px) {
   .pg-tabs { display: flex; }
   .pg-editor.hidden-mobile { display: none; }
-  .pg-editor .pg-label { display: none; }
+  .pg-editor .pg-editor-head { display: none; }
+  .pg-toolbar { justify-content: space-between; }
+  .pg-view { margin-left: 0; }
+  .pg-ruler { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pg-tab, .pg-vp, .pg-btn { transition: none; }
+  .pg-tab, .pg-frame { transition: none; }
 }
 
-.pg-ai { display: block; margin-top: 14px; }
+.pg-ai { display: block; margin-top: var(--space-4); }

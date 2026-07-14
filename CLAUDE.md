@@ -99,6 +99,21 @@ Novas ferramentas futuras entram como **features lazy** em `src/app/features/`, 
 - Branch de trabalho atual da reescrita: `feat/angular-refactor`. `main` é a base dos PRs.
 - Commits/PRs só quando o usuário pedir; se estiver em `main`, criar branch antes.
 
+### Papéis: Opus planeja, Codex executa, QA separado
+
+Divisão de responsabilidade obrigatória em tarefas não-triviais:
+
+1. **Opus (Claude Code) planeja.** Entra em Plan Mode, cria a spec/plano, define escopo, arquivos permitidos/proibidos e critério de aceite. Não codifica direto tarefa grande sem plano aprovado.
+2. **Codex executa** como sub-agent. Recebe a tarefa fechada (objetivo, contexto, arquivos, regras, testes, comandos, critério de aceite, quando parar). Só implementa — nunca decide arquitetura, produto ou escopo.
+3. **QA = Codex prova + Opus revisa.** O executor não é o dono final do QA — separação de responsabilidade, sem conflito.
+   - **Codex anexa prova.** Ao devolver a tarefa, roda e cola a saída dos gates locais deste projeto:
+     - `npm run lint` — 0 erros (warnings a11y intencionais ok).
+     - `npm run test:ci` — suíte Vitest verde, saída limpa.
+     - `npm run build` — prerender dos 2 locales sem falhar.
+     - **Paridade i18n:** `grep` no `dist` confirmando `/` em pt-BR e `/en/` em inglês (0 chave crua, 0 target faltando).
+     - **SSR-safe:** sem acesso a `window`/`document`/`localStorage` sem guarda.
+   - **Opus revisa e decide.** Revisão independente da prova + do diff (usar `/code-review`). Decide merge só com evidência — sem prova anexada = QA não passou, devolve pro Codex. Nunca aceitar "passou" sem a saída dos comandos.
+
 ## Armadilhas & lições (aprendidas no hardening)
 
 Coisas que já custaram tempo — não repita:

@@ -1,3 +1,5 @@
+@use 'buttons';
+
 :host { display: block; min-height: 0; }
 .console {
   display: flex;
@@ -24,14 +26,27 @@
   border-bottom: 1px solid var(--border);
 }
 .console-title { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
-.console-clear {
-  border: 0;
+.console-clear { height: 24px; font-size: 0.75rem; }
+.console-filters { display: flex; gap: var(--space-1); flex-wrap: wrap; }
+.console-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 1px var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
   background: transparent;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   cursor: pointer;
-  &:hover { color: var(--ink); }
-  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  &.active { border-color: var(--accent); color: var(--ink); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+}
+.console-count { font-variant-numeric: tabular-nums; color: var(--muted); }
+.console-time {
+  margin-right: var(--space-2);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 .console-body {
   overflow-y: auto;

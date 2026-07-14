@@ -27,8 +27,8 @@ export const TOOLS: readonly ToolMeta[] = [
   },
   {
     slug: 'json-tools',
-    name: $localize`:@@tools.json-tools.name:Ferramentas JSON`,
-    description: $localize`:@@tools.json-tools.desc:Formatar, minificar e validar JSON.`,
+    name: $localize`:@@tools.json-tools.name:Editor JSON`,
+    description: $localize`:@@tools.json-tools.desc:Editor de dois painéis com formatar, ordenar, reparar, validar e transformar.`,
     group: 'dev', icon: '{ }', status: 'live',
   },
   {

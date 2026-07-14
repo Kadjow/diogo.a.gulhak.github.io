@@ -27,7 +27,7 @@ interface Bubble { role: 'user' | 'assistant'; html: string; raw: string }
             <input class="ai-key" type="password" autocomplete="off" [ngModel]="keyInput()"
               (ngModelChange)="keyInput.set($event)"
               [attr.placeholder]="keyPlaceholder" [attr.aria-label]="keyPlaceholder" />
-            <button type="button" class="ai-btn" (click)="saveKey()"
+            <button type="button" class="pgc-btn pgc-btn--secondary" (click)="saveKey()"
               i18n="@@tools.playground.ai.saveKey">Salvar chave</button>
           </div>
           <p class="ai-hint">
@@ -37,11 +37,11 @@ interface Bubble { role: 'user' | 'assistant'; html: string; raw: string }
           </p>
         } @else {
           <div class="ai-actions">
-            <button type="button" class="ai-chip" (click)="quick('explain')" [disabled]="busy()"
+            <button type="button" class="pgc-btn pgc-btn--ghost ai-chip" (click)="quick('explain')" [disabled]="busy()"
               i18n="@@tools.playground.ai.explain">Explicar código</button>
-            <button type="button" class="ai-chip" (click)="quick('fix')" [disabled]="busy()"
+            <button type="button" class="pgc-btn pgc-btn--ghost ai-chip" (click)="quick('fix')" [disabled]="busy()"
               i18n="@@tools.playground.ai.fix">Corrigir erros</button>
-            <button type="button" class="ai-chip ai-clearkey" (click)="clearKey()" [disabled]="busy()"
+            <button type="button" class="pgc-btn pgc-btn--ghost ai-chip ai-clearkey" (click)="clearKey()" [disabled]="busy()"
               i18n="@@tools.playground.ai.clearKey">Trocar chave</button>
           </div>
 
@@ -67,7 +67,7 @@ interface Bubble { role: 'user' | 'assistant'; html: string; raw: string }
             <input class="ai-input" [ngModel]="input()" (ngModelChange)="input.set($event)"
               (keydown.enter)="send()" [disabled]="busy()"
               [attr.placeholder]="inputPlaceholder" [attr.aria-label]="inputPlaceholder" />
-            <button type="button" class="ai-btn" (click)="send()" [disabled]="busy()"
+            <button type="button" class="pgc-btn pgc-btn--secondary" (click)="send()" [disabled]="busy()"
               i18n="@@tools.playground.ai.send">Enviar</button>
           </div>
         }

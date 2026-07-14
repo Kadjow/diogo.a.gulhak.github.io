@@ -6,7 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import type { Extension } from '@codemirror/state';
 
-export type EditorLanguage = 'html' | 'css' | 'javascript';
+export type EditorLanguage = 'html' | 'css' | 'javascript' | 'json';
 
 @Component({
   selector: 'app-code-editor',
@@ -17,6 +17,7 @@ export type EditorLanguage = 'html' | 'css' | 'javascript';
       <textarea
         class="cm-fallback"
         spellcheck="false"
+        [readonly]="readonly"
         [ngModel]="value"
         (ngModelChange)="onFallback($event)"
         (keydown)="onFallbackKeydown($event)"
@@ -31,6 +32,8 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   @Input() value = '';
   @Input() language: EditorLanguage = 'html';
   @Input() ariaLabel = '';
+  @Input() readonly = false;
+  @Input() search = false;
   @Output() valueChange = new EventEmitter<string>();
   @Output() run = new EventEmitter<void>();
   @ViewChild('host') host?: ElementRef<HTMLElement>;
@@ -53,14 +56,29 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private async mount(): Promise<void> {
-    const [cm, view, state] = await Promise.all([
+    const [cm, view, state, language, lezerHighlight] = await Promise.all([
       import('codemirror'),
       import('@codemirror/view'),
       import('@codemirror/state'),
+      import('@codemirror/language'),
+      import('@lezer/highlight'),
     ]);
     const langExt = await this.loadLanguage();
     if (this.destroyed) return;
     const EditorView = cm.EditorView;
+    // Highlight só com classes (tok-*) — cores vêm do CSS por tokens, tema troca com data-theme.
+    const tokenClasses = language.HighlightStyle.define([
+      { tag: lezerHighlight.tags.keyword, class: 'tok-keyword' },
+      { tag: [lezerHighlight.tags.string, lezerHighlight.tags.special(lezerHighlight.tags.string)], class: 'tok-string' },
+      { tag: [lezerHighlight.tags.number, lezerHighlight.tags.bool, lezerHighlight.tags.atom, lezerHighlight.tags.null], class: 'tok-number' },
+      { tag: lezerHighlight.tags.comment, class: 'tok-comment' },
+      { tag: lezerHighlight.tags.tagName, class: 'tok-tag' },
+      { tag: lezerHighlight.tags.attributeName, class: 'tok-attr' },
+      { tag: [lezerHighlight.tags.propertyName, lezerHighlight.tags.definition(lezerHighlight.tags.propertyName)], class: 'tok-prop' },
+      { tag: [lezerHighlight.tags.className, lezerHighlight.tags.typeName], class: 'tok-type' },
+      { tag: [lezerHighlight.tags.operator, lezerHighlight.tags.punctuation, lezerHighlight.tags.bracket], class: 'tok-punct' },
+      { tag: [lezerHighlight.tags.function(lezerHighlight.tags.variableName), lezerHighlight.tags.function(lezerHighlight.tags.propertyName)], class: 'tok-fn' },
+    ]);
     const updateListener = EditorView.updateListener.of(u => {
       if (u.docChanged) {
         const text = u.state.doc.toString();
@@ -71,9 +89,24 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
     const runKeymap = view.keymap.of([
       { key: 'Mod-Enter', run: () => { this.zone.run(() => this.run.emit()); return true; } },
     ]);
+    const extras: Extension[] = [];
+    if (this.readonly) {
+      extras.push(state.EditorState.readOnly.of(true), EditorView.editable.of(false));
+    }
+    if (this.search) {
+      // `basicSetup` já inclui `searchKeymap` (Ctrl+F funciona sem isto). Aqui só
+      // configuramos o painel de busca no topo; NÃO re-vincular o keymap (duplicaria bindings).
+      const searchMod = await import('@codemirror/search');
+      if (this.destroyed) return;
+      extras.push(searchMod.search({ top: true }));
+    }
     const startState = state.EditorState.create({
       doc: this.value,
-      extensions: [cm.basicSetup, langExt, updateListener, runKeymap, EditorView.lineWrapping],
+      extensions: [
+        cm.basicSetup, langExt, updateListener, runKeymap, EditorView.lineWrapping,
+        language.syntaxHighlighting(tokenClasses),
+        ...extras,
+      ],
     });
     this.view = new EditorView({ state: startState, parent: this.host!.nativeElement }) as unknown as typeof this.view;
   }
@@ -81,6 +114,7 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   private async loadLanguage(): Promise<Extension> {
     if (this.language === 'css') return (await import('@codemirror/lang-css')).css();
     if (this.language === 'javascript') return (await import('@codemirror/lang-javascript')).javascript();
+    if (this.language === 'json') return (await import('@codemirror/lang-json')).json();
     return (await import('@codemirror/lang-html')).html();
   }
 

@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ToolShell } from '../../../shared/ui/tool-shell/tool-shell';
-import { CodeEditor } from './editor/code-editor';
+import { CodeEditor } from '../../../shared/ui/code-editor/code-editor';
 import { ConsolePanel } from './console-panel';
 import { AiPanel } from './ai/ai-panel';
 import { PlaygroundContext } from './ai/groq.logic';
@@ -12,10 +12,11 @@ import { PLAYGROUND_KEY } from '../../../core/storage-keys';
 import { debounce } from '../../../shared/util/debounce';
 import { ResizeHandle } from '../../../shared/ui/resizable/resize-handle';
 import { resizeStack, isValidSizes } from '../../../shared/util/resize';
+import { nextTabIndex } from '../../../shared/a11y/roving-tabindex';
 import {
   buildSrcdoc, buildExportDoc, mergeToSingle, splitFromSingle, injectBootstrap,
   DEFAULT_SNIPPET, VIEWPORTS, Viewport, ConsoleLine, Snippet, PlaygroundMode,
-  PlaygroundLayout, DEFAULT_LAYOUT,
+  PlaygroundLayout, DEFAULT_LAYOUT, MODE_OPTIONS, VIEWPORT_OPTIONS,
 } from './playground.logic';
 
 type EditorTab = 'html' | 'css' | 'javascript';
@@ -39,21 +40,27 @@ type EditorTab = 'html' | 'css' | 'javascript';
           </div>
           <div class="pg-editors" [style.gridTemplateRows]="editorRowsStyle()">
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'html'">
-              <span class="pg-label">HTML</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--html" aria-hidden="true"></i>HTML
+              </span>
               <app-code-editor language="html" [value]="html()" [ariaLabel]="'HTML'"
                 (valueChange)="onHtml($event)" (run)="run()" />
             </div>
             <app-resize-handle axis="y" [label]="resizeEditorsLabel" [value]="editorRows()[0]"
               (resizeBy)="onResizeEditors(0, $event)" (reset)="resetLayout('editors')" />
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'css'">
-              <span class="pg-label">CSS</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--css" aria-hidden="true"></i>CSS
+              </span>
               <app-code-editor language="css" [value]="css()" [ariaLabel]="'CSS'"
                 (valueChange)="onCss($event)" (run)="run()" />
             </div>
             <app-resize-handle axis="y" [label]="resizeEditorsLabel" [value]="editorRows()[1]"
               (resizeBy)="onResizeEditors(1, $event)" (reset)="resetLayout('editors')" />
             <div class="pg-editor" [class.hidden-mobile]="tab() !== 'javascript'">
-              <span class="pg-label">JS</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--js" aria-hidden="true"></i>JS
+              </span>
               <app-code-editor language="javascript" [value]="js()" [ariaLabel]="'JavaScript'"
                 (valueChange)="onJs($event)" (run)="run()" />
             </div>
@@ -61,7 +68,9 @@ type EditorTab = 'html' | 'css' | 'javascript';
         } @else {
           <div class="pg-editors">
             <div class="pg-editor">
-              <span class="pg-label">HTML</span>
+              <span class="pg-editor-head">
+                <i class="pg-lang-dot pg-lang-dot--html" aria-hidden="true"></i>HTML
+              </span>
               <app-code-editor language="html" [value]="single()" [ariaLabel]="'HTML'"
                 (valueChange)="onSingle($event)" (run)="run()" />
             </div>
@@ -73,37 +82,78 @@ type EditorTab = 'html' | 'css' | 'javascript';
 
         <div class="pg-output" [style.gridTemplateRows]="outStyle()">
           <div class="pg-toolbar">
-            <div class="pg-modes" role="group" [attr.aria-label]="modeGroupLabel">
-              <button type="button" class="pg-mode" [class.active]="mode() === 'split'"
-                [attr.aria-pressed]="mode() === 'split'" (click)="setMode('split')"
+            <div class="pgc-seg" role="group" [attr.aria-label]="modeGroupLabel"
+              (keydown)="onSegKeydown($event, 'mode')">
+              <button type="button" class="pgc-seg-btn" id="pg-mode-split"
+                [class.active]="mode() === 'split'" [attr.aria-pressed]="mode() === 'split'"
+                [tabindex]="mode() === 'split' ? 0 : -1" (click)="setMode('split')"
                 i18n="@@tools.playground.modeSplit">Separado</button>
-              <button type="button" class="pg-mode" [class.active]="mode() === 'single'"
-                [attr.aria-pressed]="mode() === 'single'" (click)="setMode('single')"
+              <button type="button" class="pgc-seg-btn" id="pg-mode-single"
+                [class.active]="mode() === 'single'" [attr.aria-pressed]="mode() === 'single'"
+                [tabindex]="mode() === 'single' ? 0 : -1" (click)="setMode('single')"
                 i18n="@@tools.playground.modeSingle">Único</button>
             </div>
-            <div class="pg-viewports" role="group" [attr.aria-label]="viewportLabel">
-              <button type="button" class="pg-vp" [class.active]="viewport() === 'desktop'"
-                (click)="viewport.set('desktop')" [attr.aria-label]="desktopLabel">🖥</button>
-              <button type="button" class="pg-vp" [class.active]="viewport() === 'tablet'"
-                (click)="viewport.set('tablet')" [attr.aria-label]="tabletLabel">▭</button>
-              <button type="button" class="pg-vp" [class.active]="viewport() === 'mobile'"
-                (click)="viewport.set('mobile')" [attr.aria-label]="mobileLabel">▯</button>
+            <div class="pg-view">
+              <div class="pgc-seg" role="group" [attr.aria-label]="viewportLabel"
+                (keydown)="onSegKeydown($event, 'viewport')">
+                <button type="button" class="pgc-seg-btn pgc-seg-btn--icon" id="pg-viewport-desktop"
+                  [class.active]="viewport() === 'desktop'" [attr.aria-pressed]="viewport() === 'desktop'"
+                  [tabindex]="viewport() === 'desktop' ? 0 : -1" (click)="viewport.set('desktop')"
+                  [attr.aria-label]="desktopLabel">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>
+                  </svg>
+                </button>
+                <button type="button" class="pgc-seg-btn pgc-seg-btn--icon" id="pg-viewport-tablet"
+                  [class.active]="viewport() === 'tablet'" [attr.aria-pressed]="viewport() === 'tablet'"
+                  [tabindex]="viewport() === 'tablet' ? 0 : -1" (click)="viewport.set('tablet')"
+                  [attr.aria-label]="tabletLabel">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/>
+                  </svg>
+                </button>
+                <button type="button" class="pgc-seg-btn pgc-seg-btn--icon" id="pg-viewport-mobile"
+                  [class.active]="viewport() === 'mobile'" [attr.aria-pressed]="viewport() === 'mobile'"
+                  [tabindex]="viewport() === 'mobile' ? 0 : -1" (click)="viewport.set('mobile')"
+                  [attr.aria-label]="mobileLabel">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 18h.01"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="pg-ruler">{{ frameWidth() }}</span>
             </div>
             <div class="pg-actions">
-              <button type="button" class="pg-btn" (click)="run()" i18n="@@tools.playground.run">Run</button>
-              <button type="button" class="pg-btn" (click)="stop()" i18n="@@tools.playground.stop">Stop</button>
-              <label class="pg-auto">
-                <input type="checkbox" [checked]="autoRun()" (change)="toggleAutoRun()" />
+              <button type="button" class="pgc-btn pgc-btn--primary" (click)="run()">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <ng-container i18n="@@tools.playground.run">Run</ng-container>
+              </button>
+              <button type="button" class="pgc-btn pgc-btn--secondary" (click)="stop()"
+                i18n="@@tools.playground.stop">Stop</button>
+              <button type="button" class="pgc-btn pgc-btn--secondary" (click)="export()"
+                i18n="@@tools.playground.export">Export</button>
+              <button type="button" class="pgc-btn"
+                [class.pgc-btn--ghost]="!resetPending()" [class.pgc-btn--danger]="resetPending()"
+                (click)="onReset()">{{ resetPending() ? resetConfirmLabel : resetLabel }}</button>
+              <button type="button" class="pgc-switch" role="switch" [attr.aria-checked]="autoRun()"
+                (click)="toggleAutoRun()">
+                <span class="pgc-switch-track"><span class="pgc-switch-thumb"></span></span>
                 <span i18n="@@tools.playground.auto">Auto</span>
-              </label>
-              <button type="button" class="pg-btn" (click)="export()" i18n="@@tools.playground.export">Export</button>
-              <button type="button" class="pg-btn" (click)="reset()" i18n="@@tools.playground.reset">Reset</button>
+              </button>
             </div>
           </div>
 
-          <div class="pg-preview">
-            <iframe #frame class="pg-frame" [style.width]="frameWidth()"
+          <div class="pg-preview" [class.is-loading]="running()">
+            <iframe #frame class="pg-frame" [style.width]="frameWidth()" (load)="onFrameLoad()"
               sandbox="allow-scripts" [attr.title]="previewLabel"></iframe>
+            @if (stopped()) {
+              <p class="pg-preview-msg">{{ stoppedMsg }}</p>
+            }
           </div>
 
           <app-resize-handle axis="y" [label]="resizeOutputLabel" [value]="out()[0]"
@@ -128,6 +178,9 @@ export class Playground implements OnInit, OnDestroy {
   readonly css = signal(DEFAULT_SNIPPET.css);
   readonly js = signal(DEFAULT_SNIPPET.js);
   readonly autoRun = signal(true);
+  readonly running = signal(false);
+  readonly stopped = signal(false);
+  readonly resetPending = signal(false);
   readonly consoleLines = signal<ConsoleLine[]>([]);
   readonly viewport = signal<Viewport>('desktop');
   readonly tab = signal<EditorTab>('html');
@@ -160,12 +213,16 @@ export class Playground implements OnInit, OnDestroy {
   readonly tabletLabel = $localize`:@@tools.playground.tablet:Tablet`;
   readonly mobileLabel = $localize`:@@tools.playground.mobile:Mobile`;
   readonly previewLabel = $localize`:@@tools.playground.preview:Pré-visualização`;
+  readonly stoppedMsg = $localize`:@@tools.playground.stoppedMsg:Preview parado. Aperte Run para recomeçar.`;
   readonly modeGroupLabel = $localize`:@@tools.playground.modeGroup:Modo do editor`;
   readonly resizeColsLabel = $localize`:@@tools.playground.resizeCols:Redimensionar editores e saída`;
   readonly resizeOutputLabel = $localize`:@@tools.playground.resizeOutput:Redimensionar preview e console`;
   readonly resizeEditorsLabel = $localize`:@@tools.playground.resizeEditors:Redimensionar editores`;
+  readonly resetLabel = $localize`:@@tools.playground.reset:Reset`;
+  readonly resetConfirmLabel = $localize`:@@tools.playground.resetConfirm:Confirmar?`;
 
   private unlistenMessage?: () => void;
+  private resetTimer?: ReturnType<typeof setTimeout>;
   private readonly scheduleRun = debounce(() => this.run(), 300);
   private readonly scheduleSave = debounce(() => this.save(), 500);
 
@@ -189,6 +246,7 @@ export class Playground implements OnInit, OnDestroy {
 
   run(): void {
     if (!this.isBrowser || !this.frame) return;
+    this.running.set(true); this.stopped.set(false);
     this.consoleLines.set([]);
     this.frame.nativeElement.srcdoc =
       this.mode() === 'single'
@@ -199,7 +257,10 @@ export class Playground implements OnInit, OnDestroy {
   stop(): void {
     if (!this.frame) return;
     this.frame.nativeElement.srcdoc = '<!doctype html>';
+    this.stopped.set(true); this.running.set(false);
   }
+
+  onFrameLoad(): void { this.running.set(false); }
 
   setMode(next: PlaygroundMode): void {
     if (next === this.mode()) return;
@@ -214,6 +275,19 @@ export class Playground implements OnInit, OnDestroy {
     }
     this.mode.set(next);
     this.afterChange();
+  }
+
+  onSegKeydown(e: KeyboardEvent, group: 'mode' | 'viewport'): void {
+    const opts: readonly string[] = group === 'mode' ? MODE_OPTIONS : VIEWPORT_OPTIONS;
+    const current = opts.indexOf(group === 'mode' ? this.mode() : this.viewport());
+    const next = nextTabIndex(current, e.key, opts.length);
+    if (next === current) return;
+    e.preventDefault();
+    if (group === 'mode') this.setMode(MODE_OPTIONS[next]);
+    else this.viewport.set(VIEWPORT_OPTIONS[next]);
+    if (typeof document !== 'undefined') {
+      document.getElementById(`pg-${group}-${opts[next]}`)?.focus();
+    }
   }
 
   onSingle(value: string): void { this.single.set(value); this.afterChange(); }
@@ -243,6 +317,17 @@ export class Playground implements OnInit, OnDestroy {
   toggleAutoRun(): void {
     this.autoRun.update(v => !v);
     if (this.autoRun()) this.run();
+  }
+
+  onReset(): void {
+    if (!this.resetPending()) {
+      this.resetPending.set(true);
+      this.resetTimer = setTimeout(() => this.resetPending.set(false), 4000);
+      return;
+    }
+    clearTimeout(this.resetTimer);
+    this.resetPending.set(false);
+    this.reset();
   }
 
   clearConsole(): void { this.consoleLines.set([]); }
@@ -285,7 +370,11 @@ export class Playground implements OnInit, OnDestroy {
     if (e.source !== this.frame.nativeElement.contentWindow) return;
     const data = e.data as { __pg?: boolean; level?: ConsoleLine['level']; text?: unknown } | null;
     if (!data || data.__pg !== true || !data.level) return;
-    const line: ConsoleLine = { level: data.level, text: String(data.text) };
+    const line: ConsoleLine = {
+      level: data.level,
+      text: String(data.text),
+      time: new Date().toTimeString().slice(0, 8),
+    };
     this.consoleLines.update(lines => [...lines, line].slice(-200));
   }
 
@@ -322,6 +411,7 @@ export class Playground implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.unlistenMessage?.();
+    clearTimeout(this.resetTimer);
     this.scheduleRun.cancel();
     this.scheduleSave.cancel();
   }

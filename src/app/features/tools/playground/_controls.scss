@@ -1,0 +1,69 @@
+// Sistema de controles do playground — botões (via _buttons.scss), segmented control, switch.
+// Só consome tokens de _tokens.scss. Nenhum hex aqui.
+// Consumidores que só precisam de botões devem usar _buttons.scss direto (budget de CSS por componente).
+
+@use 'buttons';
+
+.pgc-seg {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.pgc-seg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  height: 28px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  &.active { background: var(--bg); color: var(--ink); box-shadow: inset 0 0 0 1px var(--border); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+}
+.pgc-seg-btn--icon { width: 30px; padding: 0; }
+
+.pgc-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+}
+.pgc-switch-track {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background 0.15s ease;
+}
+.pgc-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  transition: transform 0.15s ease;
+}
+.pgc-switch[aria-checked='true'] .pgc-switch-track { background: var(--accent); }
+.pgc-switch[aria-checked='true'] .pgc-switch-thumb { transform: translateX(14px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pgc-seg-btn, .pgc-switch-track, .pgc-switch-thumb { transition: none; }
+}

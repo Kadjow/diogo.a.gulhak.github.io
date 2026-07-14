@@ -1,7 +1,8 @@
 import {
-  buildSrcdoc, buildExportDoc, formatConsoleArg, CONSOLE_BOOTSTRAP, VIEWPORTS, DEFAULT_SNIPPET,
-  DEFAULT_LAYOUT,
+  buildSrcdoc, buildExportDoc, formatConsoleArg, filterConsoleLines, countByLevel,
+  CONSOLE_BOOTSTRAP, VIEWPORTS, DEFAULT_SNIPPET, DEFAULT_LAYOUT, MODE_OPTIONS, VIEWPORT_OPTIONS,
 } from './playground.logic';
+import type { ConsoleLine } from './playground.logic';
 
 describe('buildSrcdoc', () => {
   it('embeds css, html, bootstrap and user js in order', () => {
@@ -48,6 +49,34 @@ describe('formatConsoleArg', () => {
   });
 });
 
+describe('console filtering', () => {
+  const lines: ConsoleLine[] = [
+    { level: 'log', text: 'a' },
+    { level: 'error', text: 'b' },
+    { level: 'warn', text: 'c' },
+    { level: 'error', text: 'd' },
+  ];
+
+  it('filtra por níveis ativos', () => {
+    const out = filterConsoleLines(lines, new Set(['error']));
+    expect(out.length).toBe(2);
+    expect(out.every(l => l.level === 'error')).toBe(true);
+  });
+
+  it('conjunto vazio esconde tudo', () => {
+    expect(filterConsoleLines(lines, new Set()).length).toBe(0);
+  });
+
+  it('conta por nível', () => {
+    expect(countByLevel(lines)).toEqual({ log: 1, info: 0, warn: 1, error: 2 });
+  });
+
+  it('bootstrap reporta linha e coluna do erro', () => {
+    expect(CONSOLE_BOOTSTRAP.includes('e.lineno')).toBe(true);
+    expect(CONSOLE_BOOTSTRAP.includes('e.colno')).toBe(true);
+  });
+});
+
 describe('constants', () => {
   it('VIEWPORTS has desktop null, tablet 768, mobile 375', () => {
     expect(VIEWPORTS.desktop).toBe(null);
@@ -58,6 +87,13 @@ describe('constants', () => {
     expect(typeof DEFAULT_SNIPPET.html).toBe('string');
     expect(typeof DEFAULT_SNIPPET.css).toBe('string');
     expect(typeof DEFAULT_SNIPPET.js).toBe('string');
+  });
+});
+
+describe('segmented options', () => {
+  it('expõe as opções na ordem da UI', () => {
+    expect(MODE_OPTIONS).toEqual(['split', 'single']);
+    expect(VIEWPORT_OPTIONS).toEqual(['desktop', 'tablet', 'mobile']);
   });
 });
 
@@ -105,7 +141,7 @@ describe('splitFromSingle', () => {
 
 describe('DEFAULT_LAYOUT', () => {
   it('has the spec fractions, each axis summing to 1', () => {
-    expect(DEFAULT_LAYOUT.cols).toEqual([0.48, 0.52]);
+    expect(DEFAULT_LAYOUT.cols).toEqual([0.55, 0.45]);
     expect(DEFAULT_LAYOUT.out).toEqual([0.62, 0.38]);
     expect(DEFAULT_LAYOUT.editors).toEqual([0.34, 0.33, 0.33]);
   });
