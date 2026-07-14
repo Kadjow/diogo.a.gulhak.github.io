@@ -4,9 +4,11 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import type { Extension } from '@codemirror/state';
+import type { EditorState, Extension } from '@codemirror/state';
 
 export type EditorLanguage = 'html' | 'css' | 'javascript' | 'json';
+
+export interface EditorDiagnostic { from: number; to: number; message: string; severity: 'error' | 'warning'; }
 
 @Component({
   selector: 'app-code-editor',
@@ -34,6 +36,8 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   @Input() ariaLabel = '';
   @Input() readonly = false;
   @Input() search = false;
+  @Input() lint = false;
+  @Input() diagnostics: EditorDiagnostic[] | null = null;
   @Output() valueChange = new EventEmitter<string>();
   @Output() run = new EventEmitter<void>();
   @ViewChild('host') host?: ElementRef<HTMLElement>;
@@ -45,6 +49,7 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   private view: { state: { doc: { toString(): string; length: number } }; dispatch(t: unknown): void; destroy(): void } | undefined;
   private lastEmitted = '';
   private destroyed = false;
+  private lintMod?: typeof import('@codemirror/lint');
 
   async ngAfterViewInit(): Promise<void> {
     if (!this.isBrowser) return;
@@ -100,6 +105,11 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
       if (this.destroyed) return;
       extras.push(searchMod.search({ top: true }));
     }
+    if (this.lint) {
+      this.lintMod = await import('@codemirror/lint');
+      if (this.destroyed) return;
+      extras.push(this.lintMod.lintGutter());
+    }
     const startState = state.EditorState.create({
       doc: this.value,
       extensions: [
@@ -109,6 +119,18 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
       ],
     });
     this.view = new EditorView({ state: startState, parent: this.host!.nativeElement }) as unknown as typeof this.view;
+    if (this.lint && this.diagnostics) this.applyDiagnostics();
+  }
+
+  private applyDiagnostics(): void {
+    if (!this.view || !this.lintMod) return;
+    const v = this.view as unknown as { state: EditorState; dispatch: (t: unknown) => void };
+    const len = v.state.doc.length;
+    const clamp = (n: number): number => Math.max(0, Math.min(n, len));
+    const diags = (this.diagnostics ?? []).map(d => ({
+      from: clamp(d.from), to: clamp(d.to), severity: d.severity, message: d.message,
+    }));
+    v.dispatch(this.lintMod.setDiagnostics(v.state, diags));
   }
 
   private async loadLanguage(): Promise<Extension> {
@@ -136,6 +158,7 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
     const current = this.view.state.doc.toString();
     if (current === this.value) return;
     this.view.dispatch({ changes: { from: 0, to: current.length, insert: this.value } });
+    if (changes['diagnostics'] && this.view && this.lintMod) this.applyDiagnostics();
   }
 
   ngOnDestroy(): void {
