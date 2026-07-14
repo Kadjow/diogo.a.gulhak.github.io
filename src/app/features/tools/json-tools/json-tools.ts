@@ -36,9 +36,9 @@ import {
                 </label>
                 <button type="button" class="je-btn" (click)="clearAll()" i18n="@@tools.json-editor.clear">Limpar</button>
                 <div class="je-seg" role="group" [attr.aria-label]="indentAria">
-                  <button type="button" [class.is-on]="indent() === 2" (click)="setIndent(2)">2</button>
-                  <button type="button" [class.is-on]="indent() === 4" (click)="setIndent(4)">4</button>
-                  <button type="button" [class.is-on]="indent() === 'tab'" (click)="setIndent('tab')" i18n="@@tools.json-editor.indentTab">Tab</button>
+                  <button type="button" [class.is-on]="indent() === 2" [attr.aria-pressed]="indent() === 2" (click)="setIndent(2)">2</button>
+                  <button type="button" [class.is-on]="indent() === 4" [attr.aria-pressed]="indent() === 4" (click)="setIndent(4)">4</button>
+                  <button type="button" [class.is-on]="indent() === 'tab'" [attr.aria-pressed]="indent() === 'tab'" (click)="setIndent('tab')" i18n="@@tools.json-editor.indentTab">Tab</button>
                 </div>
               </div>
               <div class="je-head-row">
@@ -221,6 +221,7 @@ export class JsonTools implements OnDestroy {
 
   copyOutput(): void {
     if (!this.isBrowser) return;
+    if (!navigator.clipboard) { this.flashCopy('fail'); return; }
     navigator.clipboard.writeText(this.output())
       .then(() => this.flashCopy('ok'))
       .catch(() => this.flashCopy('fail'));
