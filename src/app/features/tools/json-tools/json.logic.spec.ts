@@ -1,6 +1,7 @@
 import {
   formatJson, minifyJson, sortJson, validateJson, jsonStats, errorToLineCol,
 } from './json.logic';
+import { repairJson, transformJson } from './json.logic';
 
 describe('formatJson', () => {
   it('pretty-prints valid JSON with the given indent', () => {
@@ -83,5 +84,33 @@ describe('jsonStats', () => {
   });
   it('treats empty text as zero lines and zero nodes', () => {
     expect(jsonStats('')).toEqual({ bytes: 0, lines: 0, nodes: 0 });
+  });
+});
+
+describe('repairJson', () => {
+  it('repairs common invalid JSON (unquoted keys, trailing comma)', () => {
+    const r = repairJson("{a: 1, b: 'x',}", 2);
+    expect(r.ok).toBe(true);
+    expect(r.output).toBe('{\n  "a": 1,\n  "b": "x"\n}');
+  });
+  it('treats empty input as ok/empty', () => {
+    expect(repairJson('   ', 2)).toEqual({ ok: true, output: '', error: null });
+  });
+});
+
+describe('transformJson', () => {
+  it('applies a JMESPath query and pretty-prints the result', () => {
+    const r = transformJson('{"people":[{"name":"Ann"},{"name":"Bob"}]}', 'people[*].name', 2);
+    expect(r.ok).toBe(true);
+    expect(r.output).toBe('[\n  "Ann",\n  "Bob"\n]');
+  });
+  it('empty query yields ok/empty output', () => {
+    expect(transformJson('{"a":1}', '  ', 2)).toEqual({ ok: true, output: '', error: null });
+  });
+  it('reports an error for an invalid query', () => {
+    expect(transformJson('{"a":1}', 'a[', 2).ok).toBe(false);
+  });
+  it('reports an error when input JSON is invalid', () => {
+    expect(transformJson('{bad}', 'a', 2).ok).toBe(false);
   });
 });

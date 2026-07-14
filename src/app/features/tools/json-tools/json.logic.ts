@@ -1,3 +1,6 @@
+import { jsonrepair } from 'jsonrepair';
+import { search as jmesSearch } from 'jmespath';
+
 export interface JsonResult {
   ok: boolean;
   output: string;
@@ -82,4 +85,24 @@ export function jsonStats(text: string): JsonStats {
   let nodes: number;
   try { nodes = countNodes(JSON.parse(text)); } catch { nodes = 0; }
   return { bytes, lines, nodes };
+}
+
+export function repairJson(input: string, indent: number): JsonResult {
+  if (input.trim() === '') return { ok: true, output: '', error: null };
+  try {
+    return formatJson(jsonrepair(input), indent);
+  } catch (e) {
+    return { ok: false, output: '', error: (e as Error).message };
+  }
+}
+
+export function transformJson(input: string, query: string, indent: number): JsonResult {
+  if (query.trim() === '') return { ok: true, output: '', error: null };
+  try {
+    const parsed = JSON.parse(input);
+    const result = jmesSearch(parsed, query);
+    return { ok: true, output: JSON.stringify(result, null, indent), error: null };
+  } catch (e) {
+    return { ok: false, output: '', error: (e as Error).message };
+  }
 }
