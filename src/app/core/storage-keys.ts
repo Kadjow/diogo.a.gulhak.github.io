@@ -8,3 +8,8 @@ export const PLAYGROUND_KEY = 'tools.playground.snippet';
 
 /** localStorage key for the user's own Groq API key (BYO, never bundled). */
 export const GROQ_KEY = 'tools.playground.groqKey';
+
+/** localStorage: conteúdo da entrada do Editor JSON. */
+export const JSON_EDITOR_INPUT_KEY = 'tools.json-editor.input';
+/** localStorage: indentação escolhida no Editor JSON (2 | 4 | tab). */
+export const JSON_EDITOR_INDENT_KEY = 'tools.json-editor.indent';
