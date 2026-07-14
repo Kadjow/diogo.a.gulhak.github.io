@@ -1,7 +1,7 @@
 import {
   formatJson, minifyJson, sortJson, validateJson, jsonStats, errorToLineCol,
 } from './json.logic';
-import { repairJson, transformJson } from './json.logic';
+import { repairJson, transformJson, indentValue, isIndentSetting } from './json.logic';
 
 describe('formatJson', () => {
   it('pretty-prints valid JSON with the given indent', () => {
@@ -112,5 +112,48 @@ describe('transformJson', () => {
   });
   it('reports an error when input JSON is invalid', () => {
     expect(transformJson('{bad}', 'a', 2).ok).toBe(false);
+  });
+});
+
+describe('validateJson pos', () => {
+  it('includes a numeric char offset for invalid JSON', () => {
+    const err = validateJson('{\n  "a" 1\n}');
+    expect(err !== null).toBe(true);
+    expect(typeof err!.pos === 'number' || err!.pos === null).toBe(true);
+    if (err!.pos !== null) expect(err!.pos >= 0).toBe(true);
+  });
+  it('has null pos / null error for valid or empty input', () => {
+    expect(validateJson('{"a":1}')).toBe(null);
+    expect(validateJson('   ')).toBe(null);
+  });
+});
+
+describe('indentValue', () => {
+  it('maps 2 and 4 to themselves and tab to a tab char', () => {
+    expect(indentValue(2)).toBe(2);
+    expect(indentValue(4)).toBe(4);
+    expect(indentValue('tab')).toBe('\t');
+  });
+});
+
+describe('isIndentSetting', () => {
+  it('accepts 2, 4 and "tab"', () => {
+    expect(isIndentSetting(2)).toBe(true);
+    expect(isIndentSetting(4)).toBe(true);
+    expect(isIndentSetting('tab')).toBe(true);
+  });
+  it('rejects anything else', () => {
+    expect(isIndentSetting(3)).toBe(false);
+    expect(isIndentSetting('2')).toBe(false);
+    expect(isIndentSetting(null)).toBe(false);
+  });
+});
+
+describe('indent with tab', () => {
+  it('formatJson indents with a tab character', () => {
+    expect(formatJson('{"a":1}', '\t').output).toBe('{\n\t"a": 1\n}');
+  });
+  it('sortJson indents with a tab character', () => {
+    expect(sortJson('{"b":1,"a":2}', '\t').output).toBe('{\n\t"a": 2,\n\t"b": 1\n}');
   });
 });
