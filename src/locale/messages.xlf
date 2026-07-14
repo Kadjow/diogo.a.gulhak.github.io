@@ -651,68 +651,193 @@
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.inputLabel" datatype="html">
-        <source>Entrada</source>
+      <trans-unit id="tools.json-editor.format" datatype="html">
+        <source>Formatar</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
-          <context context-type="linenumber">12,14</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.format" datatype="html">
-        <source>Formatar</source>
+      <trans-unit id="tools.json-editor.minify" datatype="html">
+        <source>Minificar</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
           <context context-type="linenumber">22,23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.minify" datatype="html">
-        <source>Minificar</source>
+      <trans-unit id="tools.json-editor.sort" datatype="html">
+        <source>Ordenar</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
-          <context context-type="linenumber">23,26</context>
+          <context context-type="linenumber">23,24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.outputLabel" datatype="html">
+      <trans-unit id="tools.json-editor.repair" datatype="html">
+        <source>Reparar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.validate" datatype="html">
+        <source>Validar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">25,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.run" datatype="html">
+        <source>Transformar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">35,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.upload" datatype="html">
+        <source>Abrir arquivo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.copy" datatype="html">
+        <source>Copiar saída</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.download" datatype="html">
+        <source>Baixar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">44,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.inputLabel" datatype="html">
+        <source>Entrada</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">50,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.outputLabel" datatype="html">
         <source>Saída</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">67,69</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.name" datatype="html">
-        <source>Ferramentas JSON</source>
+      <trans-unit id="tools.json-editor.invalid" datatype="html">
+        <source>JSON inválido</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/data/tools.ts</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">80,81</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.desc" datatype="html">
-        <source>Formatar, minificar e validar JSON.</source>
+      <trans-unit id="tools.json-editor.at" datatype="html">
+        <source>linha</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/data/tools.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.placeholder" datatype="html">
-        <source>Cole seu JSON aqui…</source>
+      <trans-unit id="tools.json-editor.valid" datatype="html">
+        <source>JSON válido</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">84,86</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="tools.json-tools.errorPrefix" datatype="html">
-        <source>JSON inválido:</source>
+      <trans-unit id="tools.json-editor.metricsIn" datatype="html">
+        <source>Entrada</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">90,91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.linesUnit" datatype="html">
+        <source>linhas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">91,92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.nodesUnit" datatype="html">
+        <source>nós</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">92,94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.metricsOut" datatype="html">
+        <source>Saída</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">95,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.linesUnit2" datatype="html">
+        <source>linhas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">96,98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.name" datatype="html">
+        <source>Editor JSON</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.desc" datatype="html">
+        <source>Editor de dois painéis: formatar, ordenar, reparar, validar e transformar JSON.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.inputAria" datatype="html">
+        <source>Editor de entrada JSON</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.outputAria" datatype="html">
+        <source>Resultado JSON (somente leitura)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.splitAria" datatype="html">
+        <source>Redimensionar painéis</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.queryAria" datatype="html">
+        <source>Consulta JMESPath</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.queryPlaceholder" datatype="html">
+        <source>Consulta JMESPath (ex: people[*].name)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">125</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.opError" datatype="html">
+        <source>Erro:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">126</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.markdown-preview.name" datatype="html">
@@ -1429,6 +1554,20 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/data/skills.ts</context>
           <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.name" datatype="html">
+        <source>Editor JSON</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-tools.desc" datatype="html">
+        <source>Editor de dois painéis com formatar, ordenar, reparar, validar e transformar.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/data/tools.ts</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.image-converter.name" datatype="html">
