@@ -18,6 +18,7 @@
   --code-punct: #475569; --code-fn: #B91C1C;
   --code-font: ui-monospace, 'Cascadia Code', Consolas, 'SF Mono', monospace;
   --code-size: 0.84375rem;
+  --json-ok: #16A34A;
   --maxw: 1080px;
 }
 :root[data-theme="dark"] {
@@ -34,4 +35,5 @@
   --code-keyword: #C4B5FD; --code-string: #6EE7B7; --code-number: #FCD34D; --code-comment: #64748B;
   --code-tag: #7DB3FF; --code-attr: #5EEAD4; --code-prop: #93C5FD; --code-type: #F0ABFC;
   --code-punct: #94A3B8; --code-fn: #FCA5A5;
+  --json-ok: #4ADE80;
 }
