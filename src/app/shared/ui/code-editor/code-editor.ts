@@ -153,12 +153,14 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!changes['value'] || !this.view) return;
-    if (this.value === this.lastEmitted) return;
-    const current = this.view.state.doc.toString();
-    if (current === this.value) return;
-    this.view.dispatch({ changes: { from: 0, to: current.length, insert: this.value } });
-    if (changes['diagnostics'] && this.view && this.lintMod) this.applyDiagnostics();
+    if (!this.view) return;
+    if (changes['value'] && this.value !== this.lastEmitted) {
+      const current = this.view.state.doc.toString();
+      if (current !== this.value) {
+        this.view.dispatch({ changes: { from: 0, to: current.length, insert: this.value } });
+      }
+    }
+    if (changes['diagnostics'] && this.lintMod) this.applyDiagnostics();
   }
 
   ngOnDestroy(): void {
