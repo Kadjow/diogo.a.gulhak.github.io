@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ToolShell } from '../../../shared/ui/tool-shell/tool-shell';
-import { CodeEditor } from './editor/code-editor';
+import { CodeEditor } from '../../../shared/ui/code-editor/code-editor';
 import { ConsolePanel } from './console-panel';
 import { AiPanel } from './ai/ai-panel';
 import { PlaygroundContext } from './ai/groq.logic';

@@ -6,7 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import type { Extension } from '@codemirror/state';
 
-export type EditorLanguage = 'html' | 'css' | 'javascript';
+export type EditorLanguage = 'html' | 'css' | 'javascript' | 'json';
 
 @Component({
   selector: 'app-code-editor',
@@ -17,6 +17,7 @@ export type EditorLanguage = 'html' | 'css' | 'javascript';
       <textarea
         class="cm-fallback"
         spellcheck="false"
+        [readonly]="readonly"
         [ngModel]="value"
         (ngModelChange)="onFallback($event)"
         (keydown)="onFallbackKeydown($event)"
@@ -31,6 +32,8 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   @Input() value = '';
   @Input() language: EditorLanguage = 'html';
   @Input() ariaLabel = '';
+  @Input() readonly = false;
+  @Input() search = false;
   @Output() valueChange = new EventEmitter<string>();
   @Output() run = new EventEmitter<void>();
   @ViewChild('host') host?: ElementRef<HTMLElement>;
@@ -86,11 +89,23 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
     const runKeymap = view.keymap.of([
       { key: 'Mod-Enter', run: () => { this.zone.run(() => this.run.emit()); return true; } },
     ]);
+    const extras: Extension[] = [];
+    if (this.readonly) {
+      extras.push(state.EditorState.readOnly.of(true), EditorView.editable.of(false));
+    }
+    if (this.search) {
+      // `basicSetup` já inclui `searchKeymap` (Ctrl+F funciona sem isto). Aqui só
+      // configuramos o painel de busca no topo; NÃO re-vincular o keymap (duplicaria bindings).
+      const searchMod = await import('@codemirror/search');
+      if (this.destroyed) return;
+      extras.push(searchMod.search({ top: true }));
+    }
     const startState = state.EditorState.create({
       doc: this.value,
       extensions: [
         cm.basicSetup, langExt, updateListener, runKeymap, EditorView.lineWrapping,
         language.syntaxHighlighting(tokenClasses),
+        ...extras,
       ],
     });
     this.view = new EditorView({ state: startState, parent: this.host!.nativeElement }) as unknown as typeof this.view;
@@ -99,6 +114,7 @@ export class CodeEditor implements AfterViewInit, OnChanges, OnDestroy {
   private async loadLanguage(): Promise<Extension> {
     if (this.language === 'css') return (await import('@codemirror/lang-css')).css();
     if (this.language === 'javascript') return (await import('@codemirror/lang-javascript')).javascript();
+    if (this.language === 'json') return (await import('@codemirror/lang-json')).json();
     return (await import('@codemirror/lang-html')).html();
   }
 

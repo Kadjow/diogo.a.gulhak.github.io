@@ -35,4 +35,17 @@ describe('CodeEditor (fallback path on server)', () => {
     fixture.componentInstance.onFallbackKeydown(new KeyboardEvent('keydown', { key: 'Enter' }));
     expect(ran).toBe(1);
   });
+  it('marks the fallback textarea readonly when readonly=true', () => {
+    const fixture = make();
+    fixture.componentInstance.readonly = true;
+    fixture.detectChanges();
+    const ta = fixture.nativeElement.querySelector('textarea.cm-fallback') as HTMLTextAreaElement;
+    expect(ta.readOnly).toBe(true);
+  });
+  it('leaves the fallback textarea editable by default', () => {
+    const fixture = make();
+    fixture.detectChanges();
+    const ta = fixture.nativeElement.querySelector('textarea.cm-fallback') as HTMLTextAreaElement;
+    expect(ta.readOnly).toBe(false);
+  });
 });
