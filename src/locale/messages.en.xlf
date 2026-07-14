@@ -994,6 +994,22 @@
           <context context-type="linenumber">40,41</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="tools.json-editor.clear" datatype="html">
+        <source>Limpar</source>
+        <target state="translated">Clear</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.indentTab" datatype="html">
+        <source>Tab</source>
+        <target state="translated">Tab</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">41,43</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="tools.json-editor.copy" datatype="html">
         <source>Copiar saída</source>
         <target state="translated">Copy output</target>
@@ -1152,6 +1168,38 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
           <context context-type="linenumber">126</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.indentAria" datatype="html">
+        <source>Indentação</source>
+        <target state="translated">Indentation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">157</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.dropAria" datatype="html">
+        <source>Solte um arquivo JSON aqui</source>
+        <target state="translated">Drop a JSON file here</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.copied" datatype="html">
+        <source>Copiado!</source>
+        <target state="translated">Copied!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tools.json-editor.copyFail" datatype="html">
+        <source>Falhou</source>
+        <target state="translated">Failed</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tools/json-tools/json-tools.ts</context>
+          <context context-type="linenumber">161</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tools.json-tools.name" datatype="html">
