@@ -48,4 +48,13 @@ describe('CodeEditor (fallback path on server)', () => {
     const ta = fixture.nativeElement.querySelector('textarea.cm-fallback') as HTMLTextAreaElement;
     expect(ta.readOnly).toBe(false);
   });
+  it('renders the fallback without error when lint/diagnostics are set (server)', () => {
+    const fixture = make();
+    fixture.componentInstance.lint = true;
+    fixture.componentInstance.diagnostics = [{ from: 0, to: 1, message: 'x', severity: 'error' }];
+    fixture.detectChanges();
+    expect(fixture.componentInstance.useFallback).toBe(true);
+    const ta = fixture.nativeElement.querySelector('textarea.cm-fallback') as HTMLTextAreaElement;
+    expect(ta !== null).toBe(true);
+  });
 });

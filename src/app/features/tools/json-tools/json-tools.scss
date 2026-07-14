@@ -1,18 +1,25 @@
-.je-toolbar {
+.je-wrap {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-3);
-  margin: var(--space-3) 0;
+  flex-direction: column;
+  height: clamp(520px, calc(100vh - 220px), 1040px);
   min-width: 0;
 }
-.je-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
-.je-io { margin-left: auto; }
+.je-body {
+  display: grid;
+  grid-template-columns: 1fr 6px 1fr; /* sobrescrito inline via [style.gridTemplateColumns] */
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+.je-pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.je-pane-head { display: flex; flex-direction: column; gap: var(--space-1); padding-bottom: var(--space-2); }
+.je-head-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.je-pane-title { font-size: 0.75rem; color: var(--muted); margin-right: var(--space-1); }
 
 .je-btn {
   display: inline-flex;
   align-items: center;
-  padding: 7px 14px;
+  padding: 6px 12px;
   border-radius: 999px;
   border: 1.5px solid var(--ink);
   background: transparent;
@@ -26,6 +33,8 @@
 .je-upload { cursor: pointer; }
 
 .je-query {
+  flex: 1;
+  min-width: 140px;
   padding: 6px 10px;
   border-radius: 8px;
   border: 1px solid var(--border);
@@ -33,26 +42,33 @@
   color: var(--ink);
   font-family: var(--code-font, ui-monospace, monospace);
   font-size: 0.8125rem;
-  min-width: 200px;
   &:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 }
 
-.je-body {
-  display: grid;
-  grid-template-columns: 1fr 6px 1fr; /* sobrescrito inline via [style.gridTemplateColumns] */
-  height: clamp(420px, calc(100vh - 260px), 900px);
-  min-width: 0;
+.je-seg {
+  display: inline-flex;
+  margin-left: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  button {
+    padding: 4px 10px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    &.is-on { background: var(--accent); color: var(--bg); }
+    &:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  }
 }
-.je-pane {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-}
-.je-pane-label { font-size: 0.75rem; color: var(--muted); margin: 0 0 4px; }
-.je-pane app-code-editor { flex: 1; min-height: 0; display: flex; }
+
+.je-drop { flex: 1; display: flex; min-height: 0; }
+.je-pane app-code-editor,
+.je-drop app-code-editor { flex: 1; min-height: 0; display: flex; }
 
 .je-status {
+  flex: none;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -66,12 +82,12 @@
 .je-invalid { color: var(--danger); font-weight: 600; }
 
 @media (max-width: 1023px) {
+  .je-wrap { height: auto; }
   .je-body {
     grid-template-columns: 1fr !important;
-    height: auto;
     gap: var(--space-3);
   }
   .je-body app-resize-handle { display: none; }
-  .je-pane { height: 60vh; }
-  .je-io { margin-left: 0; }
+  .je-pane { min-height: 60vh; }
+  .je-seg { margin-left: 0; }
 }

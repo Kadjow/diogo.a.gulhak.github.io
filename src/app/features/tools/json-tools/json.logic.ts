@@ -17,7 +17,7 @@ function transform(input: string, render: (parsed: unknown) => string): JsonResu
   }
 }
 
-export function formatJson(input: string, indent: number): JsonResult {
+export function formatJson(input: string, indent: number | string): JsonResult {
   return transform(input, parsed => JSON.stringify(parsed, null, indent));
 }
 
@@ -25,7 +25,7 @@ export function minifyJson(input: string): JsonResult {
   return transform(input, parsed => JSON.stringify(parsed));
 }
 
-export interface JsonError { message: string; line: number; col: number; }
+export interface JsonError { message: string; line: number; col: number; pos: number | null; }
 export interface JsonStats { bytes: number; lines: number; nodes: number; }
 
 function sortValue(value: unknown): unknown {
@@ -41,7 +41,7 @@ function sortValue(value: unknown): unknown {
   return value;
 }
 
-export function sortJson(input: string, indent: number): JsonResult {
+export function sortJson(input: string, indent: number | string): JsonResult {
   return transform(input, parsed => JSON.stringify(sortValue(parsed), null, indent));
 }
 
@@ -63,11 +63,12 @@ export function validateJson(input: string): JsonError | null {
   } catch (e) {
     const message = (e as Error).message;
     // Node/V8 mensagens variam: "... at position N" e/ou "(line L column C)".
-    const lc = /line (\d+) column (\d+)/.exec(message);
-    if (lc) return { message, line: Number(lc[1]), col: Number(lc[2]) };
     const p = /position (\d+)/.exec(message);
-    if (p) { const { line, col } = errorToLineCol(input, Number(p[1])); return { message, line, col }; }
-    return { message, line: 1, col: 1 };
+    const pos = p ? Number(p[1]) : null;
+    const lc = /line (\d+) column (\d+)/.exec(message);
+    if (lc) return { message, line: Number(lc[1]), col: Number(lc[2]), pos };
+    if (pos !== null) { const { line, col } = errorToLineCol(input, pos); return { message, line, col, pos }; }
+    return { message, line: 1, col: 1, pos: null };
   }
 }
 
@@ -87,7 +88,7 @@ export function jsonStats(text: string): JsonStats {
   return { bytes, lines, nodes };
 }
 
-export function repairJson(input: string, indent: number): JsonResult {
+export function repairJson(input: string, indent: number | string): JsonResult {
   if (input.trim() === '') return { ok: true, output: '', error: null };
   try {
     return formatJson(jsonrepair(input), indent);
@@ -96,7 +97,7 @@ export function repairJson(input: string, indent: number): JsonResult {
   }
 }
 
-export function transformJson(input: string, query: string, indent: number): JsonResult {
+export function transformJson(input: string, query: string, indent: number | string): JsonResult {
   if (query.trim() === '') return { ok: true, output: '', error: null };
   try {
     const parsed = JSON.parse(input);
@@ -105,4 +106,14 @@ export function transformJson(input: string, query: string, indent: number): Jso
   } catch (e) {
     return { ok: false, output: '', error: (e as Error).message };
   }
+}
+
+export type IndentSetting = 2 | 4 | 'tab';
+
+export function indentValue(setting: IndentSetting): number | string {
+  return setting === 'tab' ? '\t' : setting;
+}
+
+export function isIndentSetting(v: unknown): v is IndentSetting {
+  return v === 2 || v === 4 || v === 'tab';
 }
